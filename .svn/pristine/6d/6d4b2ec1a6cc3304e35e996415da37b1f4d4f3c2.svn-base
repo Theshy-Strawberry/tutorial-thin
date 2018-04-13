@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<blogic-io>
+
+    <action path="/JNTCIIntelligenceBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIIntelligenceInput">
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" source="form" />
+            <set-property property="ku_id" blogic-property="ku_id"
+                source="form" />
+            <set-property property="per_id"
+                blogic-property="per_id" source="form" />
+            <set-property property="entry_id"
+                blogic-property="entry_id" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="updateUser"
+                blogic-property="updateUser" dest="form" />
+            <set-property property="kubunList"
+                blogic-property="kubunList" dest="form" />
+            <set-property property="personList"
+                blogic-property="personList" dest="form" />
+            <set-property property="entryName"
+                blogic-property="entryName" dest="form" />
+            <set-property property="userIdList"
+                blogic-property="userIdList" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+            <set-property property="departmentName"
+                blogic-property="departmentName" dest="form" />
+            <set-property property="directName"
+                blogic-property="directName" dest="form" />
+            <set-property property="projectName"
+                blogic-property="projectName" dest="form" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

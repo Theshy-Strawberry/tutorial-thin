@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <form-beans>
+  	<form-bean name="_JNTCIAttendance06Form" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIAttendance06Form" />
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+     <action path="/JNTCIAttendanceSCR" name="_JNTCIAttendance06Form" scope="request"
+           parameter="/JNTCIAttendanceSystem/JNTCIAttendanceAddsign.jsp"  validate="false">
+      <forward name="success" path="/Attendance05listBL.do" />
+    </action>
+
+     <action path="/Attendance05listBL"
+            name="_JNTCIAttendance06Form" scope="request"
+            validate="false">
+       <forward name="success" path="/JNTCIAttendanceShowTypeBL.do" />
+   </action>
+
+    <action path="/JNTCIAttendanceShowTypeBL"
+            name="_JNTCIAttendance06Form" scope="request"
+            validate="false">
+       <forward name="success" path="/JNTCIAttendanceSystem/JNTCIAttendanceAddsign.jsp" />
+   </action>
+
+   <action path="/insertBLforAttendance05"
+            name="_JNTCIAttendance06Form" scope="request"
+            validate="true" input="/JNTCIAttendanceSCR.do" >
+       <forward name="success" path="/Attendance05listBL.do" />
+       <forward name="failure" path="/JNTCIAttendanceSCR.do" />
+   </action>
+
+   <action path="/delectionforAttendance05"
+            name="_JNTCIAttendance06Form" scope="request"
+            validate="false">
+       <forward name="success" path="/JNTCIAttendanceSCR.do" />
+   </action>
+
+  </action-mappings>
+
+</struts-config>

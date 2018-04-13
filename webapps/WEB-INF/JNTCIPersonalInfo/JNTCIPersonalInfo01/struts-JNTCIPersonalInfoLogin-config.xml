@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+<!-- ======================================== フォームビーン定義 -->
+  <form-beans>
+
+    <form-bean name="_JNTCIPersonalInfoLoginForm"
+               type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIPersonalInfoLoginForm" />
+
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+  <!-- 如果页面check住或者failure時，留在登录画面 -->
+   <action path="/JNTCIMTR/PERSONinfo0401"
+    		name="_JNTCIPersonalInfoLoginForm" scope="request"
+    		parameter="/JNTCIPersonalInfo/JNTCIPersonalInfoLogin.jsp"/>
+
+
+
+	<!-- 从登录JSP进行各种情况的跳转，成功（到查询页面）或失败（还是此登录页面） -->
+	<action path="/JNTCIPersonalInfo01insertBL"
+			name="_JNTCIPersonalInfoLoginForm" scope="request"
+			validate="true" input="/JNTCIPersonalInfoLoginInitBL.do">
+
+			<forward name="success" path="/JNTCIPersonalInfo/JNTCIPersonalInfoUpdate.jsp" />
+		 	<forward name="failureCreate" path="/JNTCIPersonalInfo/JNTCIPersonalInfoLogin.jsp" />
+			<forward name="failureUpdate" path="/JNTCIPersonalInfo/JNTCIPersonalInfoUpdate.jsp" />
+	</action>
+
+
+       <action path="/JNTCIAdminInfo01insertBL"
+			name="_JNTCIPersonalInfoLoginForm" scope="request"
+			validate="true" input="/JNTCIPersonalInfo/JNTCIAdminInfoUpdate.jsp">
+
+			<forward name="success" path="/JNTCIPersonalInfo/JNTCIAdminInfoUpdate.jsp" />
+			<forward name="failureUpdate" path="/JNTCIPersonalInfo/JNTCIAdminInfoUpdate.jsp" />
+			<forward name="failureCreate" path="/JNTCIPersonalInfo/JNTCIAdminInfoUpdate.jsp" />
+	</action>
+	<!-- 从登录JSP进行各种情况的跳转，成功（到查询页面）或失败（还是此登录页面） Add-->
+	<action path="/JNTCIPersonalInfo01insertBLAdd"
+			name="_JNTCIPersonalInfoLoginForm" scope="request"
+			validate="true" input="/JNTCIPersonalInfo/JNTCIPersonalInfoLoginAdd.jsp">
+
+			<forward name="success" path="/JNTCIPersonalInfo/JNTCIPersonalInfoLoginAdd.jsp" />
+			<forward name="failureCreate" path="/JNTCIPersonalInfo/JNTCIPersonalInfoLoginAdd.jsp" />
+	</action>
+  </action-mappings>
+</struts-config>

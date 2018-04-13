@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+	<action path="/JNTCIEquipHomePage04BL">
+		<blogic-params
+			bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessage04Input">
+			<set-property property="info_id" blogic-property="info_id"
+				source="form" />
+
+			<!-- wzt -->
+			<set-property property="row" blogic-property="row"
+				source="form" />
+			<set-property property="startIndex" blogic-property="startIndex"
+				source="form" />
+				<set-property property="startIndex1" blogic-property="startIndex1"
+				source="form" />
+			<!-- wzt -->
+			<set-property property="userId" blogic-property="userId"
+				source="session" />
+
+		</blogic-params>
+
+		<blogic-result>
+			<set-property property="postmessage04" blogic-property="postmessage04"
+				dest="form" />
+			<set-property property="noticeMg" blogic-property="noticeMg"
+				dest="form" />
+			<!-- 评论一览 -->
+			<set-property property="comment" blogic-property="comment"
+				dest="form" />
+			<set-property property="userFlag" blogic-property="userFlag"
+				dest="form" />
+
+			<!-- wzt -->
+			<set-property property="totalCount" blogic-property="totalCount"
+				dest="form" />
+			<!-- wzt -->
+		</blogic-result>
+	</action>
+	<!-- 可添加评论 -->
+	<action path="/JNTCIEquipHomePage04ComBL">
+		<blogic-params
+			bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessage04Input">
+			<set-property property="info_id" blogic-property="info_id" source="form" />
+			<set-property property="commet_details_txt" blogic-property="commet_details_txt" source="form" />
+			<set-property property="comment_date" blogic-property="comment_date" source="form" />
+			<set-property property="userId" blogic-property="comment_user_Id" source="session" />
+			<set-property property="comment_Id" blogic-property="comment_Id" source="form" />
+		</blogic-params>
+	</action>
+	<!-- 删除评论 -->
+	<action path="/JNTCIEquipHomePage04ComDelBL">
+		<blogic-params
+			bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessage04Input">
+			<set-property property="flag" blogic-property="flag" source="form" />
+			<set-property property="info_id" blogic-property="info_id" source="form" />
+			<set-property property="userId" blogic-property="comment_user_Id" source="session" />
+			<set-property property="comment_Id" blogic-property="comment_Id" source="form" />
+			<set-property property="startIndex1" blogic-property="startIndex1" source="form" />
+		</blogic-params>
+
+		<blogic-result>
+			<set-property property="startIndex1" blogic-property="startIndex1"
+				dest="form" />
+
+		</blogic-result>
+		</action>
+	<action path="/JNTCIEquipHomePage04DE">
+		<blogic-params
+			bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessage04Input">
+			<set-property property="info_id" blogic-property="info_id" source="form" />
+		</blogic-params>
+	</action>
+</blogic-io>

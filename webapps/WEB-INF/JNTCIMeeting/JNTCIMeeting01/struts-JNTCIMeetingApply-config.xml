@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+    <!-- ======================================== フォームビーン定義 -->
+    <form-beans>
+        <!-- ログオン用アクションフォーム -->
+        <form-bean name="_JNTCIMeetingApplyForm"
+            type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIMeetingApplyForm" />
+
+    </form-beans>
+
+    <!-- ======================================== アクションマッピング定義 -->
+    <action-mappings
+        type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+        <action path="/PERSONinfo01" scope="request"
+            parameter="/JNTCIMeeting/JNTCIMeetingApply.jsp" />
+
+        <action path="/MeetingApply" name="_JNTCIMeetingApplyForm"
+            scope="request" validate="true" input="/fail.do">
+            <forward name="success"
+                path="/JNTCIMeeting/JNTCIMeetingApplySuccess.jsp" />
+            <forward name="fail" path="/JNTCIMeeting/JNTCIMeetingApply.jsp" />
+        </action>
+
+        <action path="/fail" scope="request"
+            parameter="/JNTCIMeeting/JNTCIMeetingApply.jsp" />
+
+        <action path="/goBack" scope="request"
+            parameter="/JNTCIMeeting/JNTCIMeetingApply.jsp" />
+
+        <action path="/MeetingApplyAjax" scope="request"
+            name="_JNTCIMeetingApplyForm" validate="true" input="/fail.do">
+            <forward name="success" path="/JNTCIMeeting/JNTCIMeetingApply.jsp" />
+        </action>
+
+        <!--會議一覽表 -->
+        <action path="/MeetingApplySelect" scope="request"
+            name="_JNTCIMeetingApplyForm" validate="true" input="/fail.do">
+            <forward name="success" path="/JNTCIMeeting/JNTCIMeetingApply.jsp" />
+        </action>
+        <!--會議一覽表 -->
+    </action-mappings>
+</struts-config>

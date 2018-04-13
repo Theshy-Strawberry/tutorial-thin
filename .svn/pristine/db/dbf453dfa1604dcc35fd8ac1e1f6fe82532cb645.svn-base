@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+
+	<formset>
+
+		<!-- ログオン機能確認 -->
+		<form name="/JNTCIEquipInsertBL">
+		<!-- 設備種類検証 -->
+			<field property="setsubi_kuben" depends="required">
+			<arg key="JNTCIEquipInsert.setsubi_kuben" position="0"/>
+			</field>
+           <!--設備型番 -->
+		<field property="setsubi_kataban"
+            depends="required">
+          <arg key="JNTCIEquip.kataban" position="0"/>
+        </field>
+			<!-- 設備用途 -->
+			<field property="youto" depends="required">
+			<arg key="JNTCIEquip.youto" position="0"/>
+			</field>
+
+			<!-- 購入日付 -->
+			<field property="kounyu_hiduke" depends="required">
+			<arg key="JNTCIEquip.kounyu_hiduke" position="0"/>
+			</field>
+			<!-- 出入庫日付 -->
+			<field property="shunyuko_date" depends="required">
+			<arg key="JNTCIEquip.shunyuko_date" position="0"/>
+			</field>
+			<!-- 入庫番号 -->
+			<field property="shunyuko_no" depends="required,maxlength">
+				<arg key="JNTCIEquip.shunyuko_no" position="0" />
+				<arg key="${var:maxlength}" name="maxlength" resource="false"
+					position="1" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>16</var-value>
+				</var>
+			</field>
+			<!-- 棚卸番号 -->
+			<field property="setsubi_kanaoroshi_no" depends="required,maxlength">
+				<arg key="JNTCIEquip.setsubi_kanaoroshi_no" position="0" />
+				<arg key="${var:maxlength}" name="maxlength" resource="false"
+					position="1" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>16</var-value>
+				</var>
+			</field>
+			<!-- 設備数 -->
+			<field property="setsubi_su" depends="maxlength,numericString">
+				<arg key="JNTCIEquip.setsubi_kanaoroshi_su" position="0" />
+				<arg key="${var:maxlength}" name="maxlength" resource="false"
+					position="1" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+			<!-- 棚卸人 -->
+			<field property="tanaoroshi_user" depends="required,maxlength,minlength,numericString">
+				<arg key="JNTCIEquip.tanaoroshi_user" position="0" />
+				<arg key="${var:maxlength}" resource="false" position="1" />
+				<arg key="${var:minlength}" resource="false" position="2" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+			<!-- 棚卸日付 -->
+			<field property="tanaoroshi_hiduke" depends="required">
+			<arg key="JNTCIEquip.tanaoroshi_hiduke" position="0"/>
+			</field>
+		</form>
+
+		<form name="/JNTCIEquipEditorBL">
+			<!-- 保管方式 -->
+			<field property="equipLocation" depends="required">
+				<arg key="JNTCIEquip.equipLocation" position="0" />
+			</field>
+			<!-- 設備用途 -->
+			<field property="youto" depends="required">
+				<arg key="JNTCIEquip.youto" position="0" />
+			</field>
+			<!-- 棚卸日付 -->
+			<field property="tanaoroshi_hiduke" depends="required">
+				<arg key="JNTCIEquip.tanaoroshi_hiduke" position="0" />
+			</field>
+
+			<!-- 出入庫日付 -->
+			<field property="shunyuko_date" depends="required">
+				<arg key="JNTCIEquip.shunyuko_date" position="0" />
+			</field>
+			<!-- 入庫番号 -->
+			<field property="shunyuko_no" depends="required">
+				<arg key="JNTCIEquip.shunyuko_no" position="0" />
+			</field>
+
+
+
+
+			<!-- 设备番号 -->
+			<field property="setsubi_no" depends="required,maxlength">
+				<arg key="JNTCIEquipInsert.setsubi_no" position="0" />
+				<arg key="${var:maxlength}" name="maxlength" resource="false"
+					position="1" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>16</var-value>
+				</var>
+			</field>
+
+			<!-- 棚卸番号 -->
+			<field property="setsubi_kanaoroshi_no" depends="required,maxlength">
+				<arg key="JNTCIEquip.setsubi_kanaoroshi_no" position="0" />
+				<arg key="${var:maxlength}" name="maxlength" resource="false"
+					position="1" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>16</var-value>
+				</var>
+			</field>
+			<!-- 棚卸人 -->
+			<field property="tanaoroshi_user" depends="required,maxlength,minlength,numericString">
+				<arg key="JNTCIEquip.tanaoroshi_user" position="0" />
+				<arg key="${var:maxlength}" resource="false" position="1" />
+				<arg key="${var:minlength}" resource="false" position="2" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>
+			<!-- MAC -->
+			<!-- <field property="mac_address" depends="required,maxlength"> <arg
+				key="JNTCIEquip.setsubi_mac_address" position="0" /> <arg key="${var:maxlength}"
+				name="maxlength" resource="false" position="1" /> <var> <var-name>maxlength</var-name>
+				<var-value>12</var-value> </var> </field> -->
+		</form>
+	</formset>
+
+</form-validation>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<!-- formbean定義 -->
+	<form-beans>
+		<form-bean name="_Wform" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.Wform" />
+	</form-beans>
+	<action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+		<action path="/writeholidayBL1" name="_Wform" scope="request" validate="true" input="/writeholidayBL.do">
+			<forward name="success" path="/writeholidayBL.do"/>
+		</action>
+
+        <action path="/selectwriteholidayBL" name="_Wform" scope="request" validate="false">
+			<forward name="success" path="/writeholiday/page1.jsp"/>
+		</action>
+		<action path="/writeholidayBL" name="_Wform" scope="request" validate="false">
+			<!-- <forward name="success" path="/writeholiday/page1.jsp" /> -->
+			<forward name="success" path="/selectwriteholidayBL.do" />
+		</action>
+
+       <action path="/holiday" name="_Wform" scope="request">
+            <forward name="success"  path="/writeholiday/page3.jsp" />
+            <forward name="delete" path="/writeholidayBL.do"/>
+      </action>
+      <action path="/deleteholidatytime"  name="_Wform" scope="request" validate="false">
+           <forward name="success" path="/holiday.do"/>
+           <forward name="success1" path="/writeholidayBL.do"/>
+      </action>
+      <action path="/JNTCIholidayByIdUpdate" name="_Wform" scope="request" validate="true"   input="/holiday.do">
+			<forward name="save" path="/JNTCISaveHolidayBL.do" />
+			<forward name="list" path="/writeholidayBL.do"/>
+		</action>
+		<action path="/JNTCISaveHolidayBL"  name="_Wform" scope="request" validate="false">
+    		<forward name="success" path="/holiday.do"/>
+    	</action>
+	</action-mappings>
+</struts-config>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<blogic-io>
+
+    <action path="/JNTCIAddsignInfoBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAddsignInfoInput">
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="mark" blogic-property="mark"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="JN_CARD_SEARCH"
+                blogic-property="JN_CARD_SEARCH" source="form" />
+            <set-property property="retroactive_type2"
+                blogic-property="retroactive_type2" source="form" />
+            <set-property property="card_id"
+                blogic-property="card_id" source="form" />
+            <set-property property="flag_date_format"
+                blogic-property="flag_date_format" source="form" />
+            <set-property property="USER_NAME_SEARCH"
+                blogic-property="USER_NAME_SEARCH" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="session" />
+            <set-property property="cod" blogic-property="cod"
+                source="form" />
+            <set-property  property="sureId_card"  blogic-property="sureId_card"  source="form" />
+            <set-property  property="retroactive_auditss_search"  blogic-property="retroactive_auditss_search" source="form" />
+            <set-property  property="retroactive_starttime_search"  blogic-property="retroactive_starttime_search" source="form" />
+            <set-property  property="retroactive_endtime_search"  blogic-property="retroactive_endtime_search"  source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="attendance06SelectRecOutput"
+                blogic-property="attendance06SelectRecOutput" dest="form" />
+            <set-property property="addsignInfoList"
+                blogic-property="addsignInfoList" dest="form" />
+            <set-property property="retroactive_type_hide"
+                blogic-property="retroactive_type_hide" dest="form" />
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" dest="form" />
+            <set-property property="JN_CARD_SEARCH"
+                blogic-property="JN_CARD_SEARCH" dest="form" />
+            <set-property property="USER_NAME_SEARCH"
+                blogic-property="USER_NAME_SEARCH" dest="form" />
+            <set-property property="retroactive_type2"
+                blogic-property="retroactive_type2" dest="form" />
+            <set-property property="sureId_card"
+                blogic-property="sureId_card" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property  property="retroactive_auditss_search" blogic-property="retroactive_auditss_search" dest="form" />
+             <set-property  property="retroactive_starttime_search"  blogic-property="retroactive_starttime_search" dest="form" />
+            <set-property  property="retroactive_endtime_search"  blogic-property="retroactive_endtime_search"  dest="form" />
+        </blogic-result>
+    </action>
+    <action path="/JNTCIAuditstatUpdateBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAddsignInfoInput">
+            <set-property property="card_id"
+                blogic-property="card_id" source="form" />
+                <set-property property="RETROACTIVE_ID"
+                blogic-property="RETROACTIVE_ID" source="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" source="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" source="form" />
+            <set-property property="JN_CARD"
+                blogic-property="JN_CARD" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="JN_CARD_SEARCH"
+                blogic-property="JN_CARD_SEARCH" source="form" />
+            <set-property property="USER_NAME_SEARCH"
+                blogic-property="USER_NAME_SEARCH" source="form" />
+            <set-property property="tenpu_path"
+                blogic-property="tenpu_path" source="form" />
+            <set-property property="retroactive_type2"
+                blogic-property="retroactive_type2" source="form" />
+            <set-property property="retroactive_auditss_search"
+                blogic-property="retroactive_auditss_search" source="form" />
+            <set-property property="retroactive_starttime_search"
+                blogic-property="retroactive_starttime_search" source="form" />
+            <set-property property="retroactive_endtime_search"
+                blogic-property="retroactive_endtime_search" source="form" />
+
+        </blogic-params>
+        <blogic-result>
+         <set-property property="tenpu_path"
+                blogic-property="tenpu_path" dest="form" />
+                <set-property property="RETROACTIVE_ID"
+                blogic-property="RETROACTIVE_ID" dest="form" />
+            <set-property property="JN_CARD"
+                blogic-property="JN_CARD" dest="form" />
+            <set-property property="USER_NAME"
+                blogic-property="USER_NAME" dest="form" />
+            <set-property property="person"
+                blogic-property="person" dest="form" />
+            <set-property property="k_name"
+                blogic-property="k_name" dest="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" dest="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" dest="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" dest="form" />
+            <set-property property="RETROACTIVE_ID"
+                blogic-property="RETROACTIVE_ID" dest="form" />
+            <set-property property="RETROACTIVE_TYPE"
+                blogic-property="RETROACTIVE_TYPE" dest="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" dest="form" />
+            <set-property property="shencha"
+                blogic-property="shencha" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="JN_CARD_SEARCH"
+                blogic-property="JN_CARD_SEARCH" dest="form" />
+            <set-property property="USER_NAME_SEARCH"
+                blogic-property="USER_NAME_SEARCH" dest="form" />
+            <set-property property="retroactive_type2"
+                blogic-property="retroactive_type2" dest="form" />
+            <set-property property="retroactive_auditss_search"
+                blogic-property="retroactive_auditss_search" dest="form" />
+            <set-property property="retroactive_starttime_search"
+                blogic-property="retroactive_starttime_search" dest="form" />
+            <set-property property="retroactive_endtime_search"
+                blogic-property="retroactive_endtime_search" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIAuditstatBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAddsignInfoInput">
+            <set-property property="examine_status"
+                blogic-property="examine_status" source="form" />
+            <set-property property="examine_reason"
+                blogic-property="examine_reason" source="form" />
+            <set-property property="RETROACTIVE_ID"
+                blogic-property="RETROACTIVE_ID" source="form" />
+            <set-property property="RETROACTIVE_TYPE"
+                blogic-property="RETROACTIVE_TYPE" source="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" source="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" source="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" source="form" />
+            <set-property property="JN_CARD"
+                blogic-property="JN_CARD" source="form" />
+            <set-property property="USER_NAME"
+                blogic-property="USER_NAME" source="form" />
+            <set-property property="k_name"
+                blogic-property="k_name" source="form" />
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+                 <set-property property="userName"
+                blogic-property="userName" source="session" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="JN_CARD_SEARCH"
+                blogic-property="JN_CARD_SEARCH" source="form" />
+            <set-property property="USER_NAME_SEARCH"
+                blogic-property="USER_NAME_SEARCH" source="form" />
+            <set-property property="retroactive_type2"
+                blogic-property="retroactive_type2" source="form" />
+                <set-property property="leader"
+                blogic-property="leader" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="JN_CARD_SEARCH"
+                blogic-property="JN_CARD_SEARCH" dest="form" />
+            <set-property property="USER_NAME_SEARCH"
+                blogic-property="USER_NAME_SEARCH" dest="form" />
+            <set-property property="retroactive_type2"
+                blogic-property="retroactive_type2" dest="form" />
+                <set-property property="leader"
+                blogic-property="leader" dest="form" />
+
+        </blogic-result>
+    </action>
+    <action path="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryDeleteBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAddsignInfoInput">
+            <set-property property="deleteExtra_Id" blogic-property="deleteExtra_Id" source="form" />
+            <set-property  property="startIndex"  blogic-property="startIndex"  source="form" />
+			<set-property property="JN_CARD_SEARCH" blogic-property="JN_CARD_SEARCH" source="form" />
+            <set-property property="USER_NAME_SEARCH"  blogic-property="USER_NAME_SEARCH" source="form" />
+            <set-property property="retroactive_type2"  blogic-property="retroactive_type2" source="form" />
+            <set-property property="retroactive_auditss_search" blogic-property="retroactive_auditss_search" source="form" />
+            <set-property property="retroactive_starttime_search" blogic-property="retroactive_starttime_search" source="form" />
+            <set-property property="retroactive_endtime_search" blogic-property="retroactive_endtime_search" source="form" />
+        </blogic-params>
+        <blogic-result>
+             <set-property property="startIndex"  blogic-property="startIndex" dest="form" />
+             <set-property property="JN_CARD_SEARCH"   blogic-property="JN_CARD_SEARCH" dest="form" />
+            <set-property property="USER_NAME_SEARCH"  blogic-property="USER_NAME_SEARCH" dest="form" />
+            <set-property property="retroactive_type2" blogic-property="retroactive_type2" dest="form" />
+            <set-property property="retroactive_auditss_search" blogic-property="retroactive_auditss_search" dest="form" />
+            <set-property property="retroactive_starttime_search" blogic-property="retroactive_starttime_search" dest="form" />
+            <set-property property="retroactive_endtime_search" blogic-property="retroactive_endtime_search" dest="form" />
+        </blogic-result>
+    </action>
+    <action path="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryAdmitBL">
+		<blogic-params
+			bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAddsignInfoInput">
+			<set-property property="deleteExtra_Id" blogic-property="deleteExtra_Id" source="form" />
+			<set-property property="userId" blogic-property="userId" source="session" />
+			<set-property  property="sureId_card"  blogic-property="sureId_card"  source="form" />
+			<set-property  property="startIndex"  blogic-property="startIndex"  source="form" />
+			<set-property property="JN_CARD_SEARCH" blogic-property="JN_CARD_SEARCH" source="form" />
+            <set-property property="USER_NAME_SEARCH"  blogic-property="USER_NAME_SEARCH" source="form" />
+            <set-property property="retroactive_type2"  blogic-property="retroactive_type2" source="form" />
+            <set-property property="retroactive_auditss_search" blogic-property="retroactive_auditss_search" source="form" />
+            <set-property property="retroactive_starttime_search" blogic-property="retroactive_starttime_search" source="form" />
+            <set-property property="retroactive_endtime_search" blogic-property="retroactive_endtime_search" source="form" />
+		</blogic-params>
+		<blogic-result>
+            <set-property property="sureId_card"  blogic-property="sureId_card" dest="form" />
+            <set-property property="JN_CARD_SEARCH"  blogic-property="JN_CARD_SEARCH" dest="form" />
+            <set-property property="USER_NAME_SEARCH" blogic-property="USER_NAME_SEARCH" dest="form" />
+            <set-property property="retroactive_type2"  blogic-property="retroactive_type2" dest="form" />
+            <set-property property="startIndex"  blogic-property="startIndex" dest="form" />
+            <set-property property="retroactive_auditss_search" blogic-property="retroactive_auditss_search" dest="form" />
+            <set-property property="retroactive_starttime_search" blogic-property="retroactive_starttime_search" dest="form" />
+            <set-property property="retroactive_endtime_search" blogic-property="retroactive_endtime_search" dest="form" />
+        </blogic-result>
+	</action>
+	<action path="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryRefuseBL">
+		<blogic-params
+			bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAddsignInfoInput">
+			<set-property property="deleteExtra_Id" blogic-property="deleteExtra_Id" source="form" />
+			<set-property property="userId" blogic-property="userId" source="session" />
+			<set-property property="startIndex" blogic-property="startIndex" source="form" />
+			<set-property property="USER_NAME_SEARCH" blogic-property="USER_NAME_SEARCH" source="form" />
+			<set-property property="JN_CARD_SEARCH" blogic-property="JN_CARD_SEARCH" source="form" />
+			<set-property property="retroactive_type2" blogic-property="retroactive_type2" source="form" />
+			<set-property property="retroactive_auditss_search" blogic-property="retroactive_auditss_search" source="form" />
+            <set-property property="retroactive_starttime_search" blogic-property="retroactive_starttime_search" source="form" />
+            <set-property property="retroactive_endtime_search" blogic-property="retroactive_endtime_search" source="form" />
+		</blogic-params>
+		<blogic-result>
+		    <set-property property="startIndex" blogic-property="startIndex" dest="form" />
+			<set-property property="USER_NAME_SEARCH" blogic-property="USER_NAME_SEARCH" dest="form" />
+			<set-property property="JN_CARD_SEARCH" blogic-property="JN_CARD_SEARCH" dest="form" />
+			<set-property property="retroactive_type2" blogic-property="retroactive_type2" dest="form" />
+			<set-property property="retroactive_auditss_search" blogic-property="retroactive_auditss_search" dest="form" />
+            <set-property property="retroactive_starttime_search" blogic-property="retroactive_starttime_search" dest="form" />
+            <set-property property="retroactive_endtime_search" blogic-property="retroactive_endtime_search" dest="form" />
+		</blogic-result>
+	</action>
+<action path="/DownloadFile">
+		<blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAddsignInfoInput">
+			<set-property  property="RETROACTIVE_ID"  blogic-property="RETROACTIVE_ID"  source="form" />
+		</blogic-params>
+	</action>
+
+<!-- <action path="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryAdmitBL">
+		<blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAddsignInfoInput">
+			<set-property  property="sureId_card"  blogic-property="sureId_card"  source="form" />
+		</blogic-params>
+		<blogic-result>
+            <set-property property="sureId_card"
+                blogic-property="sureId_card" dest="form" />
+        </blogic-result>
+	</action> -->
+</blogic-io>

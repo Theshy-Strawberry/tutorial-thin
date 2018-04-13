@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+<!-- ======================================== フォームビーン定義 -->
+  <form-beans>
+
+    <form-bean name="_JNTCIPersonalInfoLoginForm"
+               type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIPersonalInfoLoginForm" />
+
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+  <!--从検索一覧的修正或导航栏跳转到初始化logic，成功后到登録页面  -->
+   <action path="/JNTCIPersonalInfoLoginInitBL"
+    		name="_JNTCIPersonalInfoLoginForm" scope="request"
+    		validate="false">
+
+    		<forward name="update" path="/JNTCIPersonalInfo/JNTCIPersonalInfoUpdate.jsp" />
+    		<forward name="create" path="/JNTCIPersonalInfo/JNTCIPersonalInfoLogin.jsp" />
+
+	</action>
+
+ <action path="/JNTCIAdminInfoUpdateInitBL"
+    		name="_JNTCIPersonalInfoLoginForm" scope="request">
+
+    		<forward name="update" path="/JNTCIPersonalInfo/JNTCIAdminInfoUpdate.jsp" />
+
+	</action>
+
+ <action path="/JNTCIPersonalInfoLoginInitAddBL"
+    		name="_JNTCIPersonalInfoLoginForm" scope="request">
+
+    		<forward name="create" path="/JNTCIPersonalInfo/JNTCIPersonalInfoLoginAdd.jsp" />
+
+	</action>
+
+
+
+
+
+
+  </action-mappings>
+</struts-config>

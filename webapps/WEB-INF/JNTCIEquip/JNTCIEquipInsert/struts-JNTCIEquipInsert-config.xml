@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="_JNTCIEquipInsertForm"
+			type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquipInsertForm" />
+			<form-bean name="_JNTCIEquipListForm"
+  			   type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquipListForm" />
+
+	   <form-bean name="_JNTCIEquip01selectForm"
+			type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquip01selectForm" />
+	</form-beans>
+	<!-- ======================================== アクションマッピング定義 -->
+	<action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+
+
+
+		<action path="/JNTCIEquipInsertBL" name="_JNTCIEquipInsertForm"
+			scope="request" validate="true" input = "/JNTCIEquipInsertBL01.do">
+			<forward name="success" path="/JNTCIEquipInsertBL01.do" />
+			<forward name="failure" path="/JNTCIEquipInsertBL01.do" />
+		</action>
+		<action path="/JNTCIEquipInsertBL01" name="_JNTCIEquipInsertForm"
+			scope="request" >
+			<forward name="success" path="/JNTCIEquipInsertSCR.do" />
+			<forward name="failure" path="/JNTCIEquipInsertSCR.do" />
+		</action>
+		<action path="/JNTCIEquipInsertSCR"
+		 name="_JNTCIEquipInsertForm" scope="request"
+		 parameter="/JNTCIEquip/JNTCIEquipInsert.jsp"/>
+		<action path="/JNTCIEquipEditorBL" name="_JNTCIEquipInsertForm"
+			scope="request" validate="true" input = "/JNTCIEquipEditorSCR.do">
+			<forward name="success" path="/JNTCIEquipEditorSCR.do" />
+			<forward name="success1" path="/JNTCIEquipListBL001.do" />
+			<forward name="failure" path="/JNTCIEquipEditorSCR.do" />
+		</action>
+		<action path="/JNTCIEquipfanhui" name="_JNTCIEquipInsertForm"
+			scope="request" >
+			<forward name="success1" path="/JNTCIEquipListBL001.do" />
+		</action>
+		<action path="/JNTCIEquipListBL001" name="_JNTCIEquipInsertForm"
+			scope="request" validate="false">
+			<forward name="success" path="/JNTCIEquipListBL002.do" />
+		</action>
+       <!--   <action path="/JNTCIEquipInsertBLEditor" name="_JNTCIEquipInsertForm"
+			scope="request" >
+			<forward name="success" path="JNTCIEquipEditorSCR" />
+			<forward name="failure" path="JNTCIEquipEditorSCR" />
+		</action> -->
+        <action path="/JNTCIEquipEditorSCR"
+		 name="_JNTCIEquipListForm" scope="request"
+		 parameter="/JNTCIEquip/JNTCIEquip06.jsp"/>
+
+
+		<action path="/JNTCIEquipInsert02BL" name="_JNTCIEquipInsertForm"
+			scope="request" >
+			<forward name="success" path="/JNTCIEquipInsertSCR.do" />
+			<forward name="failure" path="/JNTCIEquipInsertSCR.do" />
+		</action>
+
+          <action path="/JNTCIEquip06SCR" name="_JNTCIEquipInsertForm"
+			scope="request" parameter = "/JNTCIEquip/JNTCIEquip06.jsp"/>
+
+			 <action path="/JNTCIEquip01SCR" name="_JNTCIEquipInsertForm"
+			scope="request" parameter = "/JNTCIEquip/JNTCIEquip01.jsp"/>
+
+	</action-mappings>
+</struts-config>

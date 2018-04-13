@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/JNTCISuperButtonSRC">
+        <blogic-result>
+            <set-property property="rolelist"
+                blogic-property="rolelist" dest="form" />
+            <set-property property="projectlist"
+                blogic-property="projectlist" dest="form" />
+                <set-property property="pmlist"
+                blogic-property="pmlist" dest="form" />
+                <set-property property="projectnamelist"
+                blogic-property="projectnamelist" dest="form" />
+        </blogic-result>
+    </action>
+
+
+  <action path="/JNTCISuperButtonProjectdelete">
+       <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCISuperButtonInput">
+                               <!--   <set-property property="deleteprojectname"
+                blogic-property="deleteprojectname" source="form" /> -->
+                   <set-property property="projectId2"
+                blogic-property="projectId2" source="form" />
+            </blogic-params>
+    </action>
+
+    <action path="/JNTCISuperButtonPowerModify">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCISuperButtonInput">
+                    <set-property property="usersId"
+                blogic-property="usersId" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="form" />
+            <set-property property="power" blogic-property="power"
+                source="form" />
+            <set-property property="projectId"
+                blogic-property="projectId" source="form" />
+            <set-property property="projectdutyname"
+                blogic-property="projectdutyname" source="form" />
+        </blogic-params>
+        <blogic-result>
+           <set-property property="usersId"
+                blogic-property="usersId" dest="form" />
+                   <set-property property="projectdutyname"
+                blogic-property="projectdutyname" dest="form" />
+                </blogic-result>
+    </action>
+<action path="/JNTCISuperButtonPowerModify1">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCISuperButtonInput">
+                    <set-property property="usersId"
+                blogic-property="usersId" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="form" />
+            <set-property property="power" blogic-property="power"
+                source="form" />
+            <set-property property="projectId"
+                blogic-property="projectId" source="form" />
+            <set-property property="userNameTwo"
+                blogic-property="userNameTwo" source="form" />
+                    <set-property property="projectdutyname"
+                blogic-property="projectdutyname" source="form" />
+        </blogic-params>
+         <blogic-result>
+            <set-property property="usersId"
+                blogic-property="usersId" dest="form" />
+                 <set-property property="projectdutyname"
+                blogic-property="projectdutyname" dest="form" />
+                </blogic-result>
+
+    </action>
+    <action path="/JNTCISuperButtonPowerAdd">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCISuperButtonInput">
+            <set-property property="quanxianid"
+                blogic-property="quanxianid" source="form" />
+            <set-property property="quanxianname"
+                blogic-property="quanxianname" source="form" />
+            <set-property property="updatetime"
+                blogic-property="updatetime" source="form" />
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="projectno"
+                blogic-property="projectno" source="form" />
+            <set-property property="projectname"
+                blogic-property="projectname" source="form" />
+               <set-property property="flag"
+                blogic-property="flag" source="session" />
+                <set-property property="projectdutyname"
+                blogic-property="projectdutyname" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="checkresult"
+                blogic-property="checkresult" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCISuperButtonPowerSelect">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCISuperButtonInput">
+            <set-property property="usersId"
+                blogic-property="usersId" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="userName"
+                blogic-property="userName" dest="form" />
+            <set-property property="power" blogic-property="power"
+                dest="form" />
+            <set-property property="projectId"
+                blogic-property="projectId" dest="form" />
+            <set-property property="code_id"
+                blogic-property="code_id" dest="form" />
+            <set-property property="kj_name"
+                blogic-property="kj_name" dest="form" />
+            <set-property property="pro" blogic-property="pro"
+                dest="form" />
+            <set-property property="proname"
+                blogic-property="proname" dest="form" />
+                <set-property property="usersId"
+                blogic-property="usersId" dest="form" />
+                   <set-property property="projectdutyname"
+                blogic-property="projectdutyname" dest="form" />
+        </blogic-result>
+    </action>
+
+
+    <action path="/ProjectPersonSelect">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCISuperButtonInput">
+            <set-property property="projectId1"
+                blogic-property="projectId1" source="form" />
+        </blogic-params>
+        <blogic-result>
+                <set-property property="selectprojectusernamelist"
+                blogic-property="selectprojectusernamelist" dest="form" />
+				<set-property property="projectId1"
+                blogic-property="projectId1" dest="form" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

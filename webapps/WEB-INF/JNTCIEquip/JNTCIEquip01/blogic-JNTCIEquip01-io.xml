@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA" "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/JNTCIEquip01BL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquip01Input">
+            <set-property property="shinsei_hiduke"
+                blogic-property="shinsei_hiduke" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="session" />
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="deptName"
+                blogic-property="deptName" source="form" />
+            <set-property property="aitemuName"
+                blogic-property="aitemuName" source="form" />
+            <set-property property="aitemuNumber"
+                blogic-property="aitemuNumber" source="form" />
+            <set-property property="reason"
+                blogic-property="reason" source="form" />
+            <set-property property="shinsaNo"
+                blogic-property="shinsaNo" source="form" />
+            <set-property property="shinseiNo"
+                blogic-property="shinseiNo" source="form" />
+            <set-property property="toId" blogic-property="toId"
+                source="form" />
+            <set-property property="subject"
+                blogic-property="subject" source="form" />
+            <set-property property="officeMail"
+                blogic-property="officeMail" source="form" />
+        </blogic-params>
+    </action>
+
+</blogic-io>

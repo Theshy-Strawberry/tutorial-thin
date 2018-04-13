@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+  <!-- AOPの定義 -->
+  <!--
+    下記で指定したパターンのBeanに対してインタセプタを適用する。
+    applicationContext.xmlで定義されたBeanのみ対象となるので注意すること。
+   -->
+    <aop:config>
+    <aop:pointcut id="sampleBeans" expression="bean(*BLogic2)"/>
+
+    <aop:advisor
+         pointcut-ref="sampleBeans"
+         advice-ref="transactionInterceptor"/>
+
+  </aop:config>
+
+  <!-- アクション定義 -->
+
+  <bean name="/JNTCIAttendanceSCR" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="getSelectInfoBlogic"/>
+  </bean>
+
+ <bean id="getSelectInfoBlogic" scope="prototype"
+   class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendance06GetSelectInfoBlogic">
+	  <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+  <bean name="/JNTCIAttendanceShowTypeBL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="getTypeListBLogic"/>
+  </bean>
+
+   <bean id="getTypeListBLogic" scope="prototype"
+   class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendance06GetTypeListBlogic">
+	  <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+  <bean name="/insertBLforAttendance05" scope="singleton"
+  class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="InsertBLogicforAttendance05"/>
+  </bean>
+
+   <bean id="InsertBLogicforAttendance05" scope="prototype"
+   class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendance06Blogic">
+	  <property name="queryDAO" ref="queryDAO" />
+	  <property name="updateDAO" ref="updateDAO" />
+  </bean>
+
+  <bean name="/Attendance05listBL" scope="singleton"
+  class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="QueryBLogicforAttendance05"/>
+  </bean>
+
+   <bean id="QueryBLogicforAttendance05" scope="prototype"
+   class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendance06QueryBlogic">
+	  <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+  <bean name="/delectionforAttendance05" scope="singleton"
+  class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="DeleteBLogicforAttendance05"/>
+  </bean>
+
+   <bean id="DeleteBLogicforAttendance05" scope="prototype"
+   class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendance06DeleteBlogic">
+	  <property name="updateDAO" ref="updateDAO" />
+  </bean>
+
+
+</beans>

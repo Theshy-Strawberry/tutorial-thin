@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+  <!-- AOPの定義 -->
+  <!--
+    下記で指定したパターンのBeanに対してインタセプタを適用する。
+    applicationContext.xmlで定義されたBeanのみ対象となるので注意すること。
+   -->
+    <aop:config>
+    <aop:pointcut id="sampleBeans" expression="bean(*BLogic2)"/>
+    <aop:advisor
+         pointcut-ref="sampleBeans"
+         advice-ref="transactionInterceptor"/>
+  	</aop:config>
+
+  <!-- アクション定義 -->
+
+  <!-- ログオン画面表示用アクション定義 -->
+
+	   <bean name="/JNTCIBusinessVerifyBL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.DispatchAction"/>
+
+  	<bean name="/JNTCIBusinessVerify01BL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIBusinessVerify01BLogic" />
+  </bean>
+
+  <bean id="JNTCIBusinessVerify01BLogic" scope="singleton"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIBusinessVerify01BLogic">
+        <property name="queryDAO" ref="queryDAO"/>
+  </bean>
+
+
+<bean name="/JNTCIBusinessVerify02forwardBL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIBusinessVerify02forwardBLogic" />
+  </bean>
+
+  <bean id="JNTCIBusinessVerify02forwardBLogic" scope="singleton"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIBusinessVerify02forwardBLogic">
+        <property name="queryDAO" ref="queryDAO"/>
+  </bean>
+
+
+<bean name="/JNTCIBusinessVerify02BL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIBusinessVerify02BLogic" />
+  </bean>
+
+  <bean id="JNTCIBusinessVerify02BLogic" scope="singleton"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIBusinessVerify02BLogic">
+        <property name="queryDAO" ref="queryDAO"/>
+        <property name="updateDAO" ref="updateDAO"/>
+  </bean>
+
+ <bean name="/JNTCIBusinessVerifydownloadBL" class="jp.terasoluna.fw.web.struts.actions.DownloadBLogicAction" scope="singleton">
+          <property name="businessLogic" ref="JNTCIBusinessVerifydownloadBL" />
+  </bean>
+
+  <bean id="JNTCIBusinessVerifydownloadBL"
+           class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIBusinessVerifydownloadBLogic" scope="singleton" >
+           <property name="queryDAO" ref="queryDAO" />
+   </bean>
+
+   <bean name="/JNTCIBusinessVerifyDeleteBL" class="jp.terasoluna.fw.web.struts.actions.BLogicAction" scope="singleton">
+          <property name="businessLogic" ref="JNTCIBusinessVerifyDeleteBL" />
+  </bean>
+
+  <bean id="JNTCIBusinessVerifyDeleteBL"
+           class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIBusinessVerifyDeleteBLogic" scope="singleton" >
+           <property name="updateDAO" ref="updateDAO"/>
+           <property name="queryDAO" ref="queryDAO" />
+   </bean>
+
+
+   <bean name="/JNTCIBusinessVerifySureBL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIBusinessVerifySureBL" />
+  </bean>
+
+  <bean id="JNTCIBusinessVerifySureBL" scope="singleton"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIBusinessVerifySureBLogic" >
+        <property name="updateDAO" ref="updateDAO"/>
+         <property name="queryDAO" ref="queryDAO" />
+
+  </bean>
+
+  <bean name="/JNTCIBusinessVerifyUnSureBL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIBusinessVerifyUnSureBL" />
+  </bean>
+
+  <bean id="JNTCIBusinessVerifyUnSureBL" scope="singleton"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIBusinessVerifyUnSureBLogic" >
+        <property name="updateDAO" ref="updateDAO"/>
+         <property name="queryDAO" ref="queryDAO" />
+
+  </bean>
+
+
+<bean name="/JNTCIBusinessVerify01BL002"  scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+          <property name="businessLogic" ref="JNTCIBusinessVerify01BLogic002" />
+   </bean>
+   <bean id="JNTCIBusinessVerify01BLogic002"   scope="singleton"
+          class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIBusinessVerify01BLogic002">
+          <property name="queryDAO" ref="queryDAO"/>
+    </bean>
+
+
+</beans>
+

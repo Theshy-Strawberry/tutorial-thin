@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* CSS Document */
+
+.main_empl{
+	font-family:SimSun
+	font-size:14px;
+	color:#333;
+	width:4300px;
+	padding:20px 20px;
+	background-color:#fff;
+
+}
+.position_B1_A{
+	width:9.73%;
+	background-color:#d1e2f5;
+	margin-right:10px;
+	float:left;
+}
+.position_B1_B{
+	width:9.73%;
+	background-color:#d1e2f5;
+	margin-right:10px;
+	float:left;
+}
+.position_B1_C{
+	width:9.73%;
+	background-color:#d1e2f5;
+	margin-right:10px;
+	float:left;
+}
+.position_B1_D{
+	width:9.73%;
+	background-color:#d1e2f5;
+	margin-right:10px;
+	float:left;
+}
+.position_B1_E{
+	width:9.73%;
+	background-color:#d1e2f5;
+	float:left;
+}
+.position_B1_Title{
+	width:100%;
+	height:40px;
+	background-image:url(../images/B1_title.png);
+}
+h1{
+	font-family:"HGP明朝B";
+	margin:0 0;
+	font
+}
+.position_B1_tal table{
+	width:100%;
+	border:1px #CCCCCC double;
+}
+.position_B1_tal table td{
+	border:1px #CCCCCC double;
+	width:176px;
+	height:120px;
+	padding: 0 0;
+}
+.position_B1_tal .B1_person{
+	width:140px;
+	height:102px;
+	margin:10px auto;
+	display:block;
+	border:solid 1px #0099CC;
+	border-radius:10px;
+}
+.B1_person .B1_person_main{
+	width:90px;
+	height:67px;
+    float:left;
+	margin:0px;
+}
+.B1_person .B1_person_photo{
+	width:38px;
+	height:57px;
+	margin:5px;
+    float:left;
+	overflow:hidden;
+	border:solid 1px #a0c0dd;
+}
+.B1_person_photo img{
+	width:43px;
+	height:60px;
+}
+.B1_person .B1_person_depart{
+	width:100%;
+	height:32px;
+	float:right;
+	border-top:solid 1px #0099FF;
+	text-align:center;
+	font-weight:bold;
+	zoom:1;
+	padding-top:5px;
+	background:url(../images/depart_bottom.png) no-repeat;
+}
+.B1_person_depart :after {
+	clear:both;content:'.';
+	display:block;
+	width: 0;
+	height: 0;
+	visibility:hidden;
+}
+.person_main_title{
+	margin-left:15px;
+	width:auto;
+	height:22px;
+	text-align:center;
+	font-weight:bold;
+	background:url(../images/dep_title.png) no-repeat;
+}
+.person_main_name{
+	width:95%;
+	height:40%;
+	margin:11px 8px;
+	font-size:13px;
+}
+.B1_pillar{
+	width:140px;
+	height:102px;
+	margin:10px auto;
+	display:block;
+	background-color:#98c3f4;
+}

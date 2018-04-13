@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+<!-- logon Bean define -->
+	<aop:config>
+		<aop:pointcut id="sampleBeans" expression="bean(*BLogic2)"/>
+		<aop:advisor pointcut-ref="sampleBeans"
+		             advice-ref="transactionInterceptor"/>
+	</aop:config>
+
+	<bean name="/JNTCIMTR/PERSONinfo0401" scope="singleton"
+    	  class="jp.terasoluna.fw.web.struts.actions.ForwardAction" />
+
+    <!-- 登录页面调用LOGIC -->
+
+     <bean name="/JNTCIPersonalInfo01insertBL" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+          <property name="businessLogic" ref="JNTCIPersonalInfoLoginBLogic" />
+    </bean>
+
+	<!-- 登録処理ビジネスロジック定義 -->
+	<bean id="JNTCIPersonalInfoLoginBLogic" scope="singleton"
+	      class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIPersonalInfoLoginBLogic">
+	      <property name="queryDAO" ref="queryDAO" />
+	      <property name="updateDAO" ref="updateDAO" />
+	</bean>
+
+
+	<!-- 登录页面调用LOGIC  Add -->
+
+     <bean name="/JNTCIPersonalInfo01insertBLAdd" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+          <property name="businessLogic" ref="JNTCIPersonalInfoLoginBLogicAdd" />
+    </bean>
+
+	<!-- 登録処理ビジネスロジック定義   Add-->
+	<bean id="JNTCIPersonalInfoLoginBLogicAdd" scope="singleton"
+	      class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIPersonalInfoLoginBLogicAdd">
+	      <property name="queryDAO" ref="queryDAO" />
+	      <property name="updateDAO" ref="updateDAO" />
+	</bean>
+
+
+
+	    <bean name="/JNTCIAdminInfo01insertBL" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+          <property name="businessLogic" ref="JNTCIAdminInfoLoginBLogic" />
+        </bean>
+         <bean id="JNTCIAdminInfoLoginBLogic" scope="singleton"
+	      class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAdminInfoLoginBLogic">
+	      <property name="queryDAO" ref="queryDAO" />
+	      <property name="updateDAO" ref="updateDAO" />
+
+	</bean>
+</beans>

@@ -1,0 +1,232 @@
+@charset "utf-8";
+/* author lyc */
+
+.rightDiv h2{
+	font-weight:700;
+	font-size:16px;
+	/*border-bottom: 1px solid #d3d3d3;*/
+	padding: 0.5em;
+	margin-bottom: 0.6em;
+	line-height:1.5em;
+	background: #CF3835;
+	color: #fff;
+	background-image: url(../images/menu-bg.png);
+	background-repeat: repeat repeat;
+	border-radius: 5px 5px 0 0;
+}
+.leftDiv h2{
+margin-bottom: 30px;
+font-size: 18px;
+ font-weight: 800;
+text-align: center;
+}
+.rightDiv .maquee{
+	padding-left: 10px;
+}
+.btn{width:7em;}
+li{ list-style:none }
+img{ border:none}
+a{text-decoration:none;}
+.content1{
+	position:relative;
+	background:#F5F5D5;
+	padding: 0.2em 1em;
+	border-radius: 5px;
+}
+.content1 a{
+	position:absolute;
+	top:0.5em;
+	right:1em;
+}
+
+
+/*分页*/
+.long-pages {
+	margin: 1em 0 0px;
+	text-align: right;
+	font-size: 14px;
+	line-height: 22px;
+	color: #666;
+}
+.long-pages strong,
+.long-pages a {
+	display:inline-block;
+	padding: 0 8px;
+	background: #fff;
+}
+.long-pages a {
+	border: solid 1px #ccc;
+	color: #261cdc;
+}
+.long-pages a:hover {
+	text-decoration: none;
+	background: #105cb6;
+	color: #fff;
+}
+.long-pages strong {
+	font-weight: 400;
+}
+
+/* -------------------------摇奖排行榜-----------------------------------  */
+
+
+.record_Top{width:90%; height:50px; background:url(../images/record_Bg.png) center center no-repeat; background-size:contain; text-align:center; line-height:50px; margin:30px auto 0px; color:#fff;}
+
+.topRec_List1 dl{overflow:hidden;color:#7C7C7C;font-weight: 900;}
+.topRec_List1 dd{
+	float:left;
+	text-align:center;
+	/*border-bottom:1px solid #1B96EE; */
+	color:#525252;
+	margin-bottom: 5px}
+.topRec_List1 dl dd:nth-child(1){ width:20%;height:40px; line-height:40px; }
+.topRec_List1 dl dd:nth-child(2){ width:30%; height:40px; line-height:40px; }
+.topRec_List1 dl dd:nth-child(3){ width:30%; height:40px; line-height:40px; }
+.topRec_List1 dl dd:nth-child(4){ width:20%; height:40px; line-height:40px; }
+.topRec_List1 dl dd:nth-child(5){ width:10%; height:40px; line-height:40px; }
+
+
+.maquee,.maquee ul{height:195px;}
+.maquee ul{overflow:hidden;}
+.maquee li{
+	webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.topRec_List1 li:nth-child(2n-1) {
+	background: #f1f1f1;
+}
+/* .topRec_List1 ul{height:195px;} */
+.topRec_List1 li{line-height:1.3em;
+	min-height:50px;
+	text-align:center;
+	font-size:12px;
+	/*border-bottom: 1px dashed #aaa;*/
+}
+/*.topRec_List li:nth-child(2n){ background:#077cd0}*/
+.topRec_List1 li div{ float:left;}
+.topRec_List1 li div:nth-child(1){ width:20%}
+.topRec_List1 li div:nth-child(2){ width:30%;}
+.topRec_List1 li div:nth-child(3){ width:30%;}
+.topRec_List1 li div:nth-child(4){ width:30%}
+.topRec_List1 li div:nth-child(5){ width:20%;}
+.apple a{display:block; text-decoration:none;}
+
+.topRec_List dl,.maquee{overflow:hidden;color:#7C7C7C}
+.topRec_List dd{ float:left; text-align:center; border-bottom:1px solid #1B96EE; color:#1B96EE;}
+.topRec_List dl dd:nth-child(1){ width:15%; height:40px; line-height:40px; }
+.topRec_List dl dd:nth-child(2){ width:15%; height:40px; line-height:40px; }
+.topRec_List dl dd:nth-child(3){ width:30%; height:40px; line-height:40px; }
+.topRec_List dl dd:nth-child(4){ width:30%; height:40px; line-height:40px; }
+.topRec_List dl dd:nth-child(5){ width:10%; height:40px; line-height:40px; }
+
+.topRec_List ul{height:195px;}
+.topRec_List li{line-height:1.3em; min-height:38px; text-align:center; font-size:12px; border-bottom: 1px dashed #aaa;}
+/*.topRec_List li:nth-child(2n){ background:#077cd0}*/
+.topRec_List li div{ float:left;}
+.topRec_List li div:nth-child(1){ width:20%;}
+.topRec_List li div:nth-child(2){ width:20%;}
+.topRec_List li div:nth-child(3){ width:30%;}
+.topRec_List li div:nth-child(4){ width:20%;}
+.topRec_List li div:nth-child(5){ width:10%;}
+.apple a{display:block; text-decoration:none;}
+
+.apple,.aa{ width:90%; height:50px; overflow:hidden; margin:30px auto; border:1px solid #1B96EE;}
+.apple a,.aa a{ width:100%; height:50px; line-height:50px; text-indent:20px; color:#1B96EE;}
+.aa {word-wrap:break-word;line-height:50px;  color:#1B96EE;}
+
+
+
+/*首页公告发帖*/
+ #tab-top ul{ list-style:none; }
+ #tabs{ left:222px;  top:237px;  font-size:14px;}
+ #tab-top{height:30px; line-height:30px; padding-left:20px;
+ 		/* border-bottom:1px solid #A5A8A7; */
+ 		border-bottom: 2px solid #CF3835
+ 		}
+#tab-top ul li{display:block; float:left; padding:0px 15px;
+	/* border:1px solid #C6C5C5; */
+	/* border-bottom:1px solid #A5A8A7; */
+	background-color:#F0F0F0; margin-right:10px; margin-top:-1px; cursor:pointer;
+	border-radius: 5px 5px 0 0;}
+#tab-top ul li.on{/* border:1px solid #A5A8A7; */
+				 /* border-top:2px solid #A5A8A7; */
+				 border: 1px solid #CF3835;
+				/* border-bottom:none; */
+	 			/* background-color:#F0FCF1; */
+	 			background-color: #CF3835;
+	 			border-radius: 5px 5px 0 0;
+	 			}
+#tab-top ul li a{
+	color:454545;
+}
+#tab-top ul .on a {
+color: #fff;
+}
+/* .content{height:100%; width:100%;} */
+/*首页フォーラム*/
+.topRec_List ul li:nth-child(2n-1) {
+	background-color: #eee;
+}
+/* .topRec_List ul li:hover{
+	background-color:#06B0B9;
+	color:#fff;
+} */
+.topRec_List {
+margin-top: 40px;
+}
+.main-title a{
+	color: #3499DA;
+}
+.main-info{
+	color:#525252;
+}
+.topRec_List1 a {
+color: #3499DA;
+}
+.topRec_List1 a:hover {
+color: #f66;
+}
+.topRec_List1 {
+margin-top: 20px;
+}
+/* スレッド詳細页04 */
+.main-detail{
+	background: #fff;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	padding-bottom: 20px;
+	color: #454545;
+}
+.leftFootDiv {
+	background-color: #eff3f5;
+	padding: 20px;
+	color: #454545;
+}
+.leftFootDiv h2 {
+	color: #3499DA;
+	font-size: 16px;
+	font-weight: 400;
+	text-align: left;
+}
+.form-box h2 {
+color: #3499DA;
+text-align: left;
+font-weight: 400;
+font-size: 16px;
+}
+.main-detail a {
+font-size: 15px;
+position: relative;
+top: -30px;
+background: #6694D4;
+color: #fff;
+padding: 5px 20px;
+border-radius: 3px;
+border: 1px solid #6694D4;
+}
+.main-detail a:hover {
+background: #f7f7f7;
+color: #06AFB8;
+border: 1px solid #6694D4;
+}

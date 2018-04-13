@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- ログオン業務のBean定義 -->
+	<aop:config>
+		<aop:pointcut id="simpleBeans" expression="bean(*BLogic2)" />
+		<aop:advisor pointcut-ref="simpleBeans" advice-ref="transactionInterceptor" />
+
+
+	</aop:config>
+	<!-- モジュール固有のBean定義 -->
+
+
+	<!-- ======================================== アクション・業務ロジック定義 -->
+	<!-- アクション定義 -->
+	<!-- <bean name="/JNTCIEquip/JNTCIEquip02SCR" scope="singleton" class="jp.terasoluna.fw.web.struts.actions.ForwardAction"
+		/> -->
+	<bean id="sampleCodeList" class="jp.terasoluna.fw.web.codelist.MappedCodeListLoader"
+		init-method="load">
+		<property name="codeListMap">
+			<map>
+				<entry key="001">
+					<value>value001</value>
+				</entry>
+				<entry key="002">
+					<value>value002</value>
+				</entry>
+				<entry key="003">
+					<value>value003</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean name="/JNTCIEquip02SCRBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIEquip02ListBLogic"></property>
+	</bean>
+
+	<bean name="JNTCIEquip02ListBLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquip02ListBLogic">
+		<property name="queryDAO" ref="queryDAO"></property>
+		<property name="updateDAO" ref="updateDAO"></property>
+	</bean>
+
+	<bean name="/JNTCIEquip02BL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIEquip02BLogic"></property>
+	</bean>
+
+
+	<bean name="JNTCIEquip02BLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquip02BLogic">
+		<property name="queryDAO" ref="queryDAO"></property>
+		<property name="updateDAO" ref="updateDAO"></property>
+	</bean>
+	<bean name="/JNTCIEquip02SCR" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.ForwardAction">
+	</bean>
+<bean name="/JNTCIEquip02SCR2" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.ForwardAction">
+	</bean>
+
+	<bean name="/JNTCIEquipapply02BL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIEquipInsertBLogic011" />
+  </bean>
+
+  <bean id="JNTCIEquipInsertBLogic011" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquip02BLogic">
+        <property name="queryDAO" ref="queryDAO"/>
+  </bean>
+
+	<bean name="/JNTCIEquip02display" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIEquip02displayBLogic"></property>
+	</bean>
+
+	<bean name="JNTCIEquip02displayBLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquip02displayBLogic">
+		<property name="queryDAO" ref="queryDAO"></property>
+		<property name="updateDAO" ref="updateDAO"></property>
+	</bean>
+
+</beans>

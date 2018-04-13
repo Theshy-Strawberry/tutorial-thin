@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+            PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+            "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- SqlMap定義 -->
+<sqlMap namespace="JNTCIBusinessVerifyInfo">
+
+<!--查询  -->
+    <select id="selectBusinessVerifyDetailed"
+        parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIBusinessVerifyDetailedInput"
+        resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.vo.JNTCIBusinessVerifyVo2">
+
+	SELECT
+	TED.EVECTION_ID as evectionId,
+	TED.USER_ID as userId,
+	TED.USER_NAME as userName,
+	decode(TED.SEX,'0','女','1','男','' ) as sex,
+	decode(TED.DEPT_ID,'000','','001','管理部','002','技術開発部','') as deptId,
+	to_char(TED.EVECTION_STARTTIME,'YYYY-MM-DD') as evectionStartTime,
+	to_char(TED.EVECTION_ENDTIME,'YYYY-MM-DD') as evectionEndTime,
+	TED.EVECTION_DESTINATION as evectionDestination,
+	TED.EVECTION_REASON as evectionReason,
+	TED.EXAMINE_PERSON as examinePerson,
+
+	TED.BUSINESS_DAYS as businessDays,
+	  TPBI.TJ_CARD as tjUserId,
+
+
+
+	TSU.LEADER as projectPm,
+	TSU.POSITION as positionId,
+	<!-- TSU.PROJECT_ID as projectId,
+    decode(TSU.PROJECT_ID,'SL1','大宇宙内部系统','SL2','国内project','SL3','','WEB前端') as projectName, -->
+
+    TED.PROJECT_ID as projectId,
+    TED.PROJECT_NAME as projectName,
+
+	TED.DEPENDENCY as dependency,
+	TED.ID_CADE as idCard,
+	to_char(TED.DEPARTURE_TIME,'YYYY-MM-DD') as departureTime,
+
+	decode(TED.PASSPORT,'1','有','0','無') as passport,
+	decode(TED.VISA,'1','有','0','無') as visa,
+
+
+
+	TED.PASSPORT_ID as passportId,
+
+	to_char(TED.PASSPORT_VALIDITY,'YYYY-MM-DD') as passportValidity,
+
+	TED.LEAVE as leave,
+	TED.REACH_PLACE as reachPlace,
+	TED.NAME_PINYIN as namePinyin,
+	TED.TRAFFIC_RESERVE_PERSION as trafficReservePerson,
+	TED.TRAFFIC_EXPLAIN as trafficExplain,
+	to_char(TED.HOTEL_STARTTIME,'YYYY-MM-DD') as hotelStartTime,
+	to_char(TED.HOTEL_ENDTIME,'YYYY-MM-DD') as hotelEndtime,
+	TED.HOTEL_DESTINATION as hotelDestination,
+	TED.HOTEL_PERSON as hotelPerson,
+	TED.HOTEL_NUMBER as hotelNumber,
+	TED.HOTEL_RESERVE_PERSION as hotelReservePerson,
+	TED.HOTEL_EXPLAIN as hotelExplain,
+
+	TED.ARTICLE_NAME as articleName,
+	to_char(TED.TRANSFER_STARTTIME,'YYYY-MM-DD') as transferStartTime,
+	to_char(TED.TRANSFER_ENDTIME,'YYYY-MM-DD') as transferEndTime,
+	TED.RECIPIENT as recipient,
+	TED.STORAGES as storAges,
+	decode(TED.PASSPORT_LENGTH,'1','长签','0','短签')as passportLength,
+	TED.ARTICLE_REMARK as articleRemark,
+	TED.EVECTION_TYPE as evectionType
+	FROM TT_EVECTION_DATA TED
+ 	LEFT OUTER JOIN TT_CODE TCD
+ 	ON
+ 	TCD.CD_CODE=TED.PASSPORT AND TCD.CD_KUBUN='D3'
+ 	LEFT OUTER JOIN TT_CODE TCDA1
+	ON TCDA1.CD_KUBUN='A1' AND TCDA1.CD_CODE=TED.DEPT_ID
+	INNER  JOIN TT_SYS_USER TSU
+	ON TED.USER_ID=TSU.USER_ID
+
+	 left join
+		TT_PERSONAL_BASIC_INFO  TPBI on
+		TPBI.JN_CARD = TSU.USER_ID
+
+        <dynamic prepend="WHERE">
+            <isNotEmpty property="evectionId" >
+                EVECTION_ID = #evectionId#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+ <!--修正出差审查表  -->
+
+     <update id="verifyupdate"
+            parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIBusinessVerifyDetailedInput" >
+        update  TT_EVECTION_DATA TT_ED
+        set  TT_ED.EVECTION_ID = #evectionId#,
+        TT_ED.USER_ID = #userId#,
+        TT_ED.USER_NAME = #userName#,
+         TT_ED.DEPT_ID = #deptId#,
+        TT_ED.EVECTION_STARTTIME = #evectionStartTime#,
+        TT_ED.EVECTION_ENDTIME = #evectionEndTime#,
+        TT_ED.EVECTION_DESTINATION = #evectionDestination#,
+        TT_ED.EVECTION_REASON = #evectionReason#,
+        <!-- TT_ED.EXAMINE_PERSON = #examinePerson#, -->
+        <!-- TT_ED.CRE_DATETM = #creDateTm#, -->
+		TT_ED.SEX = #sex#,
+
+        TT_ED.BUSINESS_DAYS = #businessDays#,
+        TT_ED.TJ_USER_ID = #tjUserId#,
+
+
+        TT_ED.POSITION_ID = #positionId#,
+        TT_ED.PROJECT_ID = #projectId#,
+        TT_ED.PROJECT_NAME = #projectName#,
+        TT_ED.DEPENDENCY = #dependency#,
+        TT_ED.ID_CADE = #idCard#,
+        TT_ED.DEPARTURE_TIME  = #departureTime#,
+
+        TT_ED.VISA = #visa#,
+        TT_ED.PASSPORT = #passport#,
+
+        TT_ED.PASSPORT_ID = #passportId#,
+        TT_ED.PASSPORT_VALIDITY = #passportValidity#,
+
+        TT_ED.LEAVE = #leave#,
+        TT_ED.REACH_PLACE = #reachPlace#,
+        TT_ED.NAME_PINYIN = #namePinyin#,
+        TT_ED.TRAFFIC_RESERVE_PERSION = #trafficReservePerson#,
+        TT_ED.TRAFFIC_EXPLAIN = #trafficExplain#,
+        TT_ED.HOTEL_STARTTIME = #hotelStartTime#,
+        TT_ED.HOTEL_ENDTIME = #hotelEndtime#,
+        TT_ED.HOTEL_DESTINATION = #hotelDestination#,
+        TT_ED.HOTEL_PERSON = #hotelPerson#,
+        TT_ED.HOTEL_NUMBER = #hotelNumber#,
+        TT_ED.HOTEL_RESERVE_PERSION = #hotelReservePerson#,
+        TT_ED.HOTEL_EXPLAIN = #hotelExplain#,
+
+        TT_ED.ARTICLE_NAME = #articleName#,
+        TT_ED.TRANSFER_STARTTIME  = #transferStartTime#,
+        TT_ED.TRANSFER_ENDTIME  = #transferEndTime#,
+        TT_ED.RECIPIENT = #recipient#,
+        TT_ED.STORAGES = #storAges#,
+        TT_ED.PASSPORT_LENGTH = #passportLength#,
+        TT_ED.ARTICLE_REMARK = #articleRemark#,
+        TT_ED.EVECTION_TYPE = #evectionType#
+
+
+           where EVECTION_ID = #evectionId#
+    </update>
+
+</sqlMap>

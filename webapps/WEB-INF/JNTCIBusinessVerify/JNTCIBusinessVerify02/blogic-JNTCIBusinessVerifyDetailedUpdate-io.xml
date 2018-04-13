@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/JNTCIBusinessVerifyUpdateBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIBusinessVerifyDetailedInput">
+            <set-property property="evectionId"
+                blogic-property="evectionId" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="user_Id"
+                blogic-property="user_Id" source="form" />
+            <set-property property="user_Name"
+                blogic-property="user_Name" source="form" />
+            <set-property property="dept_Id"
+                blogic-property="dept_Id" source="form" />
+            <set-property property="examine_Status"
+                blogic-property="examine_Status" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="userId"
+                blogic-property="userId" dest="form" />
+            <set-property property="userName"
+                blogic-property="userName" dest="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+            <set-property property="evectionStartTime"
+                blogic-property="evectionStartTime" dest="form" />
+            <set-property property="evectionEndTime"
+                blogic-property="evectionEndTime" dest="form" />
+            <set-property property="evectionDestination"
+                blogic-property="evectionDestination" dest="form" />
+            <set-property property="evectionReason"
+                blogic-property="evectionReason" dest="form" />
+            <set-property property="creDateTm"
+                blogic-property="creDateTm" dest="form" />
+            <set-property property="evectionId"
+                blogic-property="evectionId" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="user_Id"
+                blogic-property="user_Id" dest="form" />
+            <set-property property="user_Name"
+                blogic-property="user_Name" dest="form" />
+            <set-property property="dept_Id"
+                blogic-property="dept_Id" dest="form" />
+            <set-property property="examine_Status"
+                blogic-property="examine_Status" dest="form" />
+            <set-property property="examineStatus"
+                blogic-property="examineStatus" dest="form" />
+            <set-property property="businessDays"
+                blogic-property="businessDays" dest="form" />
+            <set-property property="tjUserId"
+                blogic-property="tjUserId" dest="form" />
+            <set-property property="sex" blogic-property="sex"
+                dest="form" />
+            <set-property property="projectPm"
+                blogic-property="projectPm" dest="form" />
+            <set-property property="positionId"
+                blogic-property="positionId" dest="form" />
+            <set-property property="projectId"
+                blogic-property="projectId" dest="form" />
+            <set-property property="projectName"
+                blogic-property="projectName" dest="form" />
+            <set-property property="dependency"
+                blogic-property="dependency" dest="form" />
+            <set-property property="idCard"
+                blogic-property="idCard" dest="form" />
+            <set-property property="departureTime"
+                blogic-property="departureTime" dest="form" />
+            <set-property property="passport"
+                blogic-property="passport" dest="form" />
+            <set-property property="visa" blogic-property="visa"
+                dest="form" />
+            <set-property property="passportId"
+                blogic-property="passportId" dest="form" />
+            <set-property property="passportValidity"
+                blogic-property="passportValidity" dest="form" />
+            <set-property property="leave" blogic-property="leave"
+                dest="form" />
+            <set-property property="reachPlace"
+                blogic-property="reachPlace" dest="form" />
+            <set-property property="namePinyin"
+                blogic-property="namePinyin" dest="form" />
+            <set-property property="article_NAME"
+                blogic-property="article_NAME" dest="form" />
+            <set-property property="trafficReservePerson"
+                blogic-property="trafficReservePerson" dest="form" />
+            <set-property property="trafficExplain"
+                blogic-property="trafficExplain" dest="form" />
+            <set-property property="hotelStartTime"
+                blogic-property="hotelStartTime" dest="form" />
+            <set-property property="hotelEndtime"
+                blogic-property="hotelEndtime" dest="form" />
+            <set-property property="hotelDestination"
+                blogic-property="hotelDestination" dest="form" />
+            <set-property property="hotelPerson"
+                blogic-property="hotelPerson" dest="form" />
+            <set-property property="hotelNumber"
+                blogic-property="hotelNumber" dest="form" />
+            <set-property property="hotelReservePerson"
+                blogic-property="hotelReservePerson" dest="form" />
+            <set-property property="hotelExplain"
+                blogic-property="hotelExplain" dest="form" />
+            <set-property property="articleName"
+                blogic-property="articleName" dest="form" />
+            <set-property property="transferStartTime"
+                blogic-property="transferStartTime" dest="form" />
+            <set-property property="transferEndTime"
+                blogic-property="transferEndTime" dest="form" />
+            <set-property property="recipient"
+                blogic-property="recipient" dest="form" />
+            <set-property property="storAges"
+                blogic-property="storAges" dest="form" />
+            <set-property property="passportLength"
+                blogic-property="passportLength" dest="form" />
+            <set-property property="hotelNumber"
+                blogic-property="hotelNumber" dest="form" />
+            <set-property property="articleRemark"
+                blogic-property="articleRemark" dest="form" />
+            <set-property property="evectionType"
+                blogic-property="evectionType" dest="form" />
+            <set-property property="examinePerson"
+                blogic-property="examinePerson" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIBusinessVerifyDetailedUpdateBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIBusinessVerifyDetailedInput">
+            <set-property property="userId"
+                blogic-property="userId" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" source="form" />
+            <set-property property="evectionStartTime"
+                blogic-property="evectionStartTime" source="form" />
+            <set-property property="evectionEndTime"
+                blogic-property="evectionEndTime" source="form" />
+            <set-property property="evectionDestination"
+                blogic-property="evectionDestination" source="form" />
+            <set-property property="evectionReason"
+                blogic-property="evectionReason" source="form" />
+            <set-property property="creDateTm"
+                blogic-property="creDateTm" source="form" />
+            <set-property property="evectionId"
+                blogic-property="evectionId" source="form" />
+            <set-property property="back" blogic-property="back"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="user_Id"
+                blogic-property="user_Id" source="form" />
+            <set-property property="user_Name"
+                blogic-property="user_Name" source="form" />
+            <set-property property="dept_Id"
+                blogic-property="dept_Id" source="form" />
+            <set-property property="examine_Status"
+                blogic-property="examine_Status" source="form" />
+            <set-property property="examineStatus"
+                blogic-property="examineStatus" source="form" />
+            <set-property property="businessDays"
+                blogic-property="businessDays" source="form" />
+            <set-property property="tjUserId"
+                blogic-property="tjUserId" source="form" />
+            <set-property property="sex" blogic-property="sex"
+                source="form" />
+            <set-property property="projectPm"
+                blogic-property="projectPm" source="form" />
+            <set-property property="positionId"
+                blogic-property="positionId" source="form" />
+            <set-property property="projectId"
+                blogic-property="projectId" source="form" />
+            <set-property property="projectName"
+                blogic-property="projectName" source="form" />
+            <set-property property="dependency"
+                blogic-property="dependency" source="form" />
+            <set-property property="idCard"
+                blogic-property="idCard" source="form" />
+            <set-property property="departureTime"
+                blogic-property="departureTime" source="form" />
+            <set-property property="passport"
+                blogic-property="passport" source="form" />
+            <set-property property="visa" blogic-property="visa"
+                source="form" />
+            <set-property property="passportId"
+                blogic-property="passportId" source="form" />
+            <set-property property="passportValidity"
+                blogic-property="passportValidity" source="form" />
+            <set-property property="leave" blogic-property="leave"
+                source="form" />
+            <set-property property="reachPlace"
+                blogic-property="reachPlace" source="form" />
+            <set-property property="namePinyin"
+                blogic-property="namePinyin" source="form" />
+            <set-property property="trafficReservePerson"
+                blogic-property="trafficReservePerson" source="form" />
+            <set-property property="trafficExplain"
+                blogic-property="trafficExplain" source="form" />
+            <set-property property="hotelStartTime"
+                blogic-property="hotelStartTime" source="form" />
+            <set-property property="hotelEndtime"
+                blogic-property="hotelEndtime" source="form" />
+            <set-property property="hotelDestination"
+                blogic-property="hotelDestination" source="form" />
+            <set-property property="hotelPerson"
+                blogic-property="hotelPerson" source="form" />
+            <set-property property="hotelNumber"
+                blogic-property="hotelNumber" source="form" />
+            <set-property property="hotelReservePerson"
+                blogic-property="hotelReservePerson" source="form" />
+            <set-property property="hotelExplain"
+                blogic-property="hotelExplain" source="form" />
+            <set-property property="articleName"
+                blogic-property="articleName" source="form" />
+            <set-property property="transferStartTime"
+                blogic-property="transferStartTime" source="form" />
+            <set-property property="transferEndTime"
+                blogic-property="transferEndTime" source="form" />
+            <set-property property="recipient"
+                blogic-property="recipient" source="form" />
+            <set-property property="storAges"
+                blogic-property="storAges" source="form" />
+            <set-property property="passportLength"
+                blogic-property="passportLength" source="form" />
+            <set-property property="hotelNumber"
+                blogic-property="hotelNumber" source="form" />
+            <set-property property="articleRemark"
+                blogic-property="articleRemark" source="form" />
+            <set-property property="examinePerson"
+                blogic-property="examinePerson" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="evectionId"
+                blogic-property="evectionId" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="user_Id"
+                blogic-property="user_Id" dest="form" />
+            <set-property property="user_Name"
+                blogic-property="user_Name" dest="form" />
+            <set-property property="dept_Id"
+                blogic-property="dept_Id" dest="form" />
+            <set-property property="examine_Status"
+                blogic-property="examine_Status" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIBusinessVerify01BL001">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIBusinessVerifyDetailedInput">
+            <set-property property="evectionId"
+                blogic-property="evectionId" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="user_Id"
+                blogic-property="user_Id" source="form" />
+            <set-property property="user_Name"
+                blogic-property="user_Name" source="form" />
+            <set-property property="dept_Id"
+                blogic-property="dept_Id" source="form" />
+            <set-property property="examine_Status"
+                blogic-property="examine_Status" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="evectionId"
+                blogic-property="evectionId" dest="request" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="request" />
+            <set-property property="user_Id"
+                blogic-property="user_Id" dest="request" />
+            <set-property property="user_Name"
+                blogic-property="user_Name" dest="request" />
+            <set-property property="dept_Id"
+                blogic-property="dept_Id" dest="request" />
+            <set-property property="examine_Status"
+                blogic-property="examine_Status" dest="request" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

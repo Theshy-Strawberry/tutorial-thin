@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/JNTCIPersonalInfoDetailedBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoDetailedInput">
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="id_card"
+                blogic-property="id_card" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="jn_card"
+                blogic-property="jn_card" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="form" />
+            <set-property property="entryTime"
+                blogic-property="entryTime" source="form" />
+            <set-property property="out_time"
+                blogic-property="out_time" source="form" />
+            <set-property property="department"
+                blogic-property="department" source="form" />
+            <set-property property="entryTime_Begin"
+                blogic-property="entryTime_Begin" source="form" />
+            <set-property property="entryTime_End"
+                blogic-property="entryTime_End" source="form" />
+             <set-property property="cardnum"
+                blogic-property="cardnum" source="form" />
+             <set-property property="zhuangtai"
+                blogic-property="zhuangtai" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="jntciSelectPersonalInfo"
+                blogic-property="jntciSelectPersonalInfo" dest="form" />
+            <set-property property="qualificationTR"
+                blogic-property="qualificationTR" dest="form" />
+            <set-property property="workExperience"
+                blogic-property="workExperience" dest="form" />
+            <!-- skill -->
+            <set-property property="languagelist"
+                blogic-property="languagelist" dest="form" />
+            <set-property property="envirnmentlist"
+                blogic-property="envirnmentlist" dest="form" />
+            <set-property property="editToollist"
+                blogic-property="editToollist" dest="form" />
+            <set-property property="dataBaselist"
+                blogic-property="dataBaselist" dest="form" />
+            <set-property property="operatSyslist"
+                blogic-property="operatSyslist" dest="form" />
+            <set-property property="japaneselist"
+                blogic-property="japaneselist" dest="form" />
+            <set-property property="englishlist"
+                blogic-property="englishlist" dest="form" />
+            <set-property property="jlanguagelist"
+                blogic-property="jlanguagelist" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="request" />
+            <set-property property="id_card"
+                blogic-property="id_card" dest="request" />
+            <set-property property="userName"
+                blogic-property="userName" dest="form" />
+            <set-property property="department"
+                blogic-property="department" dest="request" />
+            <set-property property="entryTime_End"
+                blogic-property="entryTime_End" dest="request" />
+            <set-property property="entryTime_Begin"
+                blogic-property="entryTime_Begin" dest="request" />
+            <set-property property="cardnum"
+                blogic-property="cardnum" dest="request" />
+              <set-property property="zhuangtai"
+                blogic-property="zhuangtai" dest="request" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

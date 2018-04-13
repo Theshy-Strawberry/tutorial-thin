@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/JNTCIEmpSearchPage">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEmpPositionInput">
+            <set-property property="info_EmpNo"
+                blogic-property="info_EmpNo" source="form" />
+            <set-property property="emp_Position"
+                blogic-property="emp_Position" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="info_EmpNo"
+                blogic-property="info_EmpNo" dest="form" />
+            <set-property property="user_Name"
+                blogic-property="user_Name" dest="form" />
+            <set-property property="user_NameList"
+                blogic-property="user_NameList" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/EmpPositionNorthBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEmpPositionInput">
+            <set-property property="scrollPosit"
+                blogic-property="scrollPosit" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="empList"
+                blogic-property="empList" dest="form" />
+            <set-property property="count" blogic-property="count"
+                dest="form" />
+            <set-property property="infoEmpNoList"
+                blogic-property="infoEmpNoList" dest="form" />
+            <set-property property="scrollPosit"
+                blogic-property="scrollPosit" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/EmpPositionSouthBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEmpPositionInput">
+            <set-property property="scrollPosit"
+                blogic-property="scrollPosit" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="empList"
+                blogic-property="empList" dest="form" />
+            <set-property property="count" blogic-property="count"
+                dest="form" />
+            <set-property property="infoEmpNoList"
+                blogic-property="infoEmpNoList" dest="form" />
+            <set-property property="scrollPosit"
+                blogic-property="scrollPosit" dest="form" />
+        </blogic-result>
+    </action>
+
+    <!-- =========================================================================================================== -->
+    <action path="/JNTCIUpdatePositionBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPositionUpdateInput">
+            <set-property property="emp_Position"
+                blogic-property="emp_Position" source="form" />
+            <set-property property="info_EmpNo"
+                blogic-property="info_EmpNo" source="form" />
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="scrollPosit"
+                blogic-property="scrollPosit" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="scrollPosit"
+                blogic-property="scrollPosit" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/deletepeople">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEmpPositionInput">
+            <set-property property="info_EmpNo"
+                blogic-property="info_EmpNo" source="form" />
+            <set-property property="emp_Position"
+                blogic-property="emp_Position" source="form" />
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="info_EmpNo"
+                blogic-property="info_EmpNo" dest="form" />
+            <set-property property="user_Name"
+                blogic-property="user_Name" dest="form" />
+        </blogic-result>
+    </action>
+
+    <!-- =========================================================================================================== -->
+
+    <action path="/downloadBLogic">
+        <blogic-result>
+            <set-property property="downloadFile"
+                blogic-property="downloadFile" dest="form" />
+            <set-property property="fileName"
+                blogic-property="fileName" dest="form" />
+        </blogic-result>
+    </action>
+    <!-- ========================================================================================= -->
+</blogic-io>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!-- logon Bean define -->
+    <aop:config>
+        <aop:pointcut id="sampleBeans" expression="bean(*BLogic2)" />
+        <aop:advisor pointcut-ref="sampleBeans" advice-ref="transactionInterceptor" />
+    </aop:config>
+
+    <bean name="/PERSONinfo01" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.ForwardAction" />
+
+    <bean name="/MeetingApply" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+        <property name="businessLogic" ref="JNTCIMeetingApplyBLogic" />
+    </bean>
+    <bean id="JNTCIMeetingApplyBLogic" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIMeetingApplyBLogic">
+        <property name="updateDAO" ref="updateDAO"></property>
+        <property name="queryDAO" ref="queryDAO"></property>
+    </bean>
+
+    <bean name="/MeetingApplyAjax" scope="singleton"
+        class="jp.terasoluna.thin.tutorial.web.common.controller.AjaxBLogicAction">
+        <property name="businessLogic" ref="AjaxBLogic" />
+    </bean>
+
+    <bean id="AjaxBLogic" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.AjaxBLogic">
+        <property name="queryDAO" ref="queryDAO"></property>
+    </bean>
+
+    <!-- 會議室一覽表 -->
+    <bean name="/MeetingApplySelect" scope="singleton"
+        class="jp.terasoluna.thin.tutorial.web.common.controller.AjaxBLogicAction">
+        <property name="businessLogic" ref="JNTCIMeetingSelectBLogic" />
+    </bean>
+
+    <bean name="JNTCIMeetingSelectBLogic" scope="singleton"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIMeetingSelectBLogic">
+        <property name="queryDAO" ref="queryDAO" />
+    </bean>
+
+    <!-- 會議室一覽表 -->
+    <bean name="/goBack" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.ForwardAction" />
+
+    <bean name="/fail" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.ForwardAction" />
+</beans>

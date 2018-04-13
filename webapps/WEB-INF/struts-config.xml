@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <form-beans/>
+
+<!-- ======================================== グローバル例外ハンドリング定義 --><!-- 异常处理 -->
+  <global-exceptions>
+    <!-- 設定例 -->
+    <exception key="errors.default.mesasge"
+               path="/error.jsp"
+               className="jp.terasoluna.fw.web.struts.action.ExceptionConfigEx"
+               handler="jp.terasoluna.fw.web.struts.action.SystemExceptionHandler"
+               type="jp.terasoluna.fw.exception.SystemException">
+      <set-property property="logLevel" value="error"/>
+    </exception>
+    <exception key="errors.default.mesasge"
+               path="/error.jsp"
+               className="jp.terasoluna.fw.web.struts.action.ExceptionConfigEx"
+               handler="jp.terasoluna.fw.web.struts.action.DefaultExceptionHandler"
+               type="java.lang.Exception">
+      <set-property property="logLevel" value="error"/>
+    </exception>
+  </global-exceptions>
+
+<!-- ======================================== グローバルフォワード定義 -->
+  <global-forwards>
+    <forward name="index"
+             path="/index.do" redirect="true"/>
+  </global-forwards>
+
+<!-- ======================================== アクションマッピング定義 --><!-- 映射 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+    <action path="/index" parameter="/index.jsp"/>
+
+  </action-mappings>
+
+<!-- ======================================== コントローラ定義 --><!-- 控制器定义 -->
+  <controller processorClass="jp.terasoluna.fw.web.struts.action.RequestProcessorEx"/>
+
+<!-- ======================================== メッセージリソース定義 -->
+  <message-resources
+    factory="jp.terasoluna.fw.web.struts.util.SpringMessageResourcesFactory"
+    parameter="messageSource" />
+
+<!-- ======================================== プラグイン定義 --><!-- 插件定义 -->
+  <!-- SpringBean設定ファイル --><!-- 设定SpringBean文件 -->
+  <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+
+    <set-property property="contextConfigLocation"
+                  value="/WEB-INF/JNTCIBusinessVerify/JNTCIBusinessVerify01/JNTCIBusinessVerify01Context.xml,
+                         /WEB-INF/moduleContext.xml,
+                           /WEB-INF/JNTCISuperButton/JNTCISuperButton-Context.xml,
+                         /WEB-INF/JNTCIMeeting/JNTCIMeeting01/JNTCIMeetingApplyContext.xml,
+                         /WEB-INF/JNTCIMeeting/JNTCIMeeting02/JNTCIMeetingInquireContext.xml,
+                         /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo01/JNTCIPersonalInfoLoginContext.xml,
+                         /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo02/JNTCIPersonalInfoInquireContext.xml,
+                         /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo03/JNTCIPersonalInfoDetailedContext.xml,
+                         /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo04/JNTCIPersonalInfoLoginInitContext.xml,
+                         /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo05/JNTCIPersonalInfoDownloadContext.xml,
+
+                         /WEB-INF/JNTCIEquip/JNTCILogin/jntciloginContext.xml,
+                         /WEB-INF/JNTCIEquip/JNTCIEquip01/JNTCIEquip01Context.xml,
+                         /WEB-INF/JNTCIEquip/JNTCIEquip02/JNTCIEquip02Context.xml,
+                         /WEB-INF/JNTCIEquip/JNTCIEquip0301/JNTCIEquip0301Context.xml,
+                         /WEB-INF/JNTCIEquip/JNTCIEquip04/JNTCIEquip04Context.xml,
+                         /WEB-INF/JNTCIEquip/JNTCIEquipInsert/JNTCIEquipInsertContext.xml,
+                         /WEB-INF/JNTCIEquip/JNTCIEquipKataban/JNTCIEquipKatabanContext.xml,
+                         /WEB-INF/JNTCIEquip/JNTCIEquipList/JNTCIEquipListContext.xml,
+
+                         /WEB-INF/JNTCIVocation/JNTCIVocationContext.xml,
+
+                         /WEB-INF/JNTCLOvertimeApplication/JNTCLOvertimeApplicationContext.xml,
+                         /WEB-INF/JNTCIQuery/JNTCIQueryContext.xml,
+
+                         /WEB-INF/JNTCIAttendanceSystem/JNTCIAttendance05/JNTCIAttendance05Context.xml,
+                         /WEB-INF/JNTCIAttendanceSystem/JNTCIAttendance04/JNTCIAttendance04Context.xml,
+                         /WEB-INF/JNTCIAttendanceSystem/JNTCIAttendance03/JNTCIAttendance03Context.xml,
+
+                         /WEB-INF/JNTCIAddsignInfo/JNTCIAddsignInfoContext.xml,
+
+                         /WEB-INF/JNTCIBusinessApplication/JNTCIBusinessApplication01/JNTCIBusinessApplicationContext.xml,
+                        /WEB-INF/JNTCIOverTimeVerify/JNTCIOverTimeVerify01/JNTCIOverTimeVerify01Context.xml,
+                        /WEB-INF/JNTCIIntelligence/JNTCIIntelligenceContext.xml,
+
+                         /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage01/JNTCIEquipHomePageContext01.xml,
+                         /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage02/JNTCIEquipHomePage02Context.xml,
+                         /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage03/JNTCIEquipHomePage03Context.xml,
+                         /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage04/JNTCIEquipHomePage04Context.xml,
+
+                         /WEB-INF/JNTCIseek/seekContext.xml,
+                         /WEB-INF/writeholiday/writeholidayContext.xml,
+
+			            /WEB-INF/JNTCIBusinessVerify/JNTCIBusinessVerify03/JNTCIBusinessVerifyDetailedContext.xml,
+			            /WEB-INF/JNTCIBusinessVerify/JNTCIBusinessVerify02/JNTCIBusinessVerifyDetailedUpdateContext.xml,
+
+                         /WEB-INF/JNTCIPosition/positionContext.xml,
+                         /WEB-INF/JNTCIProgram/programContext.xml
+
+                         "/>
+  </plug-in>
+
+  <plug-in className="jp.terasoluna.fw.web.struts.plugins.ResetterPlugIn">
+    <set-property
+      property="resetter"
+      value="jp.terasoluna.fw.web.struts.reset.ResetterImpl"/>
+    <set-property
+      property="resources"
+      value="/WEB-INF/reset.xml"/>
+    <set-property
+      property="digesterRules"
+      value="/WEB-INF/reset-rules.xml"/>
+  </plug-in>
+
+  <!-- バリデーション設定ファイル -->
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+
+    <set-property
+      property="pathnames"
+      value="/WEB-INF/validator-rules.xml,
+             /WEB-INF/validator-rules-ex.xml,
+             /WEB-INF/validation.xml,
+            /WEB-INF/writeholiday/validation-writeholiday.xml,
+              /WEB-INF/JNTCISuperButton/validation-JNTCISuperButton.xml,
+             /WEB-INF/JNTCIMeeting/JNTCIMeeting01/validation-JNTCIMeetingApply.xml,
+             /WEB-INF/JNTCIMeeting/JNTCIMeeting02/validation-JNTCIMeetingInquire.xml,
+             /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo01/validation-JNTCIPersonalInfoLogin.xml,
+             /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo02/validation-JNTCIPersonalInfoInquire.xml,
+             /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo03/validation-JNTCIPersonalInfoDetailed.xml,
+             /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo04/validation-JNTCIPersonalInfoLoginInit.xml,
+ /WEB-INF/JNTCIseek/validation-seek.xml,
+             /WEB-INF/JNTCIEquip/JNTCILogin/validation-jntcilogin.xml,
+             /WEB-INF/JNTCIEquip/JNTCIEquip01/validation-JNTCIEquip01.xml,
+      		 /WEB-INF/JNTCIEquip/JNTCIEquip02/validation-JNTCIEquip02.xml,
+      		 /WEB-INF/JNTCIEquip/JNTCIEquip04/validation-JNTCIEquip04.xml,
+      		 /WEB-INF/JNTCIEquip/JNTCIEquipInsert/validation-JNTCIEquipInsert.xml,
+      		 /WEB-INF/JNTCIEquip/JNTCIEquipKataban/validation-JNTCIEquipKataban.xml,
+      		 /WEB-INF/JNTCIEquip/JNTCIEquipList/validation-JNTCIEquipList.xml,
+      		  /WEB-INF/JNTCIEquip/JNTCIEquip0301/validation-JNTCIEquip0301.xml,
+
+      		 /WEB-INF/JNTCIAttendanceSystem/JNTCIAttendance03/validation-JNTCIAttendance03.xml,
+      		 /WEB-INF/JNTCIAttendanceSystem/JNTCIAttendance04/validation-JNTCIAttendance04.xml,
+      		 /WEB-INF/JNTCIAttendanceSystem/JNTCIAttendance05/validation-JNTCIAttendance05.xml,
+			 /WEB-INF/JNTCIAddsignInfo/validation-JNTCIAddsignInfo.xml,
+             /WEB-INF/JNTCIBusinessVerify/JNTCIBusinessVerify01/validation-JNTCIBusinessVerify01.xml,
+
+      		 /WEB-INF/JNTCIVocation/validation-JNTCIVocation.xml,
+
+      		 /WEB-INF/JNTCLOvertimeApplication/validation-JNTCLOvertimeApplication.xml,
+
+      		 /WEB-INF/JNTCIBusinessApplication/JNTCIBusinessApplication01/validation-JNTCIBusinessApplication.xml,
+		 /WEB-INF/JNTCIBusinessVerify/JNTCIBusinessVerify03/validation-JNTCIBusinessVerifyDetailed.xml,
+		 /WEB-INF/JNTCIBusinessVerify/JNTCIBusinessVerify02/validation-JNTCIBusinessVerifyDetailedUpdate.xml,
+
+      		 /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage01/validation-JNTCIEquipHomePage01.xml,
+      		 /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage02/validation-JNTCIEquipHomePage02.xml,
+      		  /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage03/validation-JNTCIEquipHomePage03.xml,
+      		   /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage04/validation-JNTCIEquipHomePage04.xml,
+               /WEB-INF/JNTCIQuery/validation-JNTCIQuery.xml
+             "/>
+    <set-property
+      property="stopOnFirstError"
+      value="false"/>
+  </plug-in>
+
+  <!-- 入出力設定ファイル -->
+  <plug-in className="jp.terasoluna.fw.web.struts.plugins.BLogicIOPlugIn">
+
+    <set-property
+      property="resources"
+      value="/WEB-INF/blogic-io.xml,
+
+      	     /WEB-INF/JNTCIMeeting/JNTCIMeeting01/blogic-JNTCIMeetingApply-io.xml,
+      	      /WEB-INF/JNTCISuperButton/blogic-JNTCISuperButton-io.xml,
+      	     /WEB-INF/JNTCIMeeting/JNTCIMeeting02/blogic-JNTCIMeetingInquire-io.xml,
+      	     /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo01/blogic-JNTCIPersonalInfoLogin-io.xml,
+      	     /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo02/blogic-JNTCIPersonalInfoInquire-io.xml,
+             /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo03/blogic-JNTCIPersonalInfoDetailed-io.xml,
+             /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo04/blogic-JNTCIPersonalInfoLoginInit-io.xml,
+             /WEB-INF/JNTCIPersonalInfo/JNTCIPersonalInfo05/blogic-JNTCIPersonalInfoDownload-io.xml,
+
+             /WEB-INF/JNTCIEquip/JNTCILogin/blogic-login-io.xml,
+             /WEB-INF/JNTCIEquip/JNTCIEquip01/blogic-JNTCIEquip01-io.xml,
+             /WEB-INF/JNTCIEquip/JNTCIEquip02/blogic-JNTCIEquip02-io.xml,
+             /WEB-INF/JNTCIEquip/JNTCIEquip0301/blogic-JNTCIEquip0301-io.xml,
+             /WEB-INF/JNTCIEquip/JNTCIEquip04/blogic-JNTCIEquip04-io.xml,
+             /WEB-INF/JNTCIEquip/JNTCIEquipInsert/blogic-JNTCIEquipInsert-io.xml,
+             /WEB-INF/JNTCIEquip/JNTCIEquipKataban/blogic-JNTCIEquipKataban-io.xml,
+             /WEB-INF/JNTCIEquip/JNTCIEquipList/blogic-JNTCIEquipList-io.xml,
+
+             /WEB-INF/JNTCIAttendanceSystem/JNTCIAttendance03/blogic-JNTCIAttendance03-io.xml,
+             /WEB-INF/JNTCIAttendanceSystem/JNTCIAttendance04/blogic-JNTCIAttendance04-io.xml,
+             /WEB-INF/JNTCIAttendanceSystem/JNTCIAttendance05/blogic-JNTCIAttendance05-io.xml,
+
+             /WEB-INF/JNTCIBusinessVerify/JNTCIBusinessVerify01/blogic-JNTCIBusinessVerify01-io.xml,
+             /WEB-INF/JNTCIBusinessVerify/JNTCIBusinessVerify02/blogic-JNTCIBusinessVerifyDetailedUpdate-io.xml,
+             /WEB-INF/JNTCIBusinessVerify/JNTCIBusinessVerify03/blogic-JNTCIBusinessVerifyDetailed-io.xml,
+
+             /WEB-INF/JNTCIVocation/blogic-JNTCIVocation-io.xml,
+             /WEB-INF/JNTCIQuery/blogic-JNTCIQuery-io.xml,
+
+             /WEB-INF/JNTCLOvertimeApplication/blogic-JNTCLOvertimeApplication-io.xml,
+			 /WEB-INF/JNTCIIntelligence/blogic-JNTCIIntelligence-io.xml,
+             /WEB-INF/JNTCIBusinessApplication/JNTCIBusinessApplication01/blogic-JNTCIBusinessApplication-io.xml,
+             /WEB-INF/JNTCIOverTimeVerify/JNTCIOverTimeVerify01/blogic-JNTCIOverTimeVerify01-io.xml,
+             /WEB-INF/JNTCIAddsignInfo/blogic-JNTCIAddsignInfo-io.xml,
+
+            /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage01/blogic-JNTCIEquipHomePage01-io.xml,
+            /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage02/blogic-JNTCIEquipHomePage02-io.xml,
+            /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage03/blogic-JNTCIEquipHomePage03-io.xml,
+			 /WEB-INF/JNTCIEquipHomePage/JNTCIEquipHomePage04/blogic-JNTCIEquipHomePage04-io.xml,
+              /WEB-INF/JNTCIseek/blogic-seek-io.xml,
+              /WEB-INF/writeholiday/blogic-writeholiday-io.xml,
+
+
+
+              /WEB-INF/JNTCIPosition/blogic-position-io.xml,
+              /WEB-INF/JNTCIProgram/blogic-program-io.xml
+
+             "/>
+    <set-property
+      property="digesterRules"
+      value="/WEB-INF/blogic-io-rules.xml"/>
+    <set-property
+      property="mapperClass"
+      value="jp.terasoluna.fw.service.thin.BLogicMapper"/>
+  </plug-in>
+
+</struts-config>

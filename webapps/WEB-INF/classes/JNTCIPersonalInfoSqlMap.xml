@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+            PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+            "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- SqlMap定義 -->
+<sqlMap namespace="JNTCIPersonalInfo">
+
+	<select id="selectPersonInfo"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoInquireInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoInquireInfo">
+		SELECT
+		TJ_CARD,
+		JN_CARD,
+		USERNAME,
+		decode(OUT_TIME,'2099/12/31','在職','退職') as OUT_TIME,
+		decode(SEX,'0','女','1','男','' ) AS SEX,
+		BIRTHDAR AS BIRTHDAY,
+		ENTRY_TIME AS ENTRYTIME,
+		TCD.KJ_NAME AS POSITION,
+		TELEPHONE,
+		ADDRESS
+		FROM TT_PERSONAL_BASIC_INFO TTPBI
+		LEFT OUTER JOIN TT_CODE TCD
+		ON TCD.CD_KUBUN='A2' AND TCD.CD_CODE=TTPBI.POSITION
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="id_card" prepend="and">
+				(TTPBI.TJ_CARD LIKE
+				'%'||#id_card#||'%' OR TTPBI.JN_CARD LIKE '%'||#id_card#||'%')
+			</isNotEmpty>
+			<isNotEmpty property="userName" prepend="and">
+				TTPBI.USERNAME
+				LIKE '%'||#userName#||'%'
+			</isNotEmpty>
+			 <isNotEmpty property="department" prepend="and">
+				TTPBI.DEPARTMENT = #department#
+			</isNotEmpty>
+			 <isNotEmpty property="entryTime_Begin" prepend="and">
+				TTPBI.ENTRY_TIME &gt;=
+				#entryTime_Begin#
+			</isNotEmpty>
+			<isNotEmpty property="entryTime_End" prepend="and">
+				TTPBI.ENTRY_TIME &lt;=
+				#entryTime_End#
+			</isNotEmpty>
+			<isNotEmpty property="zhuangtai" prepend="and">
+			<isEqual  property="zhuangtai" compareValue="0" >
+            TTPBI.OUT_TIME='2099/12/31'
+            </isEqual>
+			 <isEqual  property="zhuangtai" compareValue="1" >
+           (TTPBI.OUT_TIME!='2099/12/31' or TTPBI.OUT_TIME is null)
+            </isEqual>
+            </isNotEmpty>
+		</dynamic>
+		ORDER BY JN_CARD
+	</select>
+
+	<select id="selectPersonInfoCount"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoInquireInput"
+		resultClass="java.lang.Integer">
+		SELECT
+		COUNT(*) AS COUNT
+		FROM TT_PERSONAL_BASIC_INFO TTPBI
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="id_card" prepend="and">
+				TTPBI.TJ_CARD LIKE
+				'%'||#id_card#||'%' OR TTPBI.JN_CARD LIKE '%'||#id_card#||'%'
+			</isNotEmpty>
+			<isNotEmpty property="userName" prepend="and">
+				TTPBI.USERNAME
+				LIKE '%'||#userName#||'%'
+			</isNotEmpty>
+			<isNotEmpty property="department" prepend="and">
+				TTPBI.DEPARTMENT = #department#
+			</isNotEmpty>
+			<isNotEmpty property="entryTime_Begin" prepend="and">
+				TTPBI.ENTRY_TIME  &gt;=
+				#entryTime_Begin#
+			</isNotEmpty>
+			<isNotEmpty property="entryTime_End" prepend="and">
+				TTPBI.ENTRY_TIME &lt;=
+				#entryTime_End#
+			</isNotEmpty>
+			<isNotEmpty property="zhuangtai" prepend="and">
+			<isEqual  property="zhuangtai" compareValue="0" >
+            TTPBI.OUT_TIME='2099/12/31'
+            </isEqual>
+			 <isEqual  property="zhuangtai" compareValue="1" >
+            (TTPBI.OUT_TIME!='2099/12/31' or TTPBI.OUT_TIME is null)
+            </isEqual>
+            </isNotEmpty>
+		</dynamic>
+	</select>
+
+	<delete id="deletePersonInfoByCrad" parameterClass="java.lang.String">
+		DELETE FROM
+		TT_PERSONAL_BASIC_INFO
+		WHERE JN_CARD = #deleteId_card#
+	</delete>
+	<delete id="deleteWorkInfoByCrad" parameterClass="java.lang.String">
+		DELETE FROM
+		TT_VOCATIONAL_QUALI
+		WHERE JN_CARD = #deleteId_card#
+	</delete>
+	<delete id="deleteQualInfoByCrad" parameterClass="java.lang.String">
+		DELETE FROM
+		TT_WORK_EXPERIENCE
+		WHERE JN_CARD = #deleteId_card#
+	</delete>
+	<delete id="deleteUserInfoByCrad" parameterClass="java.lang.String">
+		DELETE FROM
+		TT_SYS_USER
+		WHERE USER_ID = #deleteId_card#
+	</delete>
+
+	<select id="selectDetailedInfo"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoDetailedInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.vo.JNTCISelectPersonalInfo">
+		SELECT
+		TJ_CARD,
+		JN_CARD,
+		SYAHO_JIKAN,
+		USERNAME,
+		decode(SEX,'0','女','1','男','' ) AS SEX,
+		BIRTHDAR,
+		NATION,
+		ID_CARD,
+		BORN_IN,
+		ADDRESS,
+		TELEPHONE,
+		EMERG_CONTACT,
+		EMERG_CONTACT_TEL,
+		TCDA1.KJ_NAME AS DEPARTMENT,
+		TCDA2.KJ_NAME AS POSITION,
+		ENTRY_TIME,
+		decode(MARITAL_STATUS,'0','既婚','1','未婚','') AS MARITAL_STATUS,
+		TCDA4.KJ_NAME AS EDUCATION,
+		NATIONALITY,
+		JP_NAME,
+		PERSONAL_MALL,
+		OFFIC_MAIL,
+		TECH_CAPABILITY,
+		decode(PASSPORT,'0','有','1','無','' ) AS PASSPORT,
+		decode(VISA,'0','有','1','無','' ) AS VISA,
+		VACA_QUALI,
+		WORK_EXPERIENCE,
+		PHOTO_PATH AS PHOTOPATH,
+		SPECIALTY,
+		REMARKS
+		FROM TT_PERSONAL_BASIC_INFO TTPBI
+		LEFT OUTER JOIN TT_CODE TCDA1
+		ON TCDA1.CD_KUBUN='A1' AND TCDA1.CD_CODE=TTPBI.DEPARTMENT
+		LEFT OUTER JOIN TT_CODE TCDA2
+		ON TCDA2.CD_KUBUN='A2' AND TCDA2.CD_CODE=TTPBI.POSITION
+		LEFT OUTER JOIN TT_CODE TCDA4
+		ON TCDA4.CD_KUBUN='A4' AND TCDA4.CD_CODE=TTPBI.EDUCATION
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="id_card">
+				TTPBI.JN_CARD = #id_card#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択个人基本信息 -->
+	<select id="selectUpdatePersonalInfo"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginOutput">
+		SELECT
+		TJ_CARD,
+		JN_CARD,
+		USERNAME,
+		SEX,
+		BIRTHDAR AS BIRTHDAY,
+		NATION,
+		ID_CARD,
+		BORN_IN,
+		ADDRESS,
+		TELEPHONE,
+		EMERG_CONTACT,
+		EMERG_CONTACT_TEL,
+		TCDA1.cd_code AS DEPARTMENT,
+		TCDA2.cd_code AS POSITION,
+		ENTRY_TIME,
+		MARITAL_STATUS,
+		TCDA4.cd_code AS EDUCATION,
+		NATIONALITY,
+		JP_NAME AS JN_NAME,
+		PERSONAL_MALL AS PESONAL_MALL,
+		OFFIC_MAIL,
+		TECH_CAPABILITY,
+		PASSPORT,
+		VISA,
+		VACA_QUALI,
+		WORK_EXPERIENCE,
+		PHOTO_PATH ,
+		SPECIALTY,
+		REMARKS
+		FROM TT_PERSONAL_BASIC_INFO TTPBI
+		LEFT OUTER JOIN TT_CODE TCDA1
+		ON TCDA1.CD_KUBUN='A1' AND TCDA1.CD_CODE=TTPBI.DEPARTMENT
+		LEFT OUTER JOIN TT_CODE TCDA2
+		ON TCDA2.CD_KUBUN='A2' AND TCDA2.CD_CODE=TTPBI.POSITION
+		LEFT OUTER JOIN TT_CODE TCDA4
+		ON TCDA4.CD_KUBUN='A4' AND TCDA4.CD_CODE=TTPBI.EDUCATION
+
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				TTPBI.JN_CARD = #jn_Card#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択个人基本信息 -->
+	<select id="selectUpdatePersonalInfo2"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginOutput">
+		SELECT
+		TJ_CARD,
+		JN_CARD,
+		USERNAME,
+		SEX,
+		BIRTHDAR AS BIRTHDAY,
+		NATION,
+		ID_CARD,
+		BORN_IN,
+		ADDRESS,
+		TELEPHONE,
+		EMERG_CONTACT,
+		EMERG_CONTACT_TEL,
+		TCDA1.kj_name AS DEPARTMENT,
+		TCDA2.kj_name AS POSITION,
+		ENTRY_TIME,
+		SYAHO_JIKAN，
+		MARITAL_STATUS,
+		TCDA4.kj_name AS EDUCATION,
+		NATIONALITY,
+		JP_NAME AS JN_NAME,
+		PERSONAL_MALL AS PESONAL_MALL,
+		OFFIC_MAIL,
+		TECH_CAPABILITY,
+		PASSPORT,
+		VISA,
+		VACA_QUALI,
+		WORK_EXPERIENCE,
+		PHOTO_PATH ,
+		SPECIALTY,
+		REMARKS
+		FROM TT_PERSONAL_BASIC_INFO TTPBI
+		LEFT OUTER JOIN TT_CODE TCDA1
+		ON TCDA1.CD_KUBUN='A1' AND TCDA1.CD_CODE=TTPBI.DEPARTMENT
+		LEFT OUTER JOIN TT_CODE TCDA2
+		ON TCDA2.CD_KUBUN='A2' AND TCDA2.CD_CODE=TTPBI.POSITION
+		LEFT OUTER JOIN TT_CODE TCDA4
+		ON TCDA4.CD_KUBUN='A4' AND TCDA4.CD_CODE=TTPBI.EDUCATION
+
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				TTPBI.JN_CARD = #jn_Card#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<select id="selectUpdatePersonalInfo3"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginOutput">
+		SELECT
+
+		LEADER,DEPT_PERSON AS deptPerson
+
+		FROM  TT_SYS_USER
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				USER_ID = #jn_Card#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<select id="selectUpdatePersonalInfo4"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginOutput">
+		SELECT
+		to_char(SYAHO_JIKAN,'yyyy/mm/dd') as  socialSecurity,
+		OUT_TIME as out_Time,
+		TJ_CARD,
+		JN_CARD,
+		USERNAME,
+		SEX,
+		BIRTHDAR AS BIRTHDAY,
+		NATION,
+		ID_CARD,
+		BORN_IN,
+		ADDRESS,
+		TELEPHONE,
+		EMERG_CONTACT,
+		EMERG_CONTACT_TEL,
+		DEPARTMENT,
+		POSITION,
+		ENTRY_TIME,
+		MARITAL_STATUS,
+		TCDA4.cd_code AS EDUCATION,
+		NATIONALITY,
+		JP_NAME AS JN_NAME,
+		PERSONAL_MALL AS PESONAL_MALL,
+		OFFIC_MAIL,
+		TECH_CAPABILITY,
+		PASSPORT,
+		VISA,
+		VACA_QUALI,
+		WORK_EXPERIENCE,
+		PHOTO_PATH ,
+		SPECIALTY,
+		REMARKS
+		FROM TT_PERSONAL_BASIC_INFO TTPBI
+		LEFT OUTER JOIN TT_CODE TCDA4
+		ON TCDA4.CD_KUBUN='A4' AND TCDA4.CD_CODE=TTPBI.EDUCATION
+
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				TTPBI.JN_CARD = #jn_Card#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択职业资格信息 -->
+	<select id="selectUpdatePersonalInfoOccupation"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginOccupation">
+		SELECT
+		TJ_CARD,
+		JN_CARD,
+		WINNING_DATE,
+		WINNING_CERTIFICATE as wining_certificate
+
+		FROM TT_VOCATIONAL_QUALI
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				JN_CARD = #jn_Card#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択语言资格信息 -->
+	<select id="selectUpdatePersonalInfoLanguage"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginLanguage">
+		SELECT
+		JN_CARD,
+		SOFTWARENAME AS yy_language,
+		SKILL_LEVEL AS yy_level,
+		EXPERIENCEYEARS as yy_year
+
+		FROM PERSONALPROFILE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				JN_CARD = #jn_Card#
+				AND CLASSIFICATION = 'lang'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択java环境格信息 -->
+	<select id="selectUpdatePersonalInfojEnvirnment"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginJEnvirnment">
+		SELECT
+		JN_CARD,
+		SOFTWARENAME AS jhj_Envirnment,
+		SKILL_LEVEL AS jhj_level,
+		EXPERIENCEYEARS as jhj_year
+
+		FROM PERSONALPROFILE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				JN_CARD = #jn_Card#
+				AND CLASSIFICATION = 'Jenv'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択java语言格信息 -->
+	<select id="selectUpdatePersonalInfojLanguage"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginjLanguage">
+		SELECT
+		JN_CARD,
+		SOFTWARENAME AS jyy_language,
+		SKILL_LEVEL AS jyy_level,
+		EXPERIENCEYEARS as jyy_year
+
+		FROM PERSONALPROFILE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				JN_CARD = #jn_Card#
+				AND CLASSIFICATION = 'Jlang'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択javaTOOL格信息 -->
+	<select id="selectUpdatePersonalInfoEditTool"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginEditTool">
+		SELECT
+		JN_CARD,
+		SOFTWARENAME AS tl_tool,
+		SKILL_LEVEL AS tl_level,
+		EXPERIENCEYEARS as tl_year
+
+		FROM PERSONALPROFILE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				JN_CARD = #jn_Card#
+				AND CLASSIFICATION = 'tool'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択DB格信息 -->
+	<select id="selectUpdatePersonalInfoDataBase"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginDataBase">
+		SELECT
+		JN_CARD,
+		SOFTWARENAME AS db_datebase,
+		SKILL_LEVEL AS db_level,
+		EXPERIENCEYEARS as db_year
+
+		FROM PERSONALPROFILE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				JN_CARD = #jn_Card#
+				AND CLASSIFICATION = 'db'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択OS格信息 -->
+	<select id="selectUpdatePersonalInfoOperatSys"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginOperatSys">
+		SELECT
+		JN_CARD,
+		SOFTWARENAME AS os_operatsys,
+		SKILL_LEVEL AS os_level,
+		EXPERIENCEYEARS as os_year
+
+		FROM PERSONALPROFILE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				JN_CARD = #jn_Card#
+				AND CLASSIFICATION = 'os'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択日语技能资格信息 -->
+	<select id="selectUpdatePersonalInfojapanese"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginJapanese">
+		SELECT
+		JN_CARD,
+		SORTS AS JAP_SKILL,
+		SKILL_LEVEL AS JAP_LEVEL
+
+		FROM PERSONALPROFILE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				JN_CARD = #jn_Card# AND
+				CLASSIFICATION = 'jap'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択英語技能资格信息 -->
+	<select id="selectUpdatePersonalInfoenglish"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginEnglish">
+		SELECT
+		JN_CARD,
+		SORTS AS ENG_SKILL,
+		SKILL_LEVEL AS ENG_LEVEL
+
+		FROM PERSONALPROFILE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				JN_CARD = #jn_Card# AND
+				CLASSIFICATION = 'eng'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 選択仕事経験信息 -->
+	<select id="selectUpdatePersonalInfoWork"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginWork">
+		SELECT
+		TJ_CARD,
+		JN_CARD,
+		ORDER_NO,
+		CAREERS_TYPE,
+		PROJ_NAME,
+		ATTEND_NM,
+		ATTEND_MONTH,
+		ATTEND_STATES,
+		DEVELOP_PHASE,
+		FIRM_CONTENT,
+		LANG_TOOL,
+		DATA_BASE,
+		TECHNICAL_SYS,
+		MODEL_DEVICE,
+		DEVELOP_PERIOD,
+		TOTAL_PERIOD
+
+		FROM TT_WORK_EXPERIENCE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="jn_Card">
+				JN_CARD = #jn_Card#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 删除 职业资格表 -->
+	<delete id="deleteQual"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+
+		delete from TT_VOCATIONAL_QUALI where
+		JN_CARD =
+		#jn_Card#
+	</delete>
+
+	<!-- 删除 工作经验表 -->
+	<delete id="deleteWork"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+
+		delete from TT_WORK_EXPERIENCE where
+		JN_CARD = #jn_Card#
+	</delete>
+
+
+	<delete id="deleteLanguage"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+
+		delete from PERSONALPROFILE where
+		JN_CARD = #jn_Card#
+		AND CLASSIFICATION = 'lang'
+	</delete>
+	<delete id="deleteJavaEnvironment"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+
+		delete from PERSONALPROFILE where
+		JN_CARD = #jn_Card#
+		AND CLASSIFICATION = 'Jenv'
+	</delete>
+	<delete id="deleteJavaLanguage"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+
+		delete from PERSONALPROFILE where
+		JN_CARD = #jn_Card#
+		AND CLASSIFICATION = 'Jlang'
+	</delete>
+	<delete id="deleteTool"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+
+		delete from PERSONALPROFILE where
+		JN_CARD = #jn_Card#
+		AND CLASSIFICATION = 'tool'
+	</delete>
+	<delete id="deleteDB"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+
+		delete from PERSONALPROFILE where
+		JN_CARD = #jn_Card#
+		AND CLASSIFICATION = 'db'
+	</delete>
+	<delete id="deleteOs"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+
+		delete from PERSONALPROFILE where
+		JN_CARD = #jn_Card#
+		AND CLASSIFICATION = 'os'
+	</delete>
+	<delete id="deletejap"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+
+		delete from PERSONALPROFILE where
+		JN_CARD = #jn_Card#
+		AND CLASSIFICATION = 'jap'
+	</delete>
+	<delete id="deleteeng"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+
+		delete from PERSONALPROFILE where
+		JN_CARD = #jn_Card#
+		AND CLASSIFICATION = 'eng'
+	</delete>
+
+
+	<!-- 更新个人情报表 -->
+	<update id="updatePersonalInfo"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+		update TT_PERSONAL_BASIC_INFO
+		set USERNAME = #userName#
+		,SEX = #sex#
+		,SYAHO_JIKAN= TO_DATE(#socialSecurity#, 'YYYY/MM/DD')
+		,BIRTHDAR = #birthday#
+		,NATION = #nation#
+		,ID_CARD = #id_Card#
+		,BORN_IN = #born_In#
+		,ADDRESS = #address#
+		,TELEPHONE = #telephone#
+		,EMERG_CONTACT = #emerg_Contact#
+		,EMERG_CONTACT_TEL = #emerg_Contact_tel#
+		,DEPARTMENT = #department#
+		,POSITION = #position#
+		,ENTRY_TIME = #entry_Time#
+		,MARITAL_STATUS = #marital_Status#
+		,EDUCATION = #education#
+		,NATIONALITY = #nationality#
+		,JP_NAME = #jn_Name#
+		,PERSONAL_MALL = #pesonal_Mall#
+		,OFFIC_MAIL = #offic_Mail#
+		,PASSPORT = #passport#
+		,VISA = #visa#
+		,PHOTO_PATH = #photo_Path#
+		,OUT_TIME = #out_Time#
+		,TJ_CARD = #tj_Card#
+		where JN_CARD = #jn_Card#
+	</update>
+	<update id="updatePersonalInfouser"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+		update TT_SYS_USER
+		set
+		DEPT_PERSON = #deptPerson#
+		,LEADER = #leader#,
+		USER_NAME=#userName#
+		where USER_ID = #jn_Card#
+	</update>
+
+	<update id="updatePersonalInfo2"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+		update TT_PERSONAL_BASIC_INFO
+		set
+		<!-- USERNAME = #userName#
+		,SEX = #sex#
+		,BIRTHDAR = #birthday#
+		,NATION = #nation#
+		,ID_CARD = #id_Card#
+		,BORN_IN = #born_In#
+		,ADDRESS = #address#
+		,TELEPHONE = #telephone#
+		,EMERG_CONTACT = #emerg_Contact#
+		,EMERG_CONTACT_TEL = #emerg_Contact_tel#
+		,DEPARTMENT = #department#
+		,POSITION = #position#
+		,ENTRY_TIME = #entry_Time#
+		,MARITAL_STATUS = #marital_Status#
+		,EDUCATION = #education#
+		,NATIONALITY = #nationality#
+		,JP_NAME = #jn_Name#
+		,PASSPORT = #passport#
+		,VISA = #visa#
+		,PHOTO_PATH = #photo_Path# -->
+		TECH_CAPABILITY = #tech_capability#
+		,PERSONAL_MALL = #pesonal_Mall#
+		,OFFIC_MAIL = #offic_Mail#
+		,WORK_EXPERIENCE = #work_Experience#
+		,KOSHIN_TIMESTAMP = sysdate
+		,KOSHIN_USER = #userId#
+		,KOSHIN_PGM = #userId#
+		,MARITAL_STATUS = #marital_Status#
+		,TELEPHONE = #telephone#
+		,EMERG_CONTACT = #emerg_Contact#
+		,EMERG_CONTACT_TEL = #emerg_Contact_tel#
+		,ADDRESS = #address#
+		,PASSPORT = #passport#
+		,VISA = #visa#
+		where JN_CARD = #jn_Card#
+	</update>
+
+<update id="updatePersonalInfo3"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+		update TT_VOCATIONAL_QUALI
+		set
+		WINNING_CERTIFICATE = 'wining_certificate'
+		where JN_CARD = #jn_Card#
+	</update>
+
+
+	<select id="selectQualificationTR"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoDetailedInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.vo.SelectQualificationTR">
+		SELECT
+		WINNING_DATE,
+		WINNING_CERTIFICATE
+		FROM TT_VOCATIONAL_QUALI TVQ
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="id_card">
+				TVQ.JN_CARD = #id_card#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="selectWorkExperience"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoDetailedInput"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.vo.SelectWorkExperience">
+		SELECT
+		ORDER_NO,
+		CAREERS_TYPE,
+		PROJ_NAME,
+		ATTEND_NM,
+		ATTEND_MONTH,
+		ATTEND_STATES,
+		DEVELOP_PHASE,
+		FIRM_CONTENT,
+		LANG_TOOL,
+		DATA_BASE,
+		TECHNICAL_SYS,
+		MODEL_DEVICE,
+		DEVELOP_PERIOD,
+		TOTAL_PERIOD
+		FROM TT_WORK_EXPERIENCE TWE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="id_card">
+				TWE.JN_CARD = #id_card#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- wq  zhanyong nianjiazhaohui -->
+     <select id="reset"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+		<!-- SELECT JN_CARD,SYAHO_JIKAN  as socialSecurity FROM TT_PERSONAL_BASIC_INFO -->
+		SELECT * FROM TT_PERSONAL_BASIC_INFO
+	 </select>
+
+
+
+
+	  <select id="sociaDay"
+		  parameterClass="java.lang.String"
+		  resultClass="java.lang.String">
+		select to_char(SYAHO_JIKAN,'yyyy-mm-dd') from TT_PERSONAL_BASIC_INFO where jn_card=#jnCard#
+	 </select>
+ <!-- wq  zhanyong nianjiazhaohui -->
+
+
+</sqlMap>

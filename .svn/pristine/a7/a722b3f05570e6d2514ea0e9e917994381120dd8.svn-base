@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+  <!-- AOPの定義 -->
+  <!--
+    下記で指定したパターンのBeanに対してインタセプタを適用する。
+    applicationContext.xmlで定義されたBeanのみ対象となるので注意すること。
+   -->
+    <aop:config>
+    <aop:pointcut id="sampleBeans" expression="bean(*BLogic2)"/>
+
+    <aop:advisor
+         pointcut-ref="sampleBeans"
+         advice-ref="transactionInterceptor"/>
+
+  </aop:config>
+
+  <!-- アクション定義 -->
+
+<!-- 画面跳转 -->
+	<bean name="/JNTCIEquipInsertSCR" scope="singleton"
+		  class="jp.terasoluna.fw.web.struts.actions.ForwardAction"/>
+		  <bean name="/JNTCIEquip06SCR" scope="singleton"
+		  class="jp.terasoluna.fw.web.struts.actions.ForwardAction"/>
+
+		  <bean name="/JNTCIEquipEditorSCR" scope="singleton"
+		  class="jp.terasoluna.fw.web.struts.actions.ForwardAction"/>
+
+<bean name="/JNTCIEquipKatabanSCR" scope="singleton"
+		  class="jp.terasoluna.fw.web.struts.actions.ForwardAction"/>
+
+  <bean name="/JNTCIEquipInsertBL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIEquipInsertBLogic" />
+  </bean>
+
+
+
+  <bean id="JNTCIEquipInsertBLogic" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipInsertBLogic">
+        <property name="queryDAO" ref="queryDAO"/>
+        <property name="updateDAO" ref="updateDAO"/>
+  </bean>
+
+   <bean name="/JNTCIEquipEditorBL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIEquipEditorInsertBLLogic" />
+  </bean>
+  <bean name="/JNTCIEquipfanhui" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIEquipEditorInsertBLLogic" />
+  </bean>
+  <bean id="JNTCIEquipEditorInsertBLLogic" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipEditorInsertBLogic">
+         <property name="queryDAO" ref="queryDAO"/>
+        <property name="updateDAO" ref="updateDAO"/>
+  </bean>
+
+   <bean name="/JNTCIEquipListBL001"  scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIEquipEditorInsertBLLogic001" />
+  </bean>
+<bean id="JNTCIEquipEditorInsertBLLogic001" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipEditorInsertBLogic001">
+         <property name="queryDAO" ref="queryDAO"/>
+        <property name="updateDAO" ref="updateDAO"/>
+  </bean>
+
+  	<bean name="/JNTCIEquipInsertBL01" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIEquipInsertBLogic01" />
+  </bean>
+
+  <bean id="JNTCIEquipInsertBLogic01" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipInsertBLogic01">
+        <property name="queryDAO" ref="queryDAO"/>
+  </bean>
+
+  <bean name="/JNTCIEquipInsert02BL" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="JNTCIEquipInsert02BLogic" />
+  </bean>
+
+  <bean id="JNTCIEquipInsert02BLogic" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipInsertBLogic01">
+        <property name="queryDAO" ref="queryDAO"/>
+  </bean>
+</beans>
+

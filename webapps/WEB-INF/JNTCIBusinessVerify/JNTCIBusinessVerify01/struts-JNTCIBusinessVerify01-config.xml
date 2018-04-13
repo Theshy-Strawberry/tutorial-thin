@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<form-beans>
+
+		<form-bean name="_JNTCIBusinessVerifyForm01"
+			type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIBusinessVerify01Form" />
+		<form-bean name="_JNTCIBusinessVerifyForm02"
+			type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIBusinessVerify01Form" />
+	</form-beans>
+
+	<!-- ======================================== アクションマッピング定義 -->
+	<action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+		<action path="/JNTCIBusinessVerifyBL"
+			name="_JNTCIBusinessVerifyForm01" scope="request">
+			<!-- <forward name="sure" path="/JNTCIBusinessVerifySureBL.do" /> -->
+            <forward name="search" path="/JNTCIBusinessVerifyUnSureBL.do" />
+		</action>
+
+		<action path="/JNTCIBusinessVerify01BL"
+			name="_JNTCIBusinessVerifyForm01" scope="request">
+			<forward name="success"
+				path="/JNTCIBusinessVerify/JNTCIBusinessVerify01.jsp" />
+		</action>
+      <action path="/JNTCIBusinessVerify01BL002"
+           name="_JNTCIBusinessVerifyForm01" scope="request">
+           <forward name="success"
+            path="/JNTCIBusinessVerify01BL.do"/>
+      </action>
+		<action path="/JNTCIBusinessVerify02forwardBL"
+			name="_JNTCIBusinessVerifyForm01" scope="request">
+			<forward name="success"
+				path="/JNTCIBusinessVerify/JNTCIBusinessVerify02.jsp" />
+		</action>
+		<action path="/JNTCIBusinessVerify02BL"
+			name="_JNTCIBusinessVerifyForm01" scope="request">
+			<forward name="success1"  path="/JNTCIBusinessVerify02forwardBL.do" />
+			<forward name="success3"  path="/JNTCIBusinessVerify/JNTCIBusinessVerify01.jsp" />
+			<forward name="success"    path="/JNTCIBusinessVerify01BL.do" />
+
+		</action>
+
+		<action path="/JNTCIBusinessVerifydownloadBL"
+		name="_JNTCIBusinessVerifyForm01" scope="request"
+            validate="false" >
+          <forward name="success" path="/JNTCIBusinessVerify/JNTCIBusinessVerify01.jsp"/>
+    </action>
+
+    <action path="/JNTCIBusinessVerifyDeleteBL"
+		name="_JNTCIBusinessVerifyForm01" scope="request" validate="false" >
+            <forward name="success" path="/JNTCIBusinessVerify01BL.do"/>
+    </action>
+
+
+		<action path="/JNTCIBusinessVerifySureBL"
+			name="_JNTCIBusinessVerifyForm01" scope="request"
+			validate="false" >
+			<forward name="success"
+				path="/JNTCIBusinessVerify01BL.do" />
+		</action>
+
+		<action path="/JNTCIBusinessVerifyUnSureBL"
+			name="_JNTCIBusinessVerifyForm01" scope="request"
+			validate="false" >
+			<forward name="success"
+				path="/JNTCIBusinessVerify01BL.do" />
+		</action>
+	</action-mappings>
+
+</struts-config>

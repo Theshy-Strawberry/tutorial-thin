@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <form-beans>
+
+  	<form-bean name="_JNTCIOverTimeVerify01Form" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIOverTimeVerify01Form" />
+    <form-bean name="_JNTCIOverTimeVerify02Form" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIOverTimeVerify02form" />
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+	<action path="/dispath" name="_JNTCIOverTimeVerify01Form" scope="request">
+             <forward name="search" path="/JNTCIOverTimeVerifySCR00.do" />
+             <forward name="overallow" path="/allowlist.do" />
+   </action>
+	<action path="/JNTCIOverTimeVerifySCR00"
+		name="_JNTCIOverTimeVerify01Form" scope="request"  validate="true">
+		<forward name="success" path="/JNTCIOverTimeVerify/JNTCIOverTimeVerify01.jsp" />
+	</action>
+    <action path="/JNTCIOverTimeVerifyBL"
+           name="_JNTCIOverTimeVerify02Form"  scope="request">
+        <forward name="success1" path="/JNTCIOverTimeVerify/JNTCIOverTimeVerify02.jsp"/>
+	</action>
+    <action path="/JNTCIOverTimeVerifyresultupdate"
+           name="_JNTCIOverTimeVerify02Form" scope="request" input="/JNTCIOverTimeVerify/JNTCIOverTimeVerify02.jsp">
+        <forward name ="success1" path="/JNTCIOverTimeVerifyBL.do"/>
+        <forward name ="success2" path="/JNTCIOverTimeVerifySCR00.do"/>
+	</action>
+
+    <action path="/JNTCIOverTimeVerify/JNTCIOverTimeVerifyDeleteBL"
+            name="_JNTCIOverTimeVerify01Form" scope="request"
+            validate="false" >
+    </action>
+ <action path="/allowlist"
+            name="_JNTCIOverTimeVerify01Form" scope="request"
+            validate="false" >
+           <forward name="success2" path="/JNTCIOverTimeVerifySCR00.do" />
+    </action>
+
+
+
+
+  </action-mappings>
+
+
+
+</struts-config>

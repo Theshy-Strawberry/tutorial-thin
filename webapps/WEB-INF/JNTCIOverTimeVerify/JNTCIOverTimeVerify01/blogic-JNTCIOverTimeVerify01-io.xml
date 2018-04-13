@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/JNTCIOverTimeVerifySCR00">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIOverTimeVerifyInput">
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="cod" blogic-property="cod"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="user_id"
+                blogic-property="user_id" source="form" />
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="userName"
+                blogic-property="userName" source="session" />
+            <set-property property="user_id2"
+                blogic-property="user_id2" source="form" />
+            <set-property property="userId"
+                blogic-property="user_id1" source="session" />
+            <set-property property="user_name2"
+                blogic-property="user_name2" source="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" source="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" source="form" />
+            <set-property property="dept_id2"
+                blogic-property="dept_id2" source="form" />
+            <set-property property="extra_auditss"
+                blogic-property="extra_auditss" source="form" />
+            <set-property property="extra_auditss_search"
+                blogic-property="extra_auditss_search" source="form" />
+            <set-property property="examinePerson"
+                blogic-property="examinePerson" source="form" />
+            <set-property property="extra_starttime1"
+                blogic-property="extra_starttime1" source="form" />
+            <set-property property="extra_endtime1"
+                blogic-property="extra_endtime1" source="form" />
+            <set-property property="flag" blogic-property="flag"
+                source="session" />
+            <set-property property="selectlist"
+                blogic-property="selectlist" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="user_id2"
+                blogic-property="user_id2" dest="form" />
+            <set-property property="user_name2"
+                blogic-property="user_name2" dest="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" dest="form" />
+            <set-property property="dept_id2"
+                blogic-property="dept_id2" dest="form" />
+            <set-property property="extra_starttime1"
+                blogic-property="extra_starttime1" dest="form" />
+            <set-property property="extra_endtime1"
+                blogic-property="extra_endtime1" dest="form" />
+            <set-property property="extra_auditss_search"
+                blogic-property="extra_auditss_search" dest="form" />
+            <set-property property="users" blogic-property="users"
+                dest="form" />
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="extra_auditss_search"
+                blogic-property="extra_auditss_search" dest="form" />
+            <set-property property="selectlist"
+                blogic-property="selectlist" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIOverTimeVerifyBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIOverTimeVerifyCondition">
+            <set-property property="user_id2"
+                blogic-property="user_id2" source="form" />
+            <set-property property="user_name2"
+                blogic-property="user_name2" source="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" source="form" />
+            <set-property property="dept_id2"
+                blogic-property="dept_id2" source="form" />
+            <set-property property="extra_starttime1"
+                blogic-property="extra_starttime1" source="form" />
+            <set-property property="extra_endtime1"
+                blogic-property="extra_endtime1" source="form" />
+            <set-property property="extra_auditss_search"
+                blogic-property="extra_auditss_search" source="form" />
+            <set-property property="extra_id"
+                blogic-property="extra_id" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="dept_id2"
+                blogic-property="dept_id2" dest="form" />
+            <set-property property="user_id2"
+                blogic-property="user_id2" dest="form" />
+            <set-property property="user_name2"
+                blogic-property="user_name2" dest="form" />
+            <set-property property="extra_starttime1"
+                blogic-property="extra_starttime1" dest="form" />
+            <set-property property="extra_endtime1"
+                blogic-property="extra_endtime1" dest="form" />
+            <set-property property="extra_auditss_search"
+                blogic-property="extra_auditss_search" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="extra_id"
+                blogic-property="extra_id" dest="form" />
+            <set-property property="user_id"
+                blogic-property="user_id" dest="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" dest="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" dest="form" />
+            <set-property property="extra_type"
+                blogic-property="extra_type" dest="form" />
+            <set-property property="extra_name"
+                blogic-property="extra_name" dest="form" />
+            <set-property property="extra_starttime"
+                blogic-property="extra_starttime" dest="form" />
+            <set-property property="extra_endtime"
+                blogic-property="extra_endtime" dest="form" />
+            <set-property property="extra_time"
+                blogic-property="extra_time" dest="form" />
+            <set-property property="extra_auditss"
+                blogic-property="extra_auditss" dest="form" />
+            <set-property property="extra_reason"
+                blogic-property="extra_reason" dest="form" />
+            <set-property property="leader"
+                blogic-property="leader" dest="form" />
+            <set-property property="pay_id"
+                blogic-property="pay_id" dest="form" />
+            <set-property property="examinePerson"
+                blogic-property="examinePerson" dest="form" />
+            <set-property property="shenchalist"
+                blogic-property="shenchalist" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIOverTimeVerify/JNTCIOverTimeVerifyDeleteBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIOverTimeVerifyResultInput">
+            <set-property property="deleteExtra_Id"
+                blogic-property="deleteExtra_Id" source="form" />
+        </blogic-params>
+    </action>
+
+    <action path="/JNTCIOverTimeVerifyresultupdate">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIOverTimeVerifyResultInput">
+            <set-property property="user_id2"
+                blogic-property="user_id2" source="form" />
+            <set-property property="user_name2"
+                blogic-property="user_name2" source="form" />
+            <set-property property="dept_id2"
+                blogic-property="dept_id2" source="form" />
+            <set-property property="extra_starttime1"
+                blogic-property="extra_starttime1" source="form" />
+            <set-property property="extra_endtime1"
+                blogic-property="extra_endtime1" source="form" />
+            <set-property property="extra_auditss_search"
+                blogic-property="extra_auditss_search" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="session" />
+            <set-property property="user_id"
+                blogic-property="user_id" source="form" />
+            <set-property property="extra_id"
+                blogic-property="extra_id" source="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" source="form" />
+            <set-property property="extra_starttime"
+                blogic-property="extra_starttime" source="form" />
+            <set-property property="extra_endtime"
+                blogic-property="extra_endtime" source="form" />
+            <set-property property="leader"
+                blogic-property="leader" source="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="examinePerson"
+                blogic-property="examinePerson" source="form" />
+            <set-property property="pay_method"
+                blogic-property="pay_method" source="form" />
+            <set-property property="extra_auditss"
+                blogic-property="extra_auditss" source="form" />
+            <set-property property="shencha"
+                blogic-property="shencha" source="form" />
+            <set-property property="flag" blogic-property="flag"
+                source="session" />
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="dept_id2"
+                blogic-property="dept_id2" dest="form" />
+            <set-property property="user_id2"
+                blogic-property="user_id2" dest="form" />
+            <set-property property="user_name2"
+                blogic-property="user_name2" dest="form" />
+            <set-property property="extra_starttime1"
+                blogic-property="extra_starttime1" dest="form" />
+            <set-property property="extra_endtime1"
+                blogic-property="extra_endtime1" dest="form" />
+            <set-property property="extra_auditss_search"
+                blogic-property="extra_auditss_search" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/allowlist">
+		<blogic-params
+			bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIOverTimeVerifyInput">
+			<set-property property="selectlist" blogic-property="selectlist"
+				source="form" />
+			<set-property property="extra_auditss" blogic-property="extra_auditss"
+				source="form" />
+			<set-property property="extra_auditss1" blogic-property="extra_auditss1"
+				source="form" />
+			<set-property property="userName" blogic-property="userName"
+				source="session" />
+			<set-property property="startIndex" blogic-property="startIndex"
+				source="form" />
+			<set-property property="row" blogic-property="row"
+				source="form" />
+			<set-property property="cod" blogic-property="cod"
+				source="form" />
+			<set-property property="user_id" blogic-property="user_id"
+				source="form" />
+			<set-property property="user_id2" blogic-property="user_id2"
+				source="form" />
+			<set-property property="user_name2" blogic-property="user_name2"
+				source="form" />
+			<set-property property="user_name" blogic-property="user_name"
+				source="form" />
+			<set-property property="dept_id" blogic-property="dept_id"
+				source="form" />
+			<set-property property="dept_id2" blogic-property="dept_id2"
+				source="form" />
+			<set-property property="extra_auditss_search"
+				blogic-property="extra_auditss_search" source="form" />
+			<set-property property="examinePerson" blogic-property="examinePerson"
+				source="form" />
+			<set-property property="extra_starttime1"
+				blogic-property="extra_starttime1" source="form" />
+			<set-property property="extra_endtime1" blogic-property="extra_endtime1"
+				source="form" />
+			<set-property property="flag" blogic-property="flag"
+				source="session" />
+			<set-property property="userId" blogic-property="userId"
+				source="session" />
+		</blogic-params>
+		<blogic-result>
+			<set-property property="startIndex" blogic-property="startIndex"
+				dest="form" />
+			<set-property property="selectlist" blogic-property="selectlist"
+				dest="form" />
+			<set-property property="user_name2" blogic-property="user_name2"
+				dest="form" />
+			<set-property property="row" blogic-property="row" dest="form" />
+			<set-property property="cod" blogic-property="cod" dest="form" />
+			<set-property property="user_id" blogic-property="user_id"
+				dest="form" />
+			<set-property property="user_id2" blogic-property="user_id2"
+				dest="form" />
+			<set-property property="user_name" blogic-property="user_name"
+				dest="form" />
+			<set-property property="dept_id" blogic-property="dept_id"
+				dest="form" />
+			<set-property property="dept_id2" blogic-property="dept_id2"
+				dest="form" />
+			<set-property property="extra_auditss" blogic-property="extra_auditss"
+				dest="form" />
+			<set-property property="extra_auditss_search"
+				blogic-property="extra_auditss_search" dest="form" />
+			<set-property property="examinePerson" blogic-property="examinePerson"
+				dest="form" />
+			<set-property property="extra_starttime1"
+				blogic-property="extra_starttime1" dest="form" />
+			<set-property property="extra_endtime1" blogic-property="extra_endtime1"
+				dest="form" />
+
+		</blogic-result>
+</action>
+</blogic-io>

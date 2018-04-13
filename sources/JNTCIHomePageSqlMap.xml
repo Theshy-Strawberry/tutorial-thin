@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+            PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+            "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- SqlMap定義 -->
+<sqlMap namespace="HomePage">
+	<!-- 查询类型 -->
+	<select id="QueryView"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.vo.JNTCIEquipHomePageVo">
+		SELECT
+		  KJ_NAME as  class_name,
+		  CD_CODE  as  view_id
+		FROM  TT_CODE  WHERE CD_KUBUN = 'A3' AND  CD_CODE > 0
+	</select>
+	<!-- 查询home page所有信息 -->
+	<select id="QueryInfo"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.vo.JNTCIEquipPostMessageVo">
+	SELECT
+		A.INFO_ID,
+		A.INFO_TITLE,
+	    B.KJ_NAME as  class_name ,
+		A.INFO_DETAILS,
+		to_char(A.INFO_DATE, 'YYYY-MM-DD HH24:MI:SS') as INFO_DATE,
+		A.TENPU_PATH,
+		C.USER_NAME,
+		TO_NUMBER(B.CD_CODE)
+		FROM TT_HOME_INFO A left join TT_CODE  B
+	    on A.VIEW_ID = B.CD_CODE
+		inner join TT_SYS_USER C on A.USER_ID = C.USER_ID
+		WHERE A.VIEW_ID > 0 and B.CD_KUBUN = 'A3' ORDER BY INFO_DATE DESC
+	</select>
+	<!--sxh-add 查询home page的条数 -->
+
+	<select id="QueryInfoCount" resultClass="java.lang.String"
+		resultSetType="SCROLL_INSENSITIVE">
+		SELECT
+		COUNT(*) as totalCount
+		FROM TT_HOME_INFO A left join TT_CODE  B
+	    on A.VIEW_ID = B.CD_CODE
+		inner join TT_SYS_USER C on A.USER_ID = C.USER_ID
+		WHERE A.VIEW_ID > 0 and B.CD_KUBUN = 'A3' ORDER BY INFO_DATE DESC
+	</select>
+	<!-- 改正 始め -->
+		<select id="QueryInfo02"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.vo.JNTCIEquipPostMessageVo">
+		SELECT
+        b.USER_NAME,
+		a.INFO_ID,
+		a.INFO_TITLE,
+		a.INFO_DETAILS,
+		to_char(INFO_DATE, 'YYYY-MM-DD HH24:MI:SS') as INFO_DATE,
+		a.USER_ID
+		FROM TT_HOME_INFO a ,TT_SYS_USER b
+		WHERE a.VIEW_ID=0 AND a.USER_ID=b.USER_ID
+		 ORDER BY a.INFO_DATE DESC
+	</select>
+
+	<select id="QueryInfo03"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.vo.JNTCIEquipPostMessageVo">
+		SELECT * FROM
+		(SELECT
+        b.USER_NAME,
+		a.INFO_ID,
+		a.INFO_TITLE,
+		a.INFO_DETAILS,
+		to_char(INFO_DATE, 'YYYY-MM-DD HH24:MI:SS') as INFO_DATE,
+		a.USER_ID
+		FROM TT_HOME_INFO a ,TT_SYS_USER b
+		WHERE a.VIEW_ID=0 AND a.USER_ID=b.USER_ID
+		 ORDER BY a.INFO_DATE DESC)
+		WHERE ROWNUM &lt;
+		7
+	</select>
+
+	<select id="QueryInfo04" resultClass="java.lang.String"
+		resultSetType="SCROLL_INSENSITIVE">
+		SELECT COUNT(*) as totalCount
+		FROM TT_HOME_INFO a ,TT_SYS_USER b
+		WHERE a.VIEW_ID=0 AND a.USER_ID=b.USER_ID
+		 ORDER BY a.INFO_DATE DESC
+	</select>
+	<!-- 邮箱查询 -->
+	<select id="queryMail"
+			resultClass="java.lang.String">
+			select
+			  OFFIC_MAIL
+			from
+			  TT_PERSONAL_BASIC_INFO
+			WHERE
+			  JN_CARD =#jncard#
+	</select>
+	<!-- 終瞭 -->
+	<select id="SelectId" resultClass="java.lang.Integer">
+		SELECT
+		MAX(INFO_ID)
+		FROM
+		TT_HOME_INFO
+	</select>
+	<!-- 20160905-查询title标题 & 查询details Start -->
+	<select id="infoTitle"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIHomePage02Output">
+		SELECT
+		A.INFO_ID,
+		A.INFO_TITLE,
+		A.INFO_DETAILS,
+		A.USER_ID,
+		to_char(INFO_DATE,
+		'YYYY-MM-DD') as INFO_DATE,
+		A.TENPU_PATH,
+		B.USER_NAME
+		FROM TT_HOME_INFO A,TT_SYS_USER B
+		WHERE A.USER_ID = B.USER_ID and
+		info_id =
+		#info_id#
+	</select>
+	<select id="infoCount"
+		 parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIHomePage02Input"
+		resultClass="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM TT_HOME_INFO A,TT_SYS_USER B
+		WHERE A.USER_ID = B.USER_ID and
+		info_id =
+		#info_id#
+	</select>
+	<!-- 20160905-查询title标题& 查询details End -->
+
+
+	<!-- 20160908-JNTCIHomePageUpdate02 Start -->
+	<update id="infoTitleUpdate">
+		update TT_HOME_INFO
+		SET INFO_TITLE = #info_title#,
+		INFO_DETAILS = #info_details#,
+		INFO_DATE = #info_date#,
+		TENPU_PATH=#filePath#,
+		USER_ID = #user_id#
+		where INFO_ID = #info_id#
+	</update>
+	<!-- 20160908-JNTCIHomePageUpdate02 End -->
+
+
+	<!-- 20160908-JNTCIHomePageDelete02 Start -->
+	<delete id="infoTitleDelete"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIHomePage02Input">
+		delete from TT_HOME_INFO where INFO_ID=#info_id#
+	</delete>
+	<!-- 20160908-JNTCIHomePageDelete02 End -->
+
+	<!-- 20160909 查找要下载的文件 Start -->
+	<select id="DownLoadFileId" resultClass="java.lang.String"
+		resultSetType="SCROLL_INSENSITIVE">
+		SELECT
+		TENPU_PATH
+		FROM TT_HOME_INFO
+		WHERE INFO_ID = #info_id#
+	</select>
+	<!-- 20160909 查找要下载的文件 End -->
+
+	<!-- 插入home信息 -->
+	<insert id="InsertInfo"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessageInput">
+		INSERT INTO TT_HOME_INFO(
+		INFO_ID,
+		INFO_TITLE,
+		VIEW_ID,
+		INFO_DETAILS,
+		USER_ID,
+		TENPU_PATH,
+		INFO_DATE)
+		VALUES(
+		#info_id#,#info_title#,#view_id#,#info_details#,#userId#,#tenpu_path#,#info_date#
+		)
+	</insert>
+	<insert id="InsertInfo02"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipNoticeMgVoInput">
+		INSERT INTO TT_HOME_INFO(
+		INFO_ID,
+		INFO_TITLE,
+		VIEW_ID,
+		INFO_DETAILS,
+		USER_ID,
+		INFO_DATE)
+		VALUES(
+		#info_id#,#info_caption#,#view_id#,#info_content#,#userId#,#info_date#
+		)
+	</insert>
+	<!-- zx -->
+	<insert id="InsertNotice02"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipNoticeMgVoInput">
+		INSERT INTO TT_HOME_INFO(
+		INFO_ID,
+		INFO_TITLE,
+		VIEW_ID,
+		INFO_DETAILS,
+		USER_ID,
+		INFO_DATE,TENPU_PATH)
+		VALUES(
+		#info_id#,#info_caption#,#view_id#,#info_content#,#userId#,#info_date#,#filePath#
+		)
+	</insert>
+	<!-- ====================homepage04================================= -->
+	<!-- 查询home page帖子评论一览 -->
+	<select id="QueryComment04"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.vo.JNTCIEquipHomePage04Vo">
+		SELECT
+		COMMENT_ID,
+		COMMET_DETAILS,
+		COMMENT_USER_ID,
+		to_char(COMMENT_DATE, 'YYYY-MM-DD HH24:MI:SS') as COMMENT_DATE
+		FROM TT_HOME_COMMENT WHERE INFO_ID = #info_id# order by COMMENT_DATE DESC
+	</select>
+	<!--查询评论条数 -->
+	<select id="QueryCommentCount" resultClass="java.lang.String"
+		resultSetType="SCROLL_INSENSITIVE"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessage04Input">
+		SELECT COUNT(*) as totalCount FROM TT_HOME_COMMENT
+		WHERE INFO_ID =#info_id#
+	</select>
+	<!-- 查询home page帖子详细信息 -->
+	<select id="QueryInfoComment"
+		resultClass="jp.terasoluna.thin.tutorial.web.transcosmos.vo.JNTCIEquipHomePage04Vo">
+
+		SELECT
+		A.INFO_ID,
+		A.INFO_TITLE,
+		A.INFO_DETAILS,
+		A.USER_ID,
+		B.USER_NAME,
+		to_char(INFO_DATE,
+		'YYYY-MM-DD') as INFO_DATE,
+		A.TENPU_PATH
+		FROM TT_HOME_INFO A,TT_SYS_USER B
+		WHERE A.USER_ID = B.USER_ID and
+		info_id =#info_id#
+	</select>
+	<select id="QueryInfo04Count"
+		 parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessage04Input"
+		resultClass="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM TT_HOME_INFO WHERE INFO_ID = #info_id#
+	</select>
+	<select id="selectInfoCnt"
+			parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessage04Input"
+			resultClass="java.lang.String">
+		SELECT COUNT(*) FROM TT_HOME_INFO WHERE INFO_ID=#info_id#
+	</select>
+	<delete id="DeleteInfo"
+			parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessage04Input">
+		DELETE FROM TT_HOME_INFO WHERE INFO_ID = #info_id#
+	</delete>
+	<!-- 查找comment_Id的最大值 -->
+	<select id="CommentId" resultClass="java.lang.Integer">
+		SELECT
+		MAX(COMMENT_ID)
+		FROM
+		TT_HOME_COMMENT
+	</select>
+	<!-- 添加评论 -->
+	<insert id="InsertComment"
+		parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessage04Input">
+		INSERT INTO TT_HOME_COMMENT(
+		INFO_ID,
+		COMMET_DETAILS,
+		COMMENT_DATE,
+		COMMENT_USER_ID,
+		COMMENT_ID
+		)
+		VALUES(
+		#info_id#,#commet_details_txt#,#comment_date#,#comment_user_Id#,#comment_Id#
+		)
+	</insert>
+        <!-- 删除评论信息 -->
+		<delete id="deleteCom"
+            parameterClass="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessage04Input">
+
+		delete from TT_HOME_COMMENT where
+		COMMENT_ID = #comment_Id#
+
+      </delete>
+</sqlMap>

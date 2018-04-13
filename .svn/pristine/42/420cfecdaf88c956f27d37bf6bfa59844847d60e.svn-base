@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+<!-- アプリケーション全体のBean定義 -->
+
+<!-- ======================================== 各種フィルタコントローラ定義 -->
+  <!-- ログオン済みチェック設定 -->
+  <bean id="tutorialAuthenticationController"
+        class="jp.terasoluna.thin.tutorial.web.common.controller.TutorialAuthController"/>
+
+<!-- ======================================== データソース定義 -->
+  <!--
+     WTPを利用してTomcatを起動する場合、<ContextRoot>/META-INF/context.xmlに
+     データソースの接続情報を設定する。
+     またTomcatでJDBC接続を行う場合、各種JDBCドライバのjarにクラスパスを通すこと。
+  -->
+  <bean id="TerasolunaSampleDataSource"
+        class="org.springframework.jndi.JndiObjectFactoryBean">
+    <property name="jndiName">
+	  <!-- Tomcatの例  -->
+      <value>java:comp/env/jdbc/TerasolunaSampleDataSource</value>
+    </property>
+  </bean>
+
+<!-- ======================================== トランザクション・AOP定義 -->
+  <!-- トランザクションマネージャの定義 -->
+  <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="TerasolunaSampleDataSource" />
+  </bean>
+
+<!-- トランザクション使いまわし試験用 -->
+<tx:advice id="transactionInterceptor" >
+    <tx:attributes>
+      <tx:method name="execute*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+      <tx:method name="insert*"  propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+      <tx:method name="update*"  propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
+      <tx:method name="delete*"  propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+      <tx:method name="select*"  propagation="REQUIRED" rollback-for="java.lang.Exception" read-only="true"/>
+<!--       <tx:method name="execute*" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>-->
+    </tx:attributes>
+  </tx:advice>
+<!-- トランザクション使いまわし試験用ここまで -->
+
+
+  <!-- AOPの定義 -->
+  <!--
+    下記で指定したパターンのBeanに対してインタセプタを適用する。
+    applicationContext.xmlで定義されたBeanのみ対象となるので注意すること。
+   -->
+   <aop:config>
+    <aop:pointcut id="actionBeans"  expression="bean(/transaction/*)"/>
+    <aop:pointcut id="sampleBeans" expression="bean(*BLogic2)"/>
+    <aop:pointcut id="blogicBeans"  expression="bean(*BLogic)"/>
+    <aop:pointcut id="daoBeans"     expression="bean(*DAO)"/>
+   <aop:advisor
+         pointcut-ref="actionBeans"
+         advice-ref="transactionInterceptor"/>
+    <aop:advisor
+         pointcut-ref="sampleBeans"
+         advice-ref="transactionInterceptor"/>
+    <aop:advisor
+         pointcut-ref="blogicBeans"
+         advice-ref="transactionInterceptor"/>
+    <aop:advisor
+         pointcut-ref="daoBeans"
+         advice-ref="transactionInterceptor"/>
+
+  </aop:config>
+
+
+<!-- ======================================== リソースバンドル定義 -->
+  <!-- プロパティファイル利用 -->
+  <!--
+    basenamesプロパティでメッセージプロパティファイルを設定する。
+   -->
+  <bean id="messageSource"
+        class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basenames" value="application-messages, system-messages"/>
+  </bean>
+
+<!-- ======================================== iBATIS定義 -->
+  <!-- SqlMap定義 -->
+  <bean id="sqlMapClient"
+        class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+    <property name="configLocation" value="WEB-INF/sqlMapConfig.xml">
+    </property>
+    <property name="dataSource" ref="TerasolunaSampleDataSource" />
+  </bean>
+
+   <!-- 照会系のDAO定義 -->
+  <bean id="queryDAO"
+        class="jp.terasoluna.fw.dao.ibatis.QueryDAOiBatisImpl">
+    <property name="sqlMapClient" ref="sqlMapClient" />
+  </bean>
+
+  <!-- 更新系のDAO定義 -->
+  <bean id="updateDAO"
+        class="jp.terasoluna.fw.dao.ibatis.UpdateDAOiBatisImpl">
+    <property name="sqlMapClient" ref="sqlMapClient" />
+  </bean>
+
+  <!-- ストアドプロシジャ用のDAO定義 -->
+  <bean id="spDAO"
+        class="jp.terasoluna.fw.dao.ibatis.StoredProcedureDAOiBatisImpl">
+    <property name="sqlMapClient" ref="sqlMapClient" />
+  </bean>
+
+  <!--取得所属部門リスト  -->
+  <bean id="departmentList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='A1' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+    <!--取得休假种类リスト  -->
+  <bean id="leave_type"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='A5' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+     <!--取得申请方式リスト  -->
+  <bean id="application_type"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='A6' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+ <!--取得設備状態区分リスト  -->
+  <bean id="getSetsubiJyoutaiList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE WHERE CD_KUBUN='B7' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+ <!--取得設備用途リスト  -->
+  <bean id="getYoutoList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE WHERE CD_KUBUN='B6' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+<!--取得設備保管場所リスト  -->
+  <bean id="getlocationList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE WHERE CD_KUBUN='B5' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+  <!-- 取得所属ポストリスト -->
+   <bean id="positionList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='A2' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+  <!-- 取得最終学歴リスト -->
+  <bean id="educationList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='A4' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+  <!-- 取得職業種類リスト -->
+  <bean id="occupationList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='C2' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+
+
+  <!--  -->
+  <bean id="roomNoCodeList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='A9' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+  <bean id="officeMailList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT
+				TPBI.OFFIC_MAIL || '@trans-cosmos.com.cn' AS KEY,
+			    TC.KJ_NAME || '　　　' || TPBI.JN_CARD || '　　　' ||TPBI.USERNAME  AS VALUE
+				FROM TT_PERSONAL_BASIC_INFO TPBI
+				LEFT JOIN TT_CODE TC
+				ON TC.CD_CODE = TPBI.DEPARTMENT
+				WHERE TPBI.OFFIC_MAIL &lt;&gt; 'null'
+			    ORDER BY KJ_NAME,JN_CARD,USERNAME
+		</value>
+    </property>
+  </bean>
+
+  <!-- 取得設備種類リスト -->
+  <bean id="setsubikubenList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='B0' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+  <bean id="setmailpersonList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT USER_ID AS KEY,USER_NAME AS VALUE  FROM TT_SYS_USER  where FL_FUNC_USE='3'</value>
+    </property>
+  </bean>
+  <!-- 取得CPU配置リスト -->
+  <bean id="getCPUHaichiList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE WHERE CD_KUBUN='B8' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+<!-- 取得設備種類リスト -->
+   <bean id="setsubiKatabanList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT SETSUBI_KATABAN AS setsubi_kataban_key ,
+       SETSUBI_KATABAN AS setsubi_kataban_value
+	   FROM TT_SETSUBIKIHON  ORDER BY SETSUBI_KATABAN</value>
+    </property>
+  </bean>
+
+  <!-- 取得購入日付リスト -->
+   <bean id="setsubiKonyuhiList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT    to_char(SETSUBI_KONYUHI,'yyyy-mm-dd')  AS setsubi_konyuhi_key,
+                       to_char(SETSUBI_KONYUHI,'yyyy-mm-dd') AS setsubi_konyuhi_value
+          FROM    TT_SETSUBIKIHON   ORDER BY
+            SETSUBI_KONYUHI DESC</value>
+    </property>
+  </bean>
+
+  <!-- 取得設備状態リスト -->
+  <bean id="setsubistateList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='B1' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+  <bean id="deptNoCodeList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='A1' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+  <!-- 設備審査状態Listを取得 -->
+  <bean id="shinsaList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT TC.CD_CODE AS KEY,TC.KJ_NAME AS VALUE FROM TT_CODE TC
+                     WHERE TC.CD_KUBUN='B9'</value>
+    </property>
+  </bean>
+
+  <bean id="overTimeVerify"
+   class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"  init-method="load">
+  <property name = "dataSource" ref="TerasolunaSampleDataSource"/>
+  <property name ="sql">
+  <value>SELECT CD_CODE AS KEY,  KJ_NAME AS VALUE FROM TT_CODE  WHERE CD_KUBUN = 'A1' </value>
+  </property>
+  </bean>
+<bean id="overTimeVerify1"
+   class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"  init-method="load">
+  <property name = "dataSource" ref="TerasolunaSampleDataSource"/>
+  <property name ="sql">
+  <value>SELECT CD_CODE AS KEY,  KJ_NAME AS VALUE FROM TT_CODE  WHERE (CD_KUBUN = 'B2' and CD_CODE='A04') or (CD_KUBUN = 'B2' and CD_CODE='A05') or (CD_KUBUN = 'B2' and CD_CODE='A06') </value>
+  </property>
+  </bean>
+
+<bean id="retroactiveVerify1"
+   class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"  init-method="load">
+  <property name = "dataSource" ref="TerasolunaSampleDataSource"/>
+  <property name ="sql">
+  <value>SELECT CD_CODE AS KEY,  KJ_NAME AS VALUE FROM TT_CODE  WHERE (CD_KUBUN = 'B2' and CD_CODE='A04') or (CD_KUBUN = 'B2' and CD_CODE='A05') or (CD_KUBUN = 'B2' and CD_CODE='A01') or(CD_KUBUN = 'B2' and CD_CODE='A06') or (CD_KUBUN = 'B2' and CD_CODE='A07') or (CD_KUBUN = 'B2' and CD_CODE='A08') or (CD_KUBUN = 'B2' and CD_CODE='A09')</value>
+  </property>
+  </bean>
+
+  <bean id="retroactivetype2Verify1"
+   class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"  init-method="load">
+  <property name = "dataSource" ref="TerasolunaSampleDataSource"/>
+  <property name ="sql">
+  <value>SELECT CD_CODE AS KEY,  KJ_NAME AS VALUE FROM TT_CODE  WHERE CD_KUBUN = 'A8' and (CD_CODE='1' or CD_CODE='2' or CD_CODE='3')</value>
+  </property>
+  </bean>
+
+
+  <bean id="EvectionTypeList"
+   class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"  init-method="load">
+  <property name = "dataSource" ref="TerasolunaSampleDataSource"/>
+  <property name ="sql">
+  <value>SELECT CD_CODE AS KEY,  KJ_NAME AS VALUE FROM TT_CODE  WHERE CD_KUBUN = 'D1' </value>
+  </property>
+  </bean>
+
+   <bean id="deptIdList"
+   class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"  init-method="load">
+  <property name = "dataSource" ref="TerasolunaSampleDataSource"/>
+  <property name ="sql">
+  <value>SELECT CD_CODE AS KEY,  KJ_NAME AS VALUE FROM TT_CODE  WHERE CD_KUBUN = 'A1' </value>
+  </property>
+  </bean>
+
+   <bean id="businessVerifyDeptList"
+   class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"  init-method="load">
+  <property name = "dataSource" ref="TerasolunaSampleDataSource"/>
+  <property name ="sql">
+  <value>SELECT CD_CODE AS KEY,  KJ_NAME AS VALUE FROM TT_CODE  WHERE CD_KUBUN = 'A1' </value>
+  </property>
+  </bean>
+<bean id="businessVerifyStatusList"
+   class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"  init-method="load">
+  <property name = "dataSource" ref="TerasolunaSampleDataSource"/>
+  <property name ="sql">
+  <value>SELECT CD_CODE AS KEY,  KJ_NAME AS VALUE FROM TT_CODE  WHERE (CD_KUBUN = 'B2' and CD_CODE='A01') or (CD_KUBUN = 'B2' and CD_CODE='A04') or (CD_KUBUN = 'B2' and CD_CODE='A05') or (CD_KUBUN = 'B2' and CD_CODE='A06') or (CD_KUBUN = 'B2' and CD_CODE='A07')or (CD_KUBUN = 'B2' and CD_CODE='A08')or (CD_KUBUN = 'B2' and CD_CODE='A09')</value>
+  </property>
+  </bean>
+  <!-- 个人登录页面Listを取得 -->
+  <bean id="LanguageList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>Select * from TT_CODE WHERE CD_KUBUN='LA'</value>
+    </property>
+  </bean>
+
+  <bean id="JavaEnvironmentList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>Select * from TT_CODE WHERE CD_KUBUN='JE'</value>
+    </property>
+  </bean>
+
+  <bean id="JavaLanguageList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>Select * from TT_CODE WHERE CD_KUBUN='JL'</value>
+    </property>
+  </bean>
+
+  <bean id="ToolList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>Select * from TT_CODE WHERE CD_KUBUN='TL'</value>
+    </property>
+  </bean>
+
+ <bean id="DBList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>Select * from TT_CODE WHERE CD_KUBUN='DB'</value>
+    </property>
+  </bean>
+
+ <bean id="OSList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>Select * from TT_CODE WHERE CD_KUBUN='OS'</value>
+    </property>
+  </bean>
+
+   <bean id="languageList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='LA' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+  <bean id="javaEnvirnList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='JE' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+  <bean id="javaLangList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='JL' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+  <bean id="toolList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='TL' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+  <bean id="dbList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='DB' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+
+  <bean id="sysOperatList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE AS KEY, KJ_NAME AS VALUE FROM TT_CODE where CD_KUBUN='OS' ORDER BY NM_DISPLAY_ORDER</value>
+    </property>
+  </bean>
+   <bean id="selectPowerList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE as KEY,KJ_NAME as VALUE FROM TT_CODE where CD_KUBUN='A0' </value>
+    </property>
+  </bean>
+  <bean id="selectprojectNoList"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT CD_CODE as KEY,KJ_NAME as VALUE FROM TT_CODE where CD_KUBUN='S1' </value>
+    </property>
+  </bean>
+
+  <bean id="YearMonth"
+   class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"  init-method="load">
+  <property name = "dataSource" ref="TerasolunaSampleDataSource"/>
+  <property name ="sql">
+  <value>SELECT CD_CODE AS KEY,  KJ_NAME AS VALUE FROM TT_CODE  WHERE CD_KUBUN = 'YM' </value>
+  </property>
+  </bean>
+   <bean id="Year"
+   class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"  init-method="load">
+  <property name = "dataSource" ref="TerasolunaSampleDataSource"/>
+  <property name ="sql">
+  <value>SELECT CD_CODE AS KEY,  KJ_NAME AS VALUE FROM TT_CODE  WHERE CD_KUBUN = 'YY' </value>
+  </property>
+  </bean>
+
+
+  <bean id="leaderlist"
+    class="jp.terasoluna.fw.web.codelist.DBCodeListLoader"
+    init-method="load">
+    <property name="dataSource" ref="TerasolunaSampleDataSource"/>
+    <property name="sql">
+        <value>SELECT user_name as key, user_name as value FROM TT_SYS_USER WHERE FL_FUNC_USE IN ('0','1','4')</value>
+    </property>
+  </bean>
+
+   <!--don't delete  down-->
+    <!--this userMail  -->
+	<bean id="UserMailSetToProperties" class="jp.terasoluna.thin.tutorial.web.common.controller.UserMailSetToProperties">
+          <property name="queryDAO" ref="queryDAO"></property>
+	</bean>
+
+	<bean id="UserMail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="UserMailSetToProperties"></property>
+		<property name="targetMethod" value="writerToProperties"></property>
+	</bean>
+
+	<bean id="UserMailTimeTigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="UserMail"></property>
+		<property name="cronExpression">
+			<!--毎週一3時30分-->
+			<value>0 30 3 ? * MON</value>
+			<!--毎分-->
+			<!-- <value>0 0/1 * * * ?</value> -->
+		</property>
+	</bean>
+	<!--this DeleteMeetiongRemark  -->
+	<bean id="DeleteMeetiongRemark" class="jp.terasoluna.thin.tutorial.web.common.controller.DeleteMeetiongRemark">
+          <property name="updateDAO" ref="updateDAO"></property>
+	</bean>
+
+	<bean id="DeleteMeetiongRemarkFactoryBean"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="DeleteMeetiongRemark"></property>
+		<property name="targetMethod" value="deleteMeetingRemark"></property>
+	</bean>
+
+	<bean id="DeleteMeetiongRemarkFactoryBeanTimeTigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="DeleteMeetiongRemarkFactoryBean"></property>
+		<property name="cronExpression">
+			<!--毎月1日3時30分-->
+			<value>0 30 3 1 * ?</value>
+			<!--毎分-->
+			<!-- <value>0 0/1 * * * ?</value> -->
+		</property>
+	</bean>
+
+	<bean id="startJob"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="UserMailTimeTigger" />
+				<ref bean="DeleteMeetiongRemarkFactoryBeanTimeTigger" />
+			</list>
+		</property>
+	</bean>
+    <!--don't delete up -->
+  <!-- END -->
+</beans>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <form-beans>
+
+  	<form-bean name="_JNTCIBusinessApplicationForm" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIBusinessApplicationForm" />
+
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+    <action path="/JNTCIBusinessApplicationBL"
+            name="_JNTCIBusinessApplicationForm" scope="request"
+            validate="true" input="/JNTCIViewApplicationBL.do" >
+    	<forward name="success" path="/JNTCIViewApplicationBL.do" />
+    </action>
+
+	<action path="/JNTCIViewApplicationBL"
+            name="_JNTCIBusinessApplicationForm" scope="request" >
+    	<forward name="success" path="/JNTCIViewApplicationResultListSCR.do" />
+    	<forward name="failure" path="/index.jsp" />
+    </action>
+
+	<action path="/JNTCIViewApplicationResultListSCR"
+			name="_JNTCIBusinessApplicationForm" scope="request"
+			parameter="/JNTCIBusinessApplication/JNTCIBusinessApplication.jsp" />
+
+	 <!-- <action path="/JNTCIModifyApplicationBL"
+            name="_JNTCIBusinessApplicationForm" scope="request" >
+    	<forward name="success" path="/JNTCIBusinessApplication/JNTCIModifyApplication.jsp" />
+    	<forward name=" failure" path="/index.jsp" />
+    </action> -->
+
+	 <action path="/JNTCIBusinessApplicationSoL"
+			name="_JNTCIBusinessApplicationForm" scope="request">
+	        <forward name="save" path="/JNTCISaveApplicationBL.do" />
+	 		<forward name="list" path="/JNTCIViewApplicationBL.do"/>
+    </action>
+
+    <action path="/JNTCISaveApplicationBL"
+            name="_JNTCIBusinessApplicationForm" scope="request"
+            validate="true" input="/JNTCIBusinessApplication/JNTCIModifyApplication.jsp">
+    	<forward name="success" path="/JNTCIViewApplicationBL.do" />
+    	<forward name="success1" path="/JNTCIBusinessApplication/JNTCIModifyApplication.jsp" />
+    </action>
+
+    <action path="/JNTCIBusinessApplicationDSP"
+			name="_JNTCIBusinessApplicationForm" scope="request">
+	        <forward name="insert" path="/JNTCIBusinessApplicationBL.do" />
+    </action>
+
+    <action path="/JNTCIDeleteApplicationBL"
+            name="_JNTCIBusinessApplicationForm" scope="request" >
+    </action>
+
+
+   <!--  <action path="/JNTCIApplicationBL001" name="_JNTCIBusinessApplicationForm" scope="request">
+            <forward name="success"  path="/JNTCIBusinessApplication/JNTCIModifyApplication.jsp" />
+            <forward name="delete" path="/JNTCIBusinessApplicationBL.do"/>
+      </action> -->
+   <action path="/JNTCIModifyApplicationBL"
+            name="_JNTCIBusinessApplicationForm" scope="request" >
+    	<forward name="success" path="/JNTCIBusinessApplication/JNTCIModifyApplication.jsp" />
+    	<forward name="delete" path="/JNTCIViewApplicationBL.do"/>
+    </action>
+
+
+  </action-mappings>
+
+</struts-config>

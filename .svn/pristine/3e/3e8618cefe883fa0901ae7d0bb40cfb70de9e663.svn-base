@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+<!-- モジュール共通のBean定義 -->
+
+<!-- ======================================== トランザクション・AOP定義 -->
+  <!-- AOPの定義 -->
+  <!-- 
+    下記で指定したパターンのBeanに対してインタセプタを適用する。
+    BLogicからデータベースアクセスを行う場合は、下記のコメントアウトを解除して
+    BLogicに対するトランザクションの設定を有効にする。
+    モジュール毎のmoduleContext.xmlで定義されたBeanのみ対象となるので注意すること。
+   -->
+  
+  <aop:config>
+    <aop:pointcut id="blogicBeans"  expression="bean(*BLogic)"/>
+    <aop:advisor 
+         pointcut-ref="blogicBeans" 
+         advice-ref="transactionInterceptor"/>
+  </aop:config>
+
+
+				<!-- ============================     定时自动导入考勤记录       ================================= -->
+			
+    <!-- 定义目标bean和bean中的方法 -->  
+    <bean id="ClockingInTimingRead" class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.ClockingInTimingRead">
+    	<property name="queryDAO" ref="queryDAO" />
+    	<property name="updateDAO" ref="updateDAO" />
+    </bean>  
+      
+    <bean id="ClockingInTimingReadMethod"  
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+        <property name="targetObject">  
+            <ref bean="ClockingInTimingRead" />  
+        </property>  
+        <property name="targetMethod">  <!-- 要执行的方法名称 -->  
+            <value>timingRead</value>  
+        </property>  
+    </bean>  
+  
+    <!-- 调度触发器 -->  
+    <bean id="ClockingInTimingReadBean" class="org.springframework.scheduling.quartz.CronTriggerBean">  
+        <property name="jobDetail" ref="ClockingInTimingReadMethod"></property>  
+        <property name="cronExpression" value="0 0 0 * * ?"></property> <!-- 每晚十二点 -->   <!-- 格式 ： 秒 分 时 日 月 周 年 --> <!-- ？代表不确定（忽略） *代表任意值 -->
+    </bean>  
+  
+    <!-- 调度工厂 -->  
+    <bean id="SpringJobSchedulerFactoryBean"  
+        class="org.springframework.scheduling.quartz.SchedulerFactoryBean">  
+        <property name="triggers">  
+            <list>  
+                <ref bean="ClockingInTimingReadBean" />  
+            </list>  
+        </property>  
+    </bean>  
+  
+</beans>

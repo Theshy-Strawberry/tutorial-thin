@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+<!-- 20160902 Start -->
+	<!--===========================画面遷移 ========================================-->
+	<action path="/JNTCIHomePage02BL">
+		<blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIHomePage02Input">
+			<set-property property="info_id" blogic-property="info_id" source="form"/>
+			<!-- <set-property property="info_title" blogic-property="info_title" source="form" /> -->
+			<!-- <set-property property="info_details" blogic-property="info_details" source="form" /> -->
+			 <set-property property="startIndex" blogic-property="startIndex" source="form"/>
+
+		</blogic-params>
+		<blogic-result>
+			<set-property property="info_id" blogic-property="info_id" dest="form" />
+			<set-property property="info_title" blogic-property="info_title" dest="form" />
+			<set-property property="info_details" blogic-property="info_details" dest="form" />
+			<set-property property="info_date" blogic-property="info_date" dest="form" />
+			<set-property property="tenpu_path" blogic-property="tenpu_path" dest="form" />
+			<set-property property="user_name" blogic-property="user_name" dest="form" />
+			<set-property property="startIndex" blogic-property="startIndex" dest="form"/><!-- =========== --><!-- =========== -->
+		</blogic-result>
+	</action>
+<!-- 20160902 End -->
+
+<!--========================================修正========================================================= -->
+<!-- 20160907  Start -->
+	<action path="/JNTCIHomePageUpdate02BL">
+		<blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIHomePage02Input">
+			<set-property property="info_id" blogic-property="info_id" source="form"/>
+			<set-property property="info_title" blogic-property="info_title" source="form"/>
+			<set-property property="info_details" blogic-property="info_details" source="form"/>
+			<set-property property="tenpu_path" blogic-property="tenpu_path" source="form"/>
+		 	<set-property property="uploadFile" blogic-property="uploadFile" source="form" />
+		 	<set-property property="userId" blogic-property="user_id" source="session" />
+		 	<set-property property="fileNameJsp" blogic-property="fileNameJsp" source="form" />
+		 	<set-property property="startIndex" blogic-property="startIndex" source="form" /><!-- =========== --><!-- =========== -->
+		</blogic-params>
+		 <blogic-result>
+			<set-property property="info_id" blogic-property="info_id" dest="form" />
+			<set-property property="info_title" blogic-property="info_title" dest="form" />
+			<set-property property="info_details" blogic-property="info_details" dest="form" />
+			<set-property property="info_date" blogic-property="info_date" dest="form" />
+			<set-property property="tenpu_path" blogic-property="tenpu_path" dest="form" />
+			<set-property property="user_name" blogic-property="user_name" dest="form" />
+			<set-property property="startIndex" blogic-property="startIndex" dest="form" /><!-- =========== --><!-- =========== -->
+		</blogic-result>
+	</action>
+<!-- 20160907  End -->
+
+<!--==============================削除=================================================================== -->
+<!-- 20160908  Start -->
+	<action path="/JNTCIHomePageDelete02BL">
+		<blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIHomePage02Input">
+			<set-property property="info_id" blogic-property="info_id" source="form"/>
+		</blogic-params>
+	</action>
+<!-- 20160908  End -->
+<!-- ====================================ダウンロード============================================================= -->
+<!-- 20160909 Download  Start -->
+	<action path="/NoticeFileDown">
+		<blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipNoticeMgVoInput">
+			<set-property property="info_id" blogic-property="info_id" source="form" />
+		</blogic-params>
+	</action>
+<!-- 20160909 Download End -->
+
+
+
+
+</blogic-io>

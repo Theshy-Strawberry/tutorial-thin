@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/MeetingApply">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIMeetingApplyInput">
+            <set-property property="jnCard"
+                blogic-property="jnCard" source="form" />
+            <set-property property="remark"
+                blogic-property="remark" source="form" />
+            <set-property property="officeMail"
+                blogic-property="officeMail" source="form" />
+            <set-property property="roomNo"
+                blogic-property="roomNo" source="form" />
+            <set-property property="roomName"
+                blogic-property="roomName" source="form" />
+            <set-property property="startTime"
+                blogic-property="startTime" source="form" />
+            <set-property property="endTime"
+                blogic-property="endTime" source="form" />
+            <set-property property="toId" blogic-property="toId"
+                source="form" />
+            <set-property property="ccId" blogic-property="ccId"
+                source="form" />
+            <set-property property="mailContent"
+                blogic-property="mailContent" source="form" />
+            <set-property property="subject"
+                blogic-property="subject" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="jnCard"
+                blogic-property="jnCard" dest="form" />
+            <set-property property="remark"
+                blogic-property="remark" dest="form" />
+            <set-property property="officeMail"
+                blogic-property="officeMail" dest="form" />
+            <set-property property="roomNo"
+                blogic-property="roomNo" dest="form" />
+            <set-property property="roomName"
+                blogic-property="roomName" dest="form" />
+            <set-property property="applyTime"
+                blogic-property="applyTime" dest="form" />
+            <set-property property="username"
+                blogic-property="username" dest="form" />
+            <set-property property="useTime"
+                blogic-property="useTime" dest="form" />
+            <set-property property="toId" blogic-property="toId"
+                dest="form" />
+            <set-property property="ccId" blogic-property="ccId"
+                dest="form" />
+            <set-property property="mailContent"
+                blogic-property="mailContent" dest="form" />
+            <set-property property="subject"
+                blogic-property="subject" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/MeetingApplyAjax">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIMeetingApplyInput">
+            <set-property property="emailSearchValue"
+                blogic-property="emailSearchValue" source="form" />
+            <set-property property="emailSearchCode"
+                blogic-property="emailSearchCode" source="form" />
+        </blogic-params>
+    </action>
+
+    <action path="/MeetingApplySelect">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIMeetingSelectInput">
+            <set-property property="roomNo"
+                blogic-property="roomNo" source="form" />
+        </blogic-params>
+    </action>
+
+</blogic-io>

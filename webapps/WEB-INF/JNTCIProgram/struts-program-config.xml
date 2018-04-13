@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<!-- formbean定義 -->
+	<form-beans>
+
+		<form-bean name="_EmpForm"
+			type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIProgramForm" />
+	</form-beans>
+
+	<action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+	   <action path="/programUpdate"   name="_EmpForm" scope="request"
+            validate="false" >
+          <forward name="success" path="/JNTCIAttendanceSystem/JNTCIAttendanceLeave02.jsp"/>
+             <forward name="false" path="/JNTCIAttendance04selectBL.do"/>
+    </action>
+
+	</action-mappings>
+
+
+</struts-config>

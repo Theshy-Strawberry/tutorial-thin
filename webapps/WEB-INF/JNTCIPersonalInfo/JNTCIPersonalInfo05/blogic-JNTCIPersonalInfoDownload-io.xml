@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/downloadSkillBLogic">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoDetailedInput">
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="id_card"
+                blogic-property="id_card" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="downloadFile"
+                blogic-property="downloadFile" dest="form" />
+            <set-property property="fileName"
+                blogic-property="fileName" dest="form" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+<!-- ログオン業務のBean定義 -->
+
+   <aop:config>
+    <aop:pointcut id="sampleBeans" expression="bean(*BLogic2)"/>
+    <aop:advisor
+         pointcut-ref="sampleBeans"
+         advice-ref="transactionInterceptor"/>
+
+  </aop:config>
+   <!-- アクション定義 -->
+
+   <!-- ====================================登録============================================== -->
+
+    <!-- ログオン処理用アクション定義 -->
+    <bean name="/loginBL" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+          <property name="businessLogic" ref="LoginBLogic" />
+    </bean>
+
+    <!-- ログオフ処理用アクション定義 -->
+    <bean name="/logoff" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.LogoffAction" />
+
+	<!-- メニュー画面表示用アクション定義 -->
+    <bean name="/JNTCIEquip/menuSCR" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.ForwardAction" />
+
+<!--改正  データ伝送定義 -->
+          <bean name="/JNTCIEquipHomePageBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="LoginBLogic" />
+	</bean>
+<!-- 終瞭 -->
+
+<!-- ログオン処理ビジネスロジック定義 -->
+	<bean id="LoginBLogic" scope="singleton"
+	      class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.LoginBLogic">
+	      <property name="queryDAO" ref="queryDAO" />
+	      <property name="updateDAO" ref="updateDAO" />
+
+	</bean>
+
+    <bean name="/loginGetPassWord" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+          <property name="businessLogic" ref="GetPwdBLogic" />
+    </bean>
+
+    <bean id="GetPwdBLogic" scope="singleton"
+	      class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIGetPwdBLogic">
+	      <property name="queryDAO" ref="queryDAO" />
+	</bean>
+
+
+<!-- ====================================パスワードの頁============================================== -->
+
+    <bean name="/resetSCR" scope="singleton"
+	      class="jp.terasoluna.fw.web.struts.actions.ForwardAction"/>
+
+
+<!-- ====================================パスワードの修正============================================== -->
+
+	<!-- ログオン処理用アクション定義 -->
+    <bean name="/resetBL" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+          <property name="businessLogic" ref="JNTCIResetBLogic" />
+    </bean>
+
+    <bean id="JNTCIResetBLogic" scope="singleton"
+	      class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIResetBLogic">
+	      <property name="queryDAO" ref="queryDAO" />
+	      <property name="updateDAO" ref="updateDAO" />
+	</bean>
+
+	<bean name="/JNTCIEquip/resetDSP" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.ForwardAction" />
+</beans>

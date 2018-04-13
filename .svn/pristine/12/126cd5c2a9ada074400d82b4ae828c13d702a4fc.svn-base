@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+	<formset>
+		<!-- ログオン機能確認 -->
+		<form name="/JNTCLOvertimeApplicationSCR00Insert">
+
+
+			<field property="extra_type" depends="required">
+				<arg key="message.ExtraExtra_type" position="0" />
+				</field>
+				<field property="extra_starttime" depends="required">
+				<arg key="message.ExtraExtra_starttime" position="0" />
+			</field>
+			<field property="extra_endtime" depends="required">
+				<arg key="message.ExtraExtra_endtime" position="0" />
+			</field>
+				<field property="extra_time_txt" depends="required">
+				<arg key="message.ExtraExtra_time" position="0" />
+			</field>
+
+
+         <field property="extra_reason"
+            depends="required,maxlength">
+          <arg key="message.EextraExtra_beiZhu" position="0"/>
+          <arg key="${var:maxlength}" name="maxlength"
+               resource="false" position="1"/>
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>16</var-value>
+          </var>
+        </field>
+
+		</form>
+		<form name="/JNTCIextraByIdUpdate">
+
+			<field property="extra_time" depends="required">
+				<arg key="message.ExtraExtra_time" position="0" />
+			</field>
+			<field property="extra_starttime" depends="required">
+				<arg key="message.ExtraExtra_starttime" position="0" />
+			</field>
+			<field property="extra_endtime" depends="required">
+				<arg key="message.ExtraExtra_endtime" position="0" />
+			</field>
+			<field property="extra_type" depends="required">
+				<arg key="message.ExtraExtra_type" position="0" />
+				</field>
+			<field property="extra_auditss"
+            depends="required,maxlength">
+          <arg key="message.EextraExtra_beiZhu" position="0"/>
+          <arg key="${var:maxlength}" name="maxlength"
+               resource="false" position="1"/>
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>16</var-value>
+          </var>
+        </field>
+		</form>
+
+	</formset>
+
+
+</form-validation>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+    <!-- ======================================== フォームビーン定義 -->
+    <form-beans>
+        <form-bean name="_JNTCIQueryForm"
+            type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIQueryFrom" />
+    </form-beans>
+
+    <action-mappings
+        type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+        <!-- 画面分歧 -->
+        <action path="/JNTCIQueryListDSP" name="_JNTCIQueryForm" scope="request">
+             <forward name="search" path="/personalcounttwo.do" />
+             <forward name="upload" path="/uploadServlet.do" />
+             <forward name="download" path="/downloadTransfeServlet.do" />
+             <forward name="detail" path="/month1.do" />
+        </action>
+        <action path="/month1" name="_JNTCIQueryForm"
+            scope="request">
+            <forward name="success" path="/month2.do" />
+        </action>
+        <!-- 画面一览 -->
+        <action path="/personalcounttwo" name="_JNTCIQueryForm"
+            scope="request" validate="true" input="/JNTCIquerySRC.do">
+            <forward name="success" path="/JNTCIQuery/NewQuery.jsp" />
+        </action>
+
+        <action path="/downloadTransfeServlet" name="_JNTCIQueryForm"
+            scope="request"  validate="true" input="/JNTCIquerySRC.do">
+            <forward name="success" path="/downloadServlet.do" />
+        </action>
+
+	 	<action path="/downloadServlet" name="_JNTCIQueryForm"
+            scope="request" >
+            <forward name="success" path="/JNTCIQuery/NewQuery.jsp" />
+             <forward name="fail" path="/JNTCIquerySRC.do" />
+        </action>
+        <action path="/JNTCIquerySRC" name="_JNTCIQueryForm"
+            scope="request" validate="true" parameter="/JNTCIQueryBL.do">
+            <forward name="success" path="/JNTCIQuery/NewQuery.jsp" />
+        </action>
+
+        <action path="/JNTCIQueryBL" name="_JNTCIQueryForm"
+            scope="request">
+            <forward name="success" path="/JNTCIQuery/NewQuery.jsp" />
+        </action>
+
+        <action path="/uploadServlet" name="_JNTCIQueryForm"
+            scope="request"  validate="true" input="/JNTCIquerySRC.do">
+            <forward name="success" path="/QueryCardDate.do" />
+            <forward name="fail" path="/JNTCIquerySRC.do" />
+            <forward name="qxfail" path="/JNTCIquerySRC.do" />
+        </action>
+
+        <action path="/QueryCardDate" name="_JNTCIQueryForm"
+            scope="request">
+            <forward name="success" path="/JNTCIquerySRC.do" />
+        </action>
+        <action path="/into2" name="_JNTCIQueryForm"
+            scope="request">
+            <forward name="success" path="/personalcounttwo.do" />
+        </action>
+
+    </action-mappings>
+
+</struts-config>

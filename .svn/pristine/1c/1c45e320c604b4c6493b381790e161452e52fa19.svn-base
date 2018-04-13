@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+	<action path="/JNTCIAttendance04selectBL">
+		<blogic-params
+			bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance04selectInput">
+			<set-property property="row" blogic-property="row"
+				source="form" />
+			<set-property property="jn_card_serch" blogic-property="jn_card_serch"
+				source="form" />
+			<set-property property="name_serch" blogic-property="name_serch"
+				source="form" />
+			<set-property property="dept_id_serch" blogic-property="dept_id_serch"
+				source="form" />
+				<set-property property="mark" blogic-property="mark"
+				source="form" />
+			<set-property property="leave_starttime_serch"
+				blogic-property="leave_starttime_serch" source="form" />
+			<set-property property="leave_endtime_serch"
+				blogic-property="leave_endtime_serch" source="form" />
+			<set-property property="leave_type_serch"
+				blogic-property="leave_type_serch" source="form" />
+			<set-property property="application_type_serch"
+				blogic-property="application_type_serch" source="form" />
+			<set-property property="examine_status_serch"
+				blogic-property="examine_status_serch" source="form" />
+			<set-property property="startIndex" blogic-property="startIndex"
+				source="form" />
+			<set-property property="jn_card" blogic-property="jn_card"
+				source="form" />
+			<set-property property="name" blogic-property="name"
+				source="form" />
+				<set-property property="mark" blogic-property="mark"
+				source="form" />
+			<set-property property="leave_starttime"
+				blogic-property="leave_starttime" source="form" />
+			<set-property property="leave_endtime" blogic-property="leave_endtime"
+				source="form" />
+			<set-property property="leave_type" blogic-property="leave_type"
+				source="form" />
+			<set-property property="type_leave" blogic-property="type_leave"
+				source="form" />
+			<set-property property="dept_id" blogic-property="dept_id"
+				source="form" />
+			<set-property property="application_type"
+				blogic-property="application_type" source="form" />
+			<set-property property="examine_status" blogic-property="examine_status"
+				source="form" />
+			<set-property property="flag" blogic-property="flag"
+				source="form" />
+			<set-property property="cod" blogic-property="cod"
+				source="form" />
+			<set-property property="userName" blogic-property="userName"
+				source="session" />
+			<set-property property="admitAllId" blogic-property="admitAllId"
+                source="form" />
+		</blogic-params>
+		<blogic-result>
+		   <set-property property="admitAllId" blogic-property="admitAllId"
+                dest="form" />
+			<set-property property="jn_card_serch" blogic-property="jn_card_serch"
+				dest="form" />
+			<set-property property="name_serch" blogic-property="name_serch"
+				dest="form" />
+			<set-property property="dept_id_serch" blogic-property="dept_id_serch"
+				dest="form" />
+			<set-property property="leave_starttime_serch"
+				blogic-property="leave_starttime_serch" dest="form" />
+			<set-property property="leave_endtime_serch"
+				blogic-property="leave_endtime_serch" dest="form" />
+			<set-property property="leave_type_serch"
+				blogic-property="leave_type_serch" dest="form" />
+			<set-property property="application_type_serch"
+				blogic-property="application_type_serch" dest="form" />
+			<set-property property="examine_status_serch"
+				blogic-property="examine_status_serch" dest="form" />
+			<set-property property="startIndex" blogic-property="startIndex"
+				dest="form" />
+			<set-property property="totalCount" blogic-property="totalCount"
+				dest="form" />
+			<set-property property="JNTCIAttendance04selectInfo"
+				blogic-property="JNTCIAttendance04selectInfo" dest="form" />
+			<set-property property="kj_cdList" blogic-property="kj_cdList"
+				dest="form" />
+			<set-property property="application_List"
+				blogic-property="application_List" dest="form" />
+			<set-property property="dept_List" blogic-property="dept_List"
+				dest="form" />
+			<set-property property="status_List" blogic-property="status_List"
+				dest="form" />
+			<set-property property="dept_id" blogic-property="dept_id"
+				dest="form" />
+			<set-property property="leave_type" blogic-property="leave_type"
+				dest="form" />
+			<set-property property="application_type"
+				blogic-property="application_type" dest="form" />
+			<set-property property="type_leave" blogic-property="type_leave"
+				dest="form" />
+			<set-property property="examine_status" blogic-property="examine_status"
+				dest="form" />
+			<set-property property="leave_starttime"
+				blogic-property="leave_starttime" dest="form" />
+			<set-property property="leave_endtime" blogic-property="leave_endtime"
+				dest="form" />
+			<set-property property="jn_card" blogic-property="jn_card"
+				dest="form" />
+			<set-property property="name" blogic-property="name"
+				dest="form" />
+			<set-property property="cod" blogic-property="cod"
+                dest="form" />
+		</blogic-result>
+	</action>
+	<action path="/JNTCIAttendance04disagreeBL">
+		<blogic-params
+			bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance04updateInput">
+			<set-property property="jn_card_serch" blogic-property="jn_card_serch"
+				source="form" />
+			<set-property property="name_serch" blogic-property="name_serch"
+				source="form" />
+			<set-property property="dept_id_serch" blogic-property="dept_id_serch"
+				source="form" />
+			<set-property property="leave_starttime_serch"
+				blogic-property="leave_starttime_serch" source="form" />
+			<set-property property="leave_endtime_serch"
+				blogic-property="leave_endtime_serch" source="form" />
+			<set-property property="leave_type_serch"
+				blogic-property="leave_type_serch" source="form" />
+			<set-property property="application_type_serch"
+				blogic-property="application_type_serch" source="form" />
+			<set-property property="examine_status_serch"
+				blogic-property="examine_status_serch" source="form" />
+			<set-property property="examine_reason" blogic-property="examine_reason"
+				source="form" />
+			<set-property property="leave_id" blogic-property="leave_id"
+				source="form" />
+			<set-property property="application_type"
+				blogic-property="application_type" source="form" />
+			<set-property property="examine_status" blogic-property="examine_status"
+				source="form" />
+			<set-property property="leave_type" blogic-property="leave_type"
+				source="form" />
+			<set-property property="type_leave" blogic-property="type_leave"
+				source="form" />
+			<set-property property="leave_totaltime"
+				blogic-property="leave_totaltime" source="form" />
+			<set-property property="jn_card" blogic-property="jn_card"
+				source="form" />
+			<set-property property="user_id" blogic-property="user_id"
+				source="form" />
+			<set-property property="examine_person" blogic-property="examine_person"
+				source="form" />
+			<set-property property="userName" blogic-property="userName"
+				source="session" />
+			<set-property property="examine_paper_fg"
+				blogic-property="examine_paper_fg" source="form" />
+			<set-property property="leave_starttime"
+				blogic-property="leave_starttime" source="form" />
+			<set-property property="leave_endtime" blogic-property="leave_endtime"
+				source="form" />
+			<set-property property="userId" blogic-property="userId"
+				source="session" />
+			<set-property property="leave_reason" blogic-property="leave_reason"
+				source="form" />
+			<set-property property="code" blogic-property="code"
+				source="form" />
+			<set-property property="hour" blogic-property="hour"
+				source="form" />
+			<set-property property="startdate" blogic-property="startdate"
+				source="form" />
+			<set-property property="enddate" blogic-property="enddate"
+				source="form" />
+			<set-property property="startIndex" blogic-property="startIndex"
+				source="form" />
+				  <set-property property="cod" blogic-property="cod"
+                source="form" />
+		</blogic-params>
+		<blogic-result>
+			<set-property property="jn_card_serch" blogic-property="jn_card_serch"
+				dest="form" />
+			<set-property property="name_serch" blogic-property="name_serch"
+				dest="form" />
+			<set-property property="dept_id_serch" blogic-property="dept_id_serch"
+				dest="form" />
+			<set-property property="leave_starttime_serch"
+				blogic-property="leave_starttime_serch" dest="form" />
+			<set-property property="leave_endtime_serch"
+				blogic-property="leave_endtime_serch" dest="form" />
+			<set-property property="leave_type_serch"
+				blogic-property="leave_type_serch" dest="form" />
+			<set-property property="application_type_serch"
+				blogic-property="application_type_serch" dest="form" />
+			<set-property property="examine_status_serch"
+				blogic-property="examine_status_serch" dest="form" />
+			<set-property property="startIndex" blogic-property="startIndex"
+				dest="form" />
+			<set-property property="JNTCIAttendance04selectInfo"
+				blogic-property="JNTCIAttendance04selectInfo" dest="form" />
+			<set-property property="kj_cdList" blogic-property="kj_cdList"
+				dest="form" />
+			<set-property property="application_List"
+				blogic-property="application_List" dest="form" />
+			<set-property property="dept_List" blogic-property="dept_List"
+				dest="form" />
+			<set-property property="status_List" blogic-property="status_List"
+				dest="form" />
+			<set-property property="totalCount" blogic-property="totalCount"
+				dest="form" />
+			<set-property property="application_type"
+				blogic-property="application_type" dest="form" />
+			<set-property property="examine_status" blogic-property="examine_status"
+				dest="form" />
+			<set-property property="jn_card" blogic-property="jn_card"
+				dest="form" />
+			<set-property property="leave_type" blogic-property="leave_type"
+				dest="form" />
+			<set-property property="type_leave" blogic-property="type_leave"
+				dest="form" />
+			<set-property property="leave_starttime"
+				blogic-property="leave_starttime" dest="form" />
+			<set-property property="leave_endtime" blogic-property="leave_endtime"
+				dest="form" />
+			<set-property property="cod" blogic-property="cod"
+                dest="form" />
+		</blogic-result>
+	</action>
+
+	<action path="/JNTCIAttendance04forwardBL">
+		<blogic-params
+			bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance04selectInfo">
+			<set-property property="jn_card_serch" blogic-property="jn_card_serch"
+				source="form" />
+			<set-property property="name_serch" blogic-property="name_serch"
+				source="form" />
+			<set-property property="dept_id_serch" blogic-property="dept_id_serch"
+				source="form" />
+			<set-property property="leave_starttime_serch"
+				blogic-property="leave_starttime_serch" source="form" />
+			<set-property property="leave_endtime_serch"
+				blogic-property="leave_endtime_serch" source="form" />
+			<set-property property="leave_type_serch"
+				blogic-property="leave_type_serch" source="form" />
+			<set-property property="application_type_serch"
+				blogic-property="application_type_serch" source="form" />
+			<set-property property="examine_status_serch"
+				blogic-property="examine_status_serch" source="form" />
+			<set-property property="examine_reason" blogic-property="examine_reason"
+				source="form" />
+			<set-property property="leave_id" blogic-property="leave_id"
+				source="form" />
+			<set-property property="userId" blogic-property="userId"
+				source="session" />
+			<set-property property="startIndex" blogic-property="startIndex"
+				source="form" />
+		</blogic-params>
+		<blogic-result>
+			<set-property property="examine_reason" blogic-property="examine_reason"
+				dest="form" />
+			<set-property property="jn_card_serch" blogic-property="jn_card_serch"
+				dest="form" />
+			<set-property property="name_serch" blogic-property="name_serch"
+				dest="form" />
+			<set-property property="dept_id_serch" blogic-property="dept_id_serch"
+				dest="form" />
+			<set-property property="leave_starttime_serch"
+				blogic-property="leave_starttime_serch" dest="form" />
+			<set-property property="leave_endtime_serch"
+				blogic-property="leave_endtime_serch" dest="form" />
+			<set-property property="leave_type_serch"
+				blogic-property="leave_type_serch" dest="form" />
+			<set-property property="application_type_serch"
+				blogic-property="application_type_serch" dest="form" />
+			<set-property property="examine_status_serch"
+				blogic-property="examine_status_serch" dest="form" />
+			<set-property property="startIndex" blogic-property="startIndex"
+				source="form" />
+			<set-property property="userName" blogic-property="userName"
+				dest="form" />
+			<set-property property="jn_card" blogic-property="jn_card"
+				dest="form" />
+			<set-property property="name" blogic-property="name"
+				dest="form" />
+			<set-property property="leave_starttime"
+				blogic-property="leave_starttime" dest="form" />
+			<set-property property="leave_endtime" blogic-property="leave_endtime"
+				dest="form" />
+			<set-property property="leave_type" blogic-property="leave_type"
+				dest="form" />
+			<set-property property="application_type"
+				blogic-property="application_type" source="form" />
+			<set-property property="dept_id" blogic-property="dept_id"
+				dest="form" />
+			<set-property property="project_pm" blogic-property="project_pm"
+				dest="form" />
+			<set-property property="leave_type" blogic-property="leave_type"
+				dest="form" />
+			<set-property property="type_leave" blogic-property="type_leave"
+				dest="form" />
+			<set-property property="leave_reason" blogic-property="leave_reason"
+				dest="form" />
+			<set-property property="leave_totaltime"
+				blogic-property="leave_totaltime" dest="form" />
+			<set-property property="leader" blogic-property="leader"
+				dest="form" />
+			<set-property property="dept_person" blogic-property="dept_person"
+				dest="form" />
+			<set-property property="examine_person" blogic-property="examine_person"
+				dest="form" />
+			<set-property property="examine_status" blogic-property="examine_status"
+				dest="form" />
+			<set-property property="examine_paper_fg"
+				blogic-property="examine_paper_fg" dest="form" />
+			<set-property property="userId" blogic-property="userId"
+				dest="form" />
+		</blogic-result>
+		  </action>
+		    <!-- 复数删除 -->
+<action path="/deleteAll">
+        <blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance04selectInput">
+            <set-property property="deleteAllId" blogic-property="deleteAllId" source="form" />
+        </blogic-params>
+</action>
+<!-- 一括承认 -->
+<action path="/admit">
+        <blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance04selectInput">
+            <set-property property="admitAllId" blogic-property="admitAllId" source="form" />
+            <set-property property="userId" blogic-property="userId" source="session" />
+            <set-property property="userName" blogic-property="userName"
+                source="session" />
+        </blogic-params>
+</action>
+<!-- 一括不承认 -->
+<action path="/unadmit">
+        <blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance04selectInput">
+            <set-property property="unadmitAllId" blogic-property="unadmitAllId" source="form" />
+            <set-property property="userId" blogic-property="userId" source="session" />
+            <set-property property="userName" blogic-property="userName"
+                source="session" />
+        </blogic-params>
+</action>
+
+</blogic-io>

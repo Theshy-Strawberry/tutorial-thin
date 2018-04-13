@@ -1,0 +1,570 @@
+﻿@charset "utf-8";
+body{
+	background:#f5f5f5;
+}
+/* CSS Document */
+/*登录页面*/
+.login-bg{
+	background: url(../images/login_bg.jpg) repeat-x top center;
+}
+.login-main{
+	width:710px;
+	margin:0 auto;
+	padding-top:50px;
+}
+.login-main h1{
+	padding:16px;
+	background: url(../images/login_head.png) no-repeat center left;
+	background-size:19%;
+	padding-left:150px;
+	margin-bottom:20px;
+	color:#2A536D;
+	font-style:italic;
+
+}
+.login-info{
+	background:url(../images/logininfo.png) no-repeat top center;
+	height:270px;
+	padding-top:90px;
+	padding-left:300px;
+}
+.login-info label{
+	width:100px;
+	display:inline-block;
+}
+
+.login-info input[type='text'],
+.login-info input[type='password']{
+	border:1px solid #7F9DB9;
+	width:150px;
+	padding:5px;
+}
+.login-info input[type='text']:focus,
+.login-info input[type='password']:focus{
+	box-shadow:0 0 0px 1px #A5C7FE;
+ }
+.login-info p.check-code input{
+	width:40px;
+}
+.login-info p.check-code input,
+.login-info p.check-code img,
+.login-info p.check-code label,
+.login-info p.check-code a{
+	vertical-align:middle;
+}
+.login-info p.check-code a{
+	font-size:12px;
+}
+.login-copyright{
+	text-align:center;
+	color:#60819D;
+	font-size:13px;
+}
+/*top*/
+.top{
+	color:white;
+	height:87px;
+	padding:0 35px;
+	background: url(../images/top_bg2.jpg) repeat-x bottom center #1B3142;
+	border-bottom: 1px solid #ddd;
+	border-top: 3px solid #CF3835;
+}
+.top h1{
+	margin:0;
+	padding-left:230px;
+	background:url(../images/login_head2.png) no-repeat left center;
+	background-size:40%;
+	line-height:65px;
+	font-size:24px;
+	color: #000;
+	margin-top: 10px;
+}
+.top li{
+	display:inline-block;
+	font-size:14px;
+	line-height:62px;
+}
+.top li:first-child{
+	background:url(../images/top_user1.png) no-repeat left center;
+	background-size:40px;
+	padding-left:55px;
+	margin-top: 10px;
+	color:#000;
+}
+.top li a{
+	color:#F66;
+}
+.top li a.a1{
+	color:#39F;
+	margin:0 8px 0 8px;
+}
+.top span{
+	font-weight:600;
+	padding:0 10px;
+}
+/*left*/
+#left-container{
+	 width:220px;
+	text-align:center;
+	height: 875px;
+	background: #fff;
+border-top: 5px solid #595959;
+border-radius: 5px;
+}
+.item-top{
+	/* height:5px; */
+	/* background:url(../images/left_menu_top_line.gif) no-repeat top center; */
+	background: #06B0B9;
+}
+#left-container a{
+	color:#000;
+	width:100%;
+	display:inline-block;
+	font-size:13px;
+}
+#left-container .tit a{
+	height:45px;
+	line-height:45px;
+	font-size:14px;
+/* 	background:url(../images/menu_h_bg.gif) no-repeat center center;
+	 */
+	/* background: #eee; */
+	/* margin-top: 2px; */
+	text-align: left;
+	padding-left: 20px;
+	width: 200px;
+	background: url(../images/left-down.png) no-repeat 185px #595959;
+	background-size: 10px;
+	font-weight: 700;
+	color:#fff;
+ }
+ #left-container .tit:nth-child(2) a {
+	background: #595959;
+}
+#left-container .tit:nth-child(2) a:hover {
+	color: rgb(52, 153, 218);
+	background: #595959;
+}
+ #left-container .tit a:hover{
+/*  background: url(../images/left-down.png) no-repeat 185px #aaa;
+ background-size:10px; */
+ 	color:rgb(52, 153, 218);
+	background: url(../images/left-down1.png) no-repeat 185px #595959;
+	background-size: 10px;
+ }
+#left-container .content a{
+	height:40px;
+	line-height:40px;
+/* 	background:url(../images/menu_bg.gif) no-repeat center center;
+ */
+ 	width: 170px;
+ 	padding-left: 50px;
+	 background: #DFDFDF;
+	text-align: left;
+	/* margin-top: 1px; */
+ }
+#left-container .content a:hover{
+	font-weight:600;
+	color:#587100;
+	/* background:url(../images/menu_bg_ov.gif) no-repeat center center; */
+	color: #fff;
+	background:#3499DA;
+}
+/*content*/
+.header{
+	/* background:#EEF2FB;
+	padding:20px 30px;
+	border-bottom:1px solid #CCC; */
+	/* background: #3498DB; */
+	padding: 10px 30px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	background: #CF3835;
+	color: #fff;
+	background-image: url(../images/menu-bg.png);
+	background-repeat: repeat repeat;
+	border-radius: 5px 5px 0 0;
+}
+.breadcrumbs li{
+	font-size:13px;
+	float:left;
+	margin:3px;
+	color:#fff
+}
+.breadcrumbs a{
+	/* color: #898989; */
+	font-weight:600;
+	color: #fff;
+}
+.breadcrumbs li.ico{
+	font-size:12px;
+}
+.main-ctn{
+	width:95%;
+	margin:20px auto;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	padding: 0 20px;
+	/* padding-bottom: 10px; */
+	border-top: 2px solid #ccc;
+}
+table{
+	border-collapse: collapse;
+}
+table caption{
+	font-size:16px;
+	text-align:left;
+	padding:8px;
+	/*border-top:1px solid #CCC;*/
+}
+table {
+    font-size: 13px;
+	table-layout:fixed;
+	margin-top: 10px;
+}
+table th {
+    height: 20px;
+    padding: 5px 0;
+    border: 1px solid #E1E5EE;
+    /* background-color: #E7F1FE; */
+    color: #006699;
+}
+table td {
+    height: 20px;
+    padding: 10px 0;
+    border: 1px solid #E1E5EE;
+	text-align:center;
+	word-break:break-all;
+}
+.ctn tr:hover{
+	background-color:#E4F0DF;
+}
+.ctn tfoot tr:hover{
+	background-color:#fff;
+}
+
+/*.form th {
+    height: 20px;
+    padding: 5px 0;
+    background-color: #E7F1FE;
+	font-size:14px;
+}
+.form td {
+    height: 20px;
+    padding: 5px 0;
+	text-align:right;
+	font-size:12px;
+	padding-left:15px;
+
+}
+*/
+.footer{
+	padding:20px 0 0;
+}
+.footer p{
+	font-size:14px;
+	margin:0;
+	/* border-top:1px solid #CCC;
+	padding:10px 50px;
+	background:url(../images/icon_mail.gif) no-repeat 26px center; */
+	border-top: 1px solid #ddd;
+	padding: 20px 70px;
+	background: url(../images/icon_mail.png) no-repeat 40px center;
+	color: #545454;
+}
+.footer a{
+	color:#666;
+}
+.footer a:hover{
+	color:#CCC;
+}
+/*分页链接*/
+.pagination{
+	margin-top:20px;
+	width:100%;
+
+}
+.pagination ul{
+	text-align:right;
+}
+.pagination b{
+	padding:0 3px;
+}
+.pagination li{
+	font-size:16px;
+	display:inline-block;
+	margin:0 3px;
+}
+/*form表单*/
+label{
+	width:150px;
+	margin-right:5px;
+	text-align:right;
+	display:inline-block;
+}
+table label{
+	width:auto;
+	margin:0;
+}
+/*设备申请页*/
+.yu{
+	vertical-align:top;
+}
+form i{
+	font-size:12px;
+	margin:0 5px;
+}
+.equip-apply select{
+	width:200px;
+}
+.equip-apply input[type='submit']{
+	margin-left:170px;
+}
+.reason textarea{
+	width:300px;
+	height:100px;
+	overflow:auto;
+}
+ .reason label,
+ .reason textarea{
+	vertical-align:top;
+}
+/* 設備詳細 zxp */
+#detailEquip span{
+	width:200px;
+	text-align:right;
+	display:inline-block;
+	padding:5px 20px 5px 0;
+}
+/*設備一覧*/
+#equipLists .seach td:nth-child(2n-1){
+	height:20px;
+	padding:5px 0;
+	border:1px solid #E1E5EE;
+	background-color: #E7F1FE;
+	/* border: 1px solid #06B0B9;
+	background-color: #06B0B9;
+	color: #fff; */
+}
+#equipLists #getSetsubiJyoutaiList{
+  width:150px;
+}
+#equipLists #setsubikubenList{
+	width:150px;
+}
+#equipLists #departmentList{
+	width:150px;
+}
+#equipLists input[type="text"]{
+	width:140px;
+}
+/*会议室*/
+.appl-finish{
+	width:700px;
+	margin:0 auto;
+}
+.appl-finish li{
+	margin:15px 0;
+}
+.appl-finish span{
+	width:42%;
+	margin-right:10px;
+	text-align:right;
+	display:inline-block;
+}
+.btn-line{
+	margin-top:20px;
+	margin-left:120px;
+}
+.btn-line input{
+	margin:0 10px;
+	min-width:80px;
+}
+tfoot td{
+	border:0;
+}
+/*个人信息*/
+.self-info td{
+	text-align:left;
+	border:none;
+	padding:8px 10px;
+
+}
+.self-info th{
+	font-size:15px;
+	padding:8px 25px;
+	text-align:left;
+}
+.self-info tr td:nth-child(2n-1){
+	text-align:right;
+	padding-left:0;
+	padding-right:30px;
+	font-weight:bold;
+}
+.self-info tr td.pic{
+	padding-right:250px;
+	text-align:left;
+	width:142px;
+	text-align:center;
+}
+.self-info .pic div{
+	margin-top:10px;
+	width:100px;
+	height:110px;
+	display:inline-block;
+}
+.self-info .pic div img{
+	border:1px solid #000;
+}
+.self-info .pic button{
+	cursor:pointer;
+	font-size:12px;
+	background:#799C00;
+	color:#fff;
+}
+/*内嵌的table*/
+.self-info tr td.embed-table{
+	text-align:right;
+	padding:30px 290px 8px 20px;
+	word-break:break-all;
+}
+.self-info .embed-table small{
+	float:left;
+	text-align:left;
+	font-size:12px;
+	font-weight:normal;
+}
+.self-info tr td.embed-table table{
+	table-layout:fixed;
+	margin-bottom:10px;
+}
+.self-info tr td.embed-table table th{
+	text-align:center;
+	padding:0px 5px;
+	font-size: 1.1em;
+}
+.self-info tr td.embed-table table td{
+	text-align:center;
+	padding:3px;
+	font-size: 1em;
+	font-weight:normal;
+	border: 1px solid #E1E5EE;
+}
+.self-info tr td.embed-table td input[type='text']{
+	width:99%;
+	padding:3px 0;
+}
+.self-info tr td.embed-table td textarea{
+	max-height:50px;
+	width:92%;
+}
+
+
+
+
+
+/*修改密码*/
+.change-pwd{
+	width:390px;
+	margin:0 auto
+}
+.change-pwd p:last-child{
+	text-align:center;
+	margin-top:30px;
+}
+/*日历*/
+.calendar td{
+	padding:40px 0;
+}
+.calendar th{
+	font-size:15px;
+	padding:30px 0;
+	font-weight:bold;
+}
+#title_time{
+	font-size:24px;
+}
+.pre_d,
+.next_d{
+	cursor: pointer;
+	font-size:24px;
+	-moz-user-select: none;
+}
+.tb-align th{
+	text-align:right;
+	padding-right:20px;
+
+}
+.tb-align td{
+	text-align:left;
+	padding-left:20px;
+}
+.ul-li li{
+	margin:12px 0;
+}
+.ul-li label{
+	padding-right:10px;
+}
+.ul-li textarea{
+	width:300px;
+	height:80px;
+}
+.ul-li span{
+	width:120px;
+	display:inline-block;
+	word-break:break-all;
+	vertical-align:middle;
+}
+.ul-li.overtime span{
+	width:300px;
+
+}
+.table-bar input{
+	width:120px;
+}
+.table-bar td.input-time input{
+	width: auto;
+}
+.table-bar select{
+	width:100%;
+
+}
+.table-bar td{
+	padding:5px 10px;
+
+}
+/* 勤務照会NewQuery.jsp */
+#NewQuery .NewTit{
+	height:40px;
+	padding:5px 0;
+	border:1px solid #E1E5EE;
+	background-color: #E7F1FE;
+}
+.FileSelect{
+	padding:10px 30px 30px 40px;
+	float:right;
+}
+
+.addSignInfo td input{
+	width:95%;
+}
+/* 休暇審査一覧 */
+.adl tr td{
+	padding:8px 0;
+}
+.attendance hr{
+	margin:15px 0;
+}
+
+body{
+	width:1903px;
+}
+.rightWidht{
+	/* width:1723px;
+	padding-left: 180px; */
+	width: 1683px;
+padding-left: 220px;
+}
+.pagination{
+	text-align: center;
+}

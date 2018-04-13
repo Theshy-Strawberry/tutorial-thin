@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/insertBLforAttendance05">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance06Input">
+            <set-property property="user_id"
+                blogic-property="user_id" source="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" source="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" source="form" />
+            <set-property property="leader"
+                blogic-property="leader" source="form" />
+            <set-property property="retroactive_type"
+                blogic-property="retroactive_type" source="form" />
+            <set-property property="retroactive_person"
+                blogic-property="retroactive_person" source="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" source="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" source="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" source="form" />
+            <set-property property="uploadFile"
+                blogic-property="uploadFile" source="form" />
+            <set-property property="dept_id_hide"
+                blogic-property="dept_id_hide" source="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" source="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" source="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" source="form" />
+            <set-property property="retroactive_id"
+                blogic-property="retroactive_id" source="form" />
+             <set-property property="fileName"
+                blogic-property="fileName" source="form" />
+            <set-property property="fileName"
+                blogic-property="tenpu_path" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="retroactive_type"
+                blogic-property="retroactive_type" dest="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" dest="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" dest="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" dest="form" />
+            <set-property property="uploadFile"
+                blogic-property="uploadFile" dest="form" />
+            <set-property property="user_id"
+                blogic-property="user_id" dest="form" />
+            <set-property property="delete_flag"
+                blogic-property="delete_flag" dest="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" dest="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" dest="form" />
+            <set-property property="leader"
+                blogic-property="leader" dest="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" dest="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" dest="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" dest="form" />
+            <set-property property="retroactive_id"
+                blogic-property="retroactive_id" dest="form" />
+           <set-property property="fileName"
+                blogic-property="tenpu_path" dest="form" />
+                <set-property property="fileName"
+                blogic-property="fileName" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIAttendanceSCR">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance06Input">
+            <set-property property="userId"
+                blogic-property="user_id" source="session" />
+            <set-property property="user_name"
+                blogic-property="user_name" source="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" source="form" />
+            <set-property property="leader"
+                blogic-property="leader" source="form" />
+            <set-property property="dept_id_hide"
+                blogic-property="dept_id_hide" source="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" source="form" />
+            <set-property property="retroactive_type"
+                blogic-property="retroactive_type" source="form" />
+            <set-property property="retroactive_person"
+                blogic-property="retroactive_person" source="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" source="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" source="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" source="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" source="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" source="form" />
+            <set-property property="retroactive_id"
+                blogic-property="retroactive_id" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="attendance06SelectRecOutput"
+                blogic-property="attendance06SelectRecOutput" dest="form" />
+            <set-property property="attendance06SelectRecOutput02"
+                blogic-property="attendance06SelectRecOutput02" dest="form" />
+            <set-property property="user_id"
+                blogic-property="user_id" dest="form" />
+            <set-property property="delete_flag"
+                blogic-property="delete_flag" dest="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" dest="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" dest="form" />
+            <set-property property="leader"
+                blogic-property="leader" dest="form" />
+            <set-property property="dept_id_hide"
+                blogic-property="dept_id_hide" dest="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" dest="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" dest="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" dest="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" dest="form" />
+            <set-property property="retroactive_type"
+                blogic-property="retroactive_type" dest="form" />
+            <set-property property="retroactive_person"
+                blogic-property="retroactive_person" dest="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" dest="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" dest="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" dest="form" />
+            <set-property property="retroactive_id"
+                blogic-property="retroactive_id" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIAttendanceShowTypeBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance06Input">
+            <set-property property="delete_flag"
+                blogic-property="delete_flag" source="form" />
+            <set-property property="user_id"
+                blogic-property="user_id" source="form" />
+            <set-property property="retroactive_type"
+                blogic-property="retroactive_type" source="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" source="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" source="form" />
+            <set-property property="leader"
+                blogic-property="leader" source="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" source="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" source="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" source="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" source="form" />
+            <set-property property="retroactive_person"
+                blogic-property="retroactive_person" source="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" source="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" source="form" />
+            <set-property property="retroactive_id"
+                blogic-property="retroactive_id" source="form" />
+                 <set-property property="fileName"
+                blogic-property="fileName" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="attendance06SelectRecOutput"
+                blogic-property="attendance06SelectRecOutput" dest="form" />
+            <set-property property="attendance06SelectRecOutput02"
+                blogic-property="attendance06SelectRecOutput02" dest="form" />
+            <set-property property="user_id"
+                blogic-property="user_id" dest="form" />
+            <set-property property="delete_flag"
+                blogic-property="delete_flag" dest="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" dest="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" dest="form" />
+            <set-property property="leader"
+                blogic-property="leader" dest="form" />
+            <set-property property="retroactive_type_keepval"
+                blogic-property="retroactive_type_keepval" dest="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" dest="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" dest="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" dest="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" dest="form" />
+            <set-property property="retroactive_type"
+                blogic-property="retroactive_type" dest="form" />
+            <set-property property="retroactive_person"
+                blogic-property="retroactive_person" dest="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" dest="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" dest="form" />
+            <set-property property="retroactive_id"
+                blogic-property="retroactive_id" dest="form" />
+            <set-property property="typecode1"
+                blogic-property="typecode1" dest="form" />
+            <set-property property="typecode2"
+                blogic-property="typecode2" dest="form" />
+             <set-property property="fileName"
+                blogic-property="fileName" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/Attendance05listBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance06Input">
+            <set-property property="user_id"
+                blogic-property="user_id" source="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" source="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" source="form" />
+            <set-property property="leader"
+                blogic-property="leader" source="form" />
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="delete_flag"
+                blogic-property="delete_flag" source="form" />
+            <set-property property="retroactive_type"
+                blogic-property="retroactive_type" source="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" source="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" source="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" source="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" source="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" source="form" />
+            <set-property property="retroactive_person"
+                blogic-property="retroactive_person" source="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" source="form" />
+            <set-property property="retroactive_id"
+                blogic-property="retroactive_id" source="form" />
+             <set-property property="fileName"
+                blogic-property="fileName" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="attendance06ListOutput"
+                blogic-property="attendance06ListOutput" dest="form" />
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="user_id"
+                blogic-property="user_id" dest="form" />
+            <set-property property="delete_flag"
+                blogic-property="delete_flag" dest="form" />
+            <set-property property="retroactive_type"
+                blogic-property="retroactive_type" dest="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" dest="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" dest="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" dest="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" dest="form" />
+            <set-property property="dept_id"
+                blogic-property="dept_id" dest="form" />
+            <set-property property="leader"
+                blogic-property="leader" dest="form" />
+            <set-property property="dept_id_hide"
+                blogic-property="dept_id_hide" dest="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" dest="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" dest="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" dest="form" />
+            <set-property property="retroactive_id"
+                blogic-property="retroactive_id" dest="form" />
+                <set-property property="fileName"
+                blogic-property="fileName" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/delectionforAttendance05">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance06Input">
+            <set-property property="user_id"
+                blogic-property="user_id" source="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" source="form" />
+            <set-property property="start_time"
+                blogic-property="start_time" source="form" />
+            <set-property property="end_time"
+                blogic-property="end_time" source="form" />
+            <set-property property="flagfortype"
+                blogic-property="flagfortype" source="form" />
+            <set-property property="jn_card"
+                blogic-property="jn_card" source="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" source="form" />
+            <set-property property="retroactive_type"
+                blogic-property="retroactive_type" source="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" source="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" source="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" source="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" source="form" />
+            <set-property property="retroactive_id"
+                blogic-property="retroactive_id" source="form" />
+                <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="delete_flag"
+                blogic-property="delete_flag" dest="form" />
+            <set-property property="user_id"
+                blogic-property="user_id" dest="form" />
+            <set-property property="sub_time"
+                blogic-property="sub_time" dest="form" />
+            <set-property property="jn_card"
+                blogic-property="jn_card" dest="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" dest="form" />
+            <set-property property="retroactive_type"
+                blogic-property="retroactive_type" dest="form" />
+            <set-property property="start_time_add"
+                blogic-property="start_time_add" dest="form" />
+            <set-property property="end_time_add"
+                blogic-property="end_time_add" dest="form" />
+            <set-property property="retroactive_reason"
+                blogic-property="retroactive_reason" dest="form" />
+            <set-property property="reason_type"
+                blogic-property="reason_type" dest="form" />
+            <set-property property="retroactive_id"
+                blogic-property="retroactive_id" dest="form" />
+                <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

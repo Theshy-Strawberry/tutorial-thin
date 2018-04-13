@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <form-beans>
+
+  	<form-bean name="_jnTCIAttendance03Form" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIAttendance03Form" />
+
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+	<!-- 初始页面时查询出用户个人信息 -->
+    <action path="/queryPersonalInformation"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="false" >
+    	<forward name="success" path= "/LeaveSelect.do"/>
+    </action>
+
+     <action path="/queryPersonalInformation1"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="false" >
+    	<forward name="success" path= "/LeaveSelect1.do"/>
+    </action>
+	<!-- 员工请假提交后显示出个人请假信息 -->
+    <action path="/updateLeave01"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="true" input="/queryPersonalInformation.do" >
+    	<forward name="success" path= "/LeaveSelect.do"/>
+    </action>
+
+    <!-- 员工补假提交后显示出个人请假信息 -->
+    <action path="/updateLeave02"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="true" input="/queryPersonalInformation1.do" >
+    	<forward name="success" path= "/LeaveSelect1.do"/>
+    </action>
+
+	<!-- 更新の 削除 -->
+ 	<action path="/deleteEventAction"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="true" input="/queryPersonalInformation.do" >
+    	<forward name="success" path= "/LeaveSelect.do"/>
+    </action>
+
+    <action path="/deleteEventAction1"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="true" input="/queryPersonalInformation1.do" >
+    	<forward name="success" path= "/LeaveSelect1.do"/>
+    </action>
+
+ 	<action path="/LeaveSelect1"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="false" input="/queryPersonalInformation1.do" >
+    	<forward name="success" path= "/JNTCIAttendanceSystem/JNTCIAttendanceBothTime.jsp"/>
+    </action>
+
+    <action path="/LeaveSelect"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="false" input="/queryPersonalInformation.do" >
+    	<forward name="success" path= "/JNTCIAttendanceSystem/JNTCIAttendanceLeave01.jsp"/>
+    </action>
+
+    <action path="/PagingQuery"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="false" input="/queryPersonalInformation.do" >
+    	<forward name="success" path= "/queryPersonalInformation.do"/>
+    </action>
+
+    <action path="/PagingQuery1"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="false" input="/queryPersonalInformation1.do" >
+    	<forward name="success" path= "/queryPersonalInformation1.do"/>
+    </action>
+<!-- 复数删除 -->
+    <action path="/deleteAll"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="true" input="/queryPersonalInformation.do" >
+        <forward name="success" path= "/LeaveS.do"/>
+    </action>
+    <action path="/LeaveS"
+            name="_jnTCIAttendance03Form" scope="request"
+            validate="false" input="/queryPersonalInformation.do" >
+        <forward name="success" path= "/JNTCIAttendanceSystem/JNTCIAttendanceLeave03.jsp"/>
+    </action>
+  </action-mappings>
+</struts-config>

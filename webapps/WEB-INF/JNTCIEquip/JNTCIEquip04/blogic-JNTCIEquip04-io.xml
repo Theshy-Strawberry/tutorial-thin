@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/JNTCIEquip04BL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquip04Input">
+            <set-property property="userId"
+                blogic-property="shenqingId" source="session" />
+            <set-property property="userId1"
+                blogic-property="userId" source="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" source="form" />
+            <set-property property="shinsaJyoutai"
+                blogic-property="shinsaJyoutai" source="form" />
+            <set-property property="shinseiStartDate"
+                blogic-property="shinseiStartDate" source="form" />
+            <set-property property="shinseiEndDate"
+                blogic-property="shinseiEndDate" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="qwerr" blogic-property="qwerr"
+                source="form" />
+            <set-property property="apply_no"
+                blogic-property="apply_no" source="form" />
+            <set-property property="shinseiJyoutai"
+                blogic-property="shinseiJyoutai" source="form" />
+            <set-property property="shinsasyurui"
+                blogic-property="shinsasyurui" source="form" />
+            <set-property property="deleteId_card"
+                blogic-property="deleteId_card" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="shinsaJyoutai"
+                blogic-property="shinsaJyoutai" dest="form" />
+                 <set-property property="shinseiDate"
+                blogic-property="shinseiDate" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+                <set-property property="shinseiStartDate"
+                blogic-property="shinseiStartDate" dest="form" />
+                <set-property property="shinseiEndDate"
+                blogic-property="shinseiEndDate" dest="form" />
+            <set-property property="apply_no"
+                blogic-property="apply_no" dest="form" />
+            <set-property property="userId1"
+                blogic-property="userId" dest="form" />
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="setsubiShinsaList"
+                blogic-property="setsubiShinsaList" dest="form" />
+            <set-property property="CF" blogic-property="CF"
+                dest="form" />
+            <set-property property="startIndex" blogic-property="startIndex"
+                dest="form" />
+            <set-property property="qwerr" blogic-property="qwerr"
+                dest="form" />
+            <set-property property="userId"
+                blogic-property="shenqingId" dest="form" />
+            <set-property property="mark" blogic-property="mark"
+                dest="form" />
+            <set-property property="deleteId_card" blogic-property="deleteId_card"
+                dest="form" />
+        </blogic-result>
+    </action>
+    <action path="/JNTCIEquip04BLdelete">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquip04Input">
+            <set-property property="userId"
+                blogic-property="shenqingId" source="session" />
+            <set-property property="userId1"
+                blogic-property="userId" source="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" source="form" />
+            <set-property property="shinsaJyoutai"
+                blogic-property="shinsaJyoutai" source="form" />
+            <set-property property="shinseiStartDate"
+                blogic-property="shinseiStartDate" source="form" />
+            <set-property property="shinseiEndDate"
+                blogic-property="shinseiEndDate" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="qwerr" blogic-property="qwerr"
+                source="form" />
+            <set-property property="apply_no"
+                blogic-property="apply_no" source="form" />
+            <set-property property="shinseiJyoutai"
+                blogic-property="shinseiJyoutai" source="form" />
+            <set-property property="shinsasyurui"
+                blogic-property="shinsasyurui" source="form" />
+            <set-property property="deleteId_card"
+                blogic-property="deleteId_card" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="shinsaJyoutai"
+                blogic-property="shinsaJyoutai" dest="form" />
+                 <set-property property="shinseiDate"
+                blogic-property="shinseiDate" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+                <set-property property="shinseiStartDate"
+                blogic-property="shinseiStartDate" dest="form" />
+                <set-property property="shinseiEndDate"
+                blogic-property="shinseiEndDate" dest="form" />
+            <set-property property="apply_no"
+                blogic-property="apply_no" dest="form" />
+            <set-property property="userId1"
+                blogic-property="userId" dest="form" />
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="setsubiShinsaList"
+                blogic-property="setsubiShinsaList" dest="form" />
+            <set-property property="CF" blogic-property="CF"
+                dest="form" />
+            <set-property property="startIndex" blogic-property="startIndex"
+                dest="form" />
+            <set-property property="qwerr" blogic-property="qwerr"
+                dest="form" />
+            <set-property property="userId"
+                blogic-property="shenqingId" dest="form" />
+            <set-property property="mark" blogic-property="mark"
+                dest="form" />
+            <set-property property="deleteId_card" blogic-property="deleteId_card"
+                dest="form" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

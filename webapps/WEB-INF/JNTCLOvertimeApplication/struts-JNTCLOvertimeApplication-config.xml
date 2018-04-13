@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<form-beans>
+
+		<form-bean name="_JNTCLOvertimeApplicationForm"
+			type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCLOvertimeApplicationForm" />
+
+	</form-beans>
+
+	<!-- ======================================== アクションマッピング定義 -->
+	<action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+		<action path="/JNTCLOvertimeApplicationSCR" scope="request"
+			name="_JNTCLOvertimeApplicationForm" validate="false"
+			parameter="/JNTCIOvertimeApplication/JNTCIOvertimeApplication.jsp">
+			<forward name="success" path="/LeaveSelect2.do" />
+		</action>
+
+		<action path="/LeaveSelect2" scope="request"
+			name="_JNTCLOvertimeApplicationForm" validate="false"
+			parameter="/JNTCIOvertimeApplication/JNTCIOvertimeApplication.jsp">
+			<forward name="success"
+				path="/JNTCIOvertimeApplication/JNTCIOvertimeApplication.jsp" />
+		</action>
+
+		<action path="/JNTCLOvertimeApplicationSCR00Insert" name="_JNTCLOvertimeApplicationForm"
+			scope="request" validate="true"
+			input="/JNTCLOvertimeApplicationSCR.do">
+			<forward name="success" path="/JNTCLOvertimeApplicationSCR.do" />
+		</action>
+
+		<action path="/JNTCIOvertimeApplicationDelete" name="_JNTCLOvertimeApplicationForm"
+			scope="request">
+			<forward name="success" path="/JNTCLOvertimeApplicationSCR.do" />
+		</action>
+		<action path="/selectExtrabyextraid" name="_JNTCLOvertimeApplicationForm"
+			scope="request" validate="true">
+			<forward name="success"
+				path="/JNTCIOvertimeApplication/JNTCIOverTimeUpdate.jsp" />
+		</action>
+		<action path="/JNTCIextraByIdUpdate" name="_JNTCLOvertimeApplicationForm"
+			scope="request" validate="true" input="/selectExtrabyextraid.do">
+			<forward name="save" path="/JNTCISaveOverTimeBL.do" />
+			<forward name="list" path="/JNTCLOvertimeApplicationSCR.do" />
+		</action>
+
+		<action path="/JNTCISaveOverTimeBL"
+            name="_JNTCLOvertimeApplicationForm" scope="request"
+            validate="true" input="/JNTCIextraByIdUpdate.do">
+    		<forward name="success" path="/JNTCLOvertimeApplicationSCR.do" />
+    		<forward name="success1" path="/selectExtrabyextraid.do" />
+
+    	</action>
+
+		<action path="/LeaveAppction" name="_JNTCLOvertimeApplicationForm"
+			scope="request" validate="false">
+			<forward name="success" path="/JNTCLOvertimeApplicationSCR.do" />
+		</action>
+	</action-mappings>
+
+
+
+</struts-config>

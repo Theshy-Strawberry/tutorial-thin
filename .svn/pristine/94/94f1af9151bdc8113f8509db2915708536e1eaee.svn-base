@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+
+    <formset>
+
+    	<form name="/JNTCIEquip03BL">
+        <field property="cardnumber"
+            depends="required,numericString,minlength,maxlength">
+          <arg key="errors.numericString"  position="0"/>
+           <arg key="${var:minlength}"  resource="false" position="0"/>
+          <arg key="${var:maxlength}" resource="false" position="0"/>
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>4</var-value>
+          </var>
+            <var>
+            <var-name>minlength</var-name>
+            <var-value>4</var-value>
+          </var>
+
+        </field>
+		</form>
+		<form name="/JNTCIEquip0302BL">
+		<!-- 設備番号 -->
+        <field property="apply_setsubi_no"
+            depends="required">
+          <arg key="JNTCIEquipInsert.setsubi_no" position="0"/>
+        </field>
+                <!-- 出入庫番号 -->
+               <field property="stockNo"
+            depends="required,maxlength,numericString">
+          <arg key="JNTCIEquip02.stockNo"  position="0"/>
+          <arg key="${var:maxlength}" resource="false" name="maxlength" position="0"/>
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>6</var-value>
+          </var>
+        </field>
+        <!-- 审查理由 -->
+         <field property="investigate_reason"
+            depends="required,maxlength">
+          <arg key="JNTCIEquip02.investigate_reason"  position="0"/>
+          <arg key="${var:maxlength}" resource="false" name="maxlength" position="0"/>
+          <var>
+            <var-name>maxlength</var-name>
+            <var-value>16</var-value>
+          </var>
+        </field>
+		</form>
+	</formset>
+
+</form-validation>

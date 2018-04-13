@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+<!-- ログオン業務のBean定義 -->
+
+  <aop:config>
+    <aop:pointcut id="sampleBeans"  expression="bean(*BLogic2)"/>
+    <aop:advisor
+         pointcut-ref="sampleBeans"
+         advice-ref="transactionInterceptor"/>
+  </aop:config>
+
+  <!-- アクション 定義-->
+  <!-- ログオン画面表示用アクション 定義-->
+<!--    <bean name="/JNTCIEquipHomePage04SCR" scope="singleton"
+              class="jp.terasoluna.fw.web.struts.actions.ForwardAction"/> -->
+
+
+      <!-- ログオン処理用アクション 定義-->
+  <bean name="/JNTCIEquipHomePage04BL" scope="singleton"
+           class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+          <property name="businessLogic" ref="JNTCIEquipHomePage04BLogic" />
+    </bean>
+
+    <bean id="JNTCIEquipHomePage04BLogic" scope="singleton"
+              class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipHomePage04BLogic">
+              <property name="queryDAO" ref="queryDAO"/>
+        </bean>
+        <!-- 可添加评论 -->
+	<bean name="/JNTCIEquipHomePage04ComBL" scope="singleton"
+           class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+          <property name="businessLogic" ref="JNTCIEquipHomePage04ComBLogic" />
+    </bean>
+
+    <bean id="JNTCIEquipHomePage04ComBLogic" scope="singleton"
+              class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipHomePage04ComBLogic">
+              <property name="queryDAO" ref="queryDAO"/>
+              <property name="updateDAO" ref="updateDAO"/>
+     </bean>
+     <!-- 删除评论 -->
+	<bean name="/JNTCIEquipHomePage04ComDelBL" scope="singleton"
+           class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+          <property name="businessLogic" ref="JNTCIEquipHomePage04ComDelBLogic" />
+    </bean>
+
+    <bean id="JNTCIEquipHomePage04ComDelBLogic" scope="singleton"
+              class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipHomePage04ComDelBLogic">
+              <property name="queryDAO" ref="queryDAO"/>
+              <property name="updateDAO" ref="updateDAO"/>
+     </bean>
+        <bean name="/JNTCIEquipHomePage04DE" scope="singleton"
+     	   class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+     	   <property name="businessLogic" ref="JNTCIEquipHomePage04DEBLogic"/>
+     </bean>
+     <bean id="JNTCIEquipHomePage04DEBLogic" scope="singleton"
+     	   class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipHomePage04DEBLogic">
+     	   <property name="queryDAO" ref="queryDAO"/>
+           <property name="updateDAO" ref="updateDAO"/>
+     </bean>
+
+</beans>

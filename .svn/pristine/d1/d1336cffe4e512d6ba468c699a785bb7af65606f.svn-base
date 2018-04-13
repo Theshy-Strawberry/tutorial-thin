@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+<form-beans>
+ 	<form-bean name="_JNTCIEquip02Form" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquip02Form" />
+ 	<form-bean name="_getNameForm" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquip02getNameForm" />
+  </form-beans>
+
+
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+  	<action path="/JNTCIEquipapply02BL" name="_JNTCIEquip02Form"
+			scope="request" >
+			<forward name="success" path="/JNTCIEquip02SCR2.do" />
+			<forward name="failure" path="/JNTCIEquip02SCR2.do" />
+		</action>
+		<action path="/JNTCIEquip02SCR2" name="_JNTCIEquip02Form"
+			scope="request" >
+			<forward name="success" path="/JNTCIEquip02SCR.do" />
+			<forward name="failure" path="/JNTCIEquip02SCR.do" />
+		</action>
+	<action path="/JNTCIEquip02SCRBL"
+	name="_JNTCIEquip02Form"
+    scope="request">
+    <forward name="success" path="/JNTCIEquip02SCR.do"></forward>
+    </action>
+	<action path="/JNTCIEquip02BL"
+    name="_JNTCIEquip02Form"
+    scope="request"
+    validate="true"
+     input="/JNTCIEquip02SCRBL.do"
+   >
+    <forward name="success" path="/JNTCIEquip/JNTCIEquip02.jsp"></forward>
+    <forward name="failure" path="/JNTCIEquip/JNTCIEquip02.jsp" />
+    </action>
+    <action path="/JNTCIEquip02SCR"
+    name="_JNTCIEquip02Form"
+    scope="request"
+    parameter="/JNTCIEquip/JNTCIEquip02.jsp" />
+  </action-mappings>
+</struts-config>

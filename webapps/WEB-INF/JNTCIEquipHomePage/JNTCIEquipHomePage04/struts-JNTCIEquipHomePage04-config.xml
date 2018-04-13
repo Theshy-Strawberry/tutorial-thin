@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+
+  <!-- ======================================== フォームビーン定義 -->
+ <form-beans>
+   <form-bean name="_JNTCIEquipHomePageForm"
+              type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquipHomePageForm"/>
+  <form-bean name="_JNTCIEquipHomePage04Form"
+              type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquipHomePage04Form"/>
+
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+ <!--  ログオン処理用アクション-->
+
+ <action path="/JNTCIEquipHomePage04BL"
+            name="_JNTCIEquipHomePage04Form" scope="request"
+            validate="false" >
+          <forward name="success" path="/JNTCIHomePage/JNTCIEquipHomePage04.jsp"/>
+          <forward name="failure" path="/JNTCIEquipHomePage03BL.do" />
+    </action>
+     <action path="/JNTCIEquipHomePage04ComBL"
+            name="_JNTCIEquipHomePage04Form" scope="request"
+            validate="true"  input ="/JNTCIEquipHomePage04BL.do" >
+          <forward name="success" path="/JNTCIEquipHomePage04BL.do"/>
+    </action>
+     <action path="/JNTCIEquipHomePage04ComDelBL"
+            name="_JNTCIEquipHomePage04Form" scope="request"
+            validate="false" >
+          <forward name="delete" path="/JNTCIEquipHomePage04BL.do"/>
+    </action>
+       <!--info削除-->
+    <action path="/JNTCIEquipHomePage04DE"
+    		name="_JNTCIEquipHomePage04Form" scope="request">
+    		<forward name="success" path="/JNTCIEquipHomePage03BL.do"></forward>
+    </action>
+  </action-mappings>
+</struts-config>

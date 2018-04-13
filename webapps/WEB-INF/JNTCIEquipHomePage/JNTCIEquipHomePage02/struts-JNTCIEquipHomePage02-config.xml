@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+	<struts-config>
+	<!-- ======================================== フォームビーン定義 -->
+
+	<form-beans>
+			<!--  HomePageForm-->
+			<form-bean name="_JNTCIHomePage02Form"
+			type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIHomePage02Form" />
+
+	</form-beans>
+
+	<!-- ======================================== アクションマッピング定義 -->
+	<action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+	<!-- JNTCIHomePage02BL 页面跳转(公告链接部分)=================================== -->
+<!-- 20160902 Start -->
+			<action path="/JNTCIHomePage02BL" name="_JNTCIHomePage02Form" scope="request">
+			<forward name="success" path="/JNTCIHomePage/JNTCIEquipHomePage02.jsp"/>
+			<forward name="failure" path="//JNTCIEquipHomePageBL.do" />
+			</action>
+<!-- 20160902 End -->
+
+
+	<!-- JNTCIHomePageUpdate02BL(改修页面)=================================== -->
+<!-- 20160907  Start -->
+			<action path="/JNTCIHomePageUpdate02BL" name="_JNTCIHomePage02Form"
+					scope="request"  validate="true" input="/JNTCIHomePage02BL.do">
+				<forward name="success2" path="/JNTCIHomePage/JNTCIEquipHomePage02.jsp" />
+				<forward name="failure" path="/JNTCIEquipHomePageBL.do" />
+			</action>
+
+			<!-- 20160907  End -->
+
+
+	<!-- /JNTCIHomePageDelete02BL(删除)=================================== -->
+<!-- 20160908  Start -->
+			<action path="/JNTCIHomePageDelete02BL" name="_JNTCIHomePage02Form" scope="request">
+				<forward name="success2" path="/JNTCIEquipHomePageBL.do" />
+				<forward name="fail" path="/JNTCIEquipHomePageBL.do" />
+			</action>
+			<action path="/JNTCIEquipHomePageBL" name="_JNTCIEquipHomePageForm" scope="request">
+			<forward name="success" path="/JNTCIHomePage/JNTCIEquipHomePage01.jsp"></forward>
+		</action>
+<!-- 20160908  End -->
+
+<!-- 20160909 Download  Start -->
+			<action path="/NoticeFileDown" name="_JNTCIEquipHomePageForm"
+			scope="request">
+			<forward name="null" path="/JNTCIHomePage02BL.do"></forward>
+			<forward name="fail" path="/JNTCIEquipHomePageBL.do"></forward>
+			</action>
+<!-- 20160909 Download End -->
+
+	</action-mappings>
+</struts-config>

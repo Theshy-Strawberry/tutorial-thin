@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- ユーザ管理業務のBean定義 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+<!-- ログオン業務のBean定義 -->
+   <aop:config>
+    <aop:pointcut id="sampleBeans" expression="bean(*BLogic2)"/>
+    <aop:advisor
+         pointcut-ref="sampleBeans"
+         advice-ref="transactionInterceptor"/>
+
+  </aop:config>
+
+       <bean name="/JNTCIQueryListDSP" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.DispatchAction" />
+    	<!-- ye mian  tiao  zhuan  -->
+
+    	   <bean name="/JNTCIquerySRC" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+    	<property name="businessLogic" ref="firstBLogic" /></bean>
+    	<bean id="firstBLogic" scope="singleton"
+	  class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIQuerycount">
+		<property name="queryDAO" ref ="queryDAO" />
+	</bean>
+
+    	 <bean name="/personalcounttwo" scope="singleton"
+    	class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+    	<property name="businessLogic" ref="jianfaBLogic" />
+    	</bean>
+         <bean name="/month1" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+        <property name="businessLogic" ref="QueryDetail" />
+        </bean>
+    	<bean id="jianfaBLogic" scope="singleton"
+	  class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIQuerycount">
+		<property name="queryDAO" ref ="queryDAO" />
+	</bean>
+        <bean id="QueryDetail" scope="singleton"
+      class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIQueryDetailBLogic">
+      <property name="queryDAO" ref ="queryDAO" />
+    </bean>
+
+
+	<bean name="/JNTCIQueryBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIQueryBLogic" />
+	</bean>
+
+	<bean id="JNTCIQueryBLogic" scope="singleton"
+	  class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCInewQueryBlogic">
+		<property name="queryDAO" ref ="queryDAO" />
+		<property name="updateDAO" ref ="updateDAO" />
+	</bean>
+
+	<!--   Query Two -->
+	<bean name="/JNTCIQuerTwoBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+
+		<property name="businessLogic" ref="JNTCIQueryTwoBLogic" />
+	</bean>
+	<bean id="JNTCIQueryTwoBLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIQueryTwoBLogic">
+		<property name="queryDAO" ref ="queryDAO" />
+	</bean>
+	<!-- Query ThreeYC -->
+	<bean name="/JNTCIQuerThreeYCBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+			<property name="businessLogic" ref="JNTCIQueryThreeYCBLogic"></property>
+	</bean>
+	<bean id="JNTCIQueryThreeYCBLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIQuerychaxunBlogic">
+		<property name="queryDAO" ref ="queryDAO" />
+		<property name="updateDAO" ref ="updateDAO" />
+	</bean>
+
+<bean name="/uploadServlet" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+			<property name="businessLogic" ref="JNTCIimportdataBLogic"></property>
+	</bean>
+	<bean id="JNTCIimportdataBLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIimportdataBlogic">
+		<property name="queryDAO" ref ="queryDAO" />
+		<property name="updateDAO" ref ="updateDAO" />
+	</bean>
+
+
+<bean name="/QueryCardDate" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+			<property name="businessLogic" ref="QueryCardDateBLogic"></property>
+	</bean>
+	<bean id="QueryCardDateBLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCICardDataQueryBlogic">
+		<property name="queryDAO" ref ="queryDAO" />
+		<property name="updateDAO" ref ="updateDAO" />
+	</bean>
+
+	<bean name ="/downloadTransfeServlet" scope ="singleton"
+		class ="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name ="businessLogic" ref ="/downloadTransfeServletBLogic" />
+	</bean>
+	<bean name ="/downloadTransfeServletBLogic" scope="singleton"
+		class ="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIQuerycount">
+		<property name="queryDAO" ref="queryDAO" />
+	</bean>
+
+	<bean name="/downloadServlet" scope="singleton"
+			class="jp.terasoluna.fw.web.struts.actions.DownloadBLogicAction" >
+          <property name="businessLogic" ref="attenceDownloadBLogic" />
+  </bean>
+
+  <bean id="attenceDownloadBLogic"  scope="singleton"
+  			class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendanceDownloadBlogic" >
+           <property name="queryDAO" ref="queryDAO" />
+           <property name="updateDAO" ref ="updateDAO" />
+   </bean>
+   <bean name="/into2" scope="singleton"
+			class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+          <property name="businessLogic" ref="into2date" />
+  </bean>
+
+  <bean id="into2date"  scope="singleton"
+  			class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCISeek_QueryDetailBlogic" >
+   </bean>
+</beans>

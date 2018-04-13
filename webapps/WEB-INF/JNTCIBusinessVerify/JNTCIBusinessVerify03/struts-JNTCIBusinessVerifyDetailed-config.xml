@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+<!-- ======================================== フォームビーン定義 -->
+  <form-beans>
+    <!-- ログオン用アクションフォーム -->
+    <form-bean name="_JNTCIBusinessVerifyDetailedForm" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIBusinessVerifyDetailedForm" />
+
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+    <action path="/JNTCIBusinessVerifyDetailedBL" name="_JNTCIBusinessVerifyDetailedForm" scope="request"
+            validate="true" >
+          <forward name="success" path="/JNTCIBusinessVerify/JNTCIBusinessVerifyDetailed.jsp"/>
+          <forward name="success1" path="/JNTCIBusinessVerify01BL003.do" />
+    </action>
+
+
+    <action path="/JNTCIBusinessVerifyBL" name="_JNTCIBusinessVerifyDetailedForm" scope="request">
+            <forward name="update" path="/JNTCIBusinessVerifyUpdateBL.do" />
+            <forward name="download" path="/JNTCIBusinessVerifydownloadBL.do" />
+            <forward name="list" path="/JNTCIBusinessVerifyDetailedBL.do" />
+    </action>
+
+    <!-- <action path="/JNTCIBusinessVerifyDetailedBLReset"
+           name="_JNTCIBusinessVerifyDetailedForm" scope="request">
+           <forward name="success1" path="/JNTCIBusinessVerify01BL003.do" />
+    </action> -->
+
+   <action path="/JNTCIBusinessVerify01BL003"
+ 	            name="_JNTCIBusinessVerifyDetailedForm" scope="request">
+ 	<forward name="success" path="/JNTCIBusinessVerify01BL002.do" />
+ 	</action>
+  </action-mappings>
+</struts-config>

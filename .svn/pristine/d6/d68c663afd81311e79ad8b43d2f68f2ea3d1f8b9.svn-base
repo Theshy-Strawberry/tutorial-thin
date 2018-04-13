@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+	<!-- AOPの定義 -->
+	<!-- 下記で指定したパターンのBeanに対してインタセプタを適用する。 applicationContext.xmlで定義されたBeanのみ対象となるので注意すること。 -->
+	<aop:config>
+		<aop:pointcut id="sampleBeans" expression="bean(*BLogic2)" />
+
+		<aop:advisor pointcut-ref="sampleBeans" advice-ref="transactionInterceptor" />
+
+	</aop:config>
+
+	<!-- アクション定義 -->
+	<!-- homeBlogic============================================ -->
+
+	<bean name="/JNTCIEquipHomePage03BL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIEquipHomePage03Blogic" />
+	</bean>
+
+
+	<bean id="JNTCIEquipHomePage03Blogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipHomePage03BLogic">
+		<property name="queryDAO" ref="queryDAO" />
+	</bean>
+	<!-- PostMessageBlogic===================================== -->
+	<!-- <bean name="/JNTCIEquipPostMessageBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIEquipPostMessageBlogic" />
+	</bean>
+
+	<bean id="JNTCIEquipPostMessageBlogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipPostMessageBLogic">
+		<property name="queryDAO" ref="queryDAO" />
+		<property name="updateDAO" ref="updateDAO" />
+	</bean>
+	/JNTCIEquipPostMessage02BL
+	<bean name="/JNTCIEquipPostMessage02BL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIEquipPostMessage02Blogic" />
+	</bean>
+
+	<bean id="JNTCIEquipPostMessage02Blogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipPostMessage02BLogic">
+		<property name="queryDAO" ref="queryDAO" />
+		<property name="updateDAO" ref="updateDAO" />
+	</bean> -->
+</beans>
+

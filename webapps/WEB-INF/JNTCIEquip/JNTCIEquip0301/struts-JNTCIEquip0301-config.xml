@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+
+  <!-- ======================================== フォームビーン定義 -->
+ <form-beans>
+   <form-bean name="_JNTCIEquip03Form"
+              type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquip03Form"/>
+  <form-bean name="_JNTCIEquip03ListForm"
+              type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquip03ListForm"/>
+
+  </form-beans>
+
+
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+ <!--  ログオン処理用アクション-->
+     <action path="/JNTCIEquip03BL"
+            name="_JNTCIEquip03Form" scope="request"
+           >
+			<forward name="success" path="/JNTCIEquip/JNTCIEquip03.jsp"/>
+    </action>
+ <action path="/JNTCIEquip0301BL"
+            name="_JNTCIEquip03ListForm" scope="request"
+            validate="false" >
+          <forward name="shenqing" path="/JNTCIEquip/JNTCIEquip0301.jsp"/>
+          <forward name="xiuli" path="/JNTCIEquip/JNTCIEquip0303.jsp"/>
+          <forward name="fanhuan" path="/JNTCIEquip/JNTCIEquip0302.jsp"/>
+          <forward name="gouru" path="/JNTCIEquip/JNTCIEquip0304.jsp"/>
+    </action>
+    <action path="/JNTCIEquip0307BL"
+            name="_JNTCIEquip03ListForm" scope="request"
+            validate="false" >
+          <forward name="success" path="/JNTCIEquip/JNTCIEquip0304.jsp"/>
+    </action>
+
+<action path="/JNTCIEquip0302BL"
+            name="_JNTCIEquip03ListForm" scope="request"
+            validate="false"
+            input="/JNTCIEquip0301BL.do">
+          <forward name="success" path="/JNTCIEquip0301BL.do"/>
+          <forward name="back" path="/JNTCIEquip04BL.do"/>
+          <forward name="cuowu" path="/error.jsp"/>
+    </action>
+    <action path="/JNTCIEquip0308BL"
+            name="_JNTCIEquip03ListForm" scope="request"
+            validate="true"
+            input="/JNTCIEquip/JNTCIEquip0304.jsp">
+          <forward name="success" path="/JNTCIEquipListBL.do"/>
+          <forward name="back" path="/JNTCIEquip04BL.do"/>
+          <forward name="cuowu" path="/error.jsp"/>
+    </action>
+<action path="/JNTCIEquip0303BL"
+            name="_JNTCIEquip03ListForm" scope="request"
+            validate="false" >
+          <forward name="success" path="/JNTCIEquip/JNTCIEquip0303.jsp"/>
+           <forward name="back" path="/JNTCIEquip04BL.do"/>
+    </action>
+ <!--新加-->
+    <action path="/JNTCIEquip0306BL"
+            name="_JNTCIEquip03ListForm" scope="request"
+            validate="false" >
+          <forward name="success" path="/JNTCIEquip/JNTCIEquip0302.jsp"/>
+    </action>
+<action path="/JNTCIEquip0304BL"
+            name="_JNTCIEquip03ListForm" scope="request"
+            validate="false">
+          <forward name="success" path="/JNTCIEquip04BL.do" />
+          <forward name="continue" path="/JNTCIEquip04BL.do" />
+          <forward name="cuowu" path="/error.jsp"/>
+           <forward name="back" path="/JNTCIEquip04BL.do"/>
+    </action>
+    <!--新加-->
+<action path="/JNTCIEquip0305BL"
+            name="_JNTCIEquip03ListForm" scope="request"
+            validate="false">
+          <forward name="success" path="/JNTCIEquip04BL.do" />
+          <forward name="continue" path="/JNTCIEquip04BL.do" />
+          <forward name="cuowu" path="/error.jsp"/>
+           <forward name="back" path="/JNTCIEquip04BL.do"/>
+    </action>
+
+
+  </action-mappings>
+
+
+</struts-config>

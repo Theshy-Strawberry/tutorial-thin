@@ -1,0 +1,187 @@
+@charset "utf-8";
+/* CSS Document */
+
+.leftDiv{
+	width:55%;
+	/* background: #f7f7f7; */
+	/* padding: 30px 40px 200px 40px; */
+	background-color: #fff;
+	padding: 30px 20px;
+	border-radius: 8px;
+	box-shadow: 2px 2px 8px #C04F4D;
+}
+.leftDiv:hover{
+box-shadow: 2px 2px 15px #C04F4D;
+}
+.main-box{
+	 background: #fff;
+	 padding: 30px 40px 150px 40px;
+}
+.leftDiv ul li{
+	list-style:none;
+	padding:1em 0 0;
+}
+.homepageDiv{
+	width:55%;
+	background-color: #fff;
+	padding: 30px 20px;
+	border-radius: 8px;
+	box-shadow: 2px 2px 8px #C04F4D;
+}
+.homepageDiv:hover{
+	box-shadow: 2px 2px 15px #C04F4D;
+}
+.homepageDiv ul li{
+	list-style:none;
+}
+ /* .homepageDiv ul li:hover{
+	background:#E4F0DF;
+	background: rgb(52, 153, 218);
+color: #fff;
+background-image: url(../images/menu-bg.png);
+opacity:0.9;
+} */
+ /*  .homepageDiv ul li:hover{
+ border:1px solid rgb(52, 153, 218);
+ } */
+
+/*发帖form*/
+.form-box{
+	margin-top: 4em;
+	padding: 20px;
+	background: #FFFFEE;
+	color: #454545;
+}
+.form-box input[type='text'],
+.form-box select,
+.form-box textarea{
+	padding: 5px;
+	border-color:#ABABAB;
+	box-shadow: 2px 2px 3px #EDEDED inset;
+	border-radius: 3px;
+	width:320px;
+}
+
+.form-box textarea{
+	width:75%;
+	height:200px;
+	padding:0.5em;
+
+}
+.form-box select{
+	border: solid 1px #ABABAB;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background: url(../images/arrow.png) no-repeat scroll right center transparent;
+	padding-right: 14px !important;
+}
+form > ul li:nth-child(3) span{
+	vertical-align: top;
+}
+
+.leftDiv ul li span{
+	display:inline-block;
+	width:100px;
+	text-align:right;
+	padding-right:8px;
+}
+
+.rightDiv{
+	width:24%;
+	/*background:#DEEBF7;*/
+	/*border-radius:1em;*/
+	/*padding:1em;*/
+	margin-left:3%;
+	position:relative;
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+	background: #fff
+}
+.rightDiv:hover{
+	box-shadow: 0 8px 15px 0 rgba(0,0,0,0.15);
+}
+.rightDiv p{
+	border:1px solid;
+	width:100%;
+	height:40%;
+}
+.rightDiv ul a{
+	text-decoration: none;
+	color: #3499DA;
+}
+.rightDiv ul a:hover{
+	/* text-decoration:underline; */
+	color:#f66;
+
+}
+.rightDiv > ul{
+	padding-left:1em;
+	max-height:217px;
+	overflow:hidden;
+
+}
+.rightDiv > ul li{
+	padding:5px 0;
+
+}
+/*  弹框样式  */
+.white_content{
+	display: none;
+	position: absolute;
+	top: 25%;
+	left:30%;
+	width: 650px;
+	padding: 20px;
+	border: 1px solid #0A8CE0;
+	background-color:#E8E8FF;
+	z-index: 1002;
+	overflow: auto;
+}
+.black_overlay{
+	display: none;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height:100%;
+	background-color:#680202;
+	z-index: 1001;
+	opacity: 0.3;
+	position: absolute;
+}
+.white_content a{
+	background-color: #E50A0A;
+	display: inline-block;
+	padding:3px;
+	float:right;
+}
+.white_content a:link{color:#fff}
+.N_Fram textarea{
+	vertical-align:middle;
+	width:350px;
+	height:100px;
+	resize:none;
+}
+.N_Fram input[type="text"]{
+	width:200px;
+}
+.N_Fram textarea,
+.N_Fram input[type="text"]{
+	background-color:#E8E8FF;
+}
+
+.N_Fram{
+	width:80%;
+	margin:40px auto;
+}
+.N_Fram li{
+	margin-bottom:15px;
+}
+.N_Fram span{
+	display:inline-block;
+	width:80px;
+	vertical-align:top;
+}
+.N_Fram_ul span{
+	width:110px;
+	text-align: center;
+}

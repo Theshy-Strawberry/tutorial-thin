@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/JNTCIEquip02BL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquip02Input">
+            <set-property property="id" blogic-property="id"
+                source="form" />
+            <set-property property="name" blogic-property="name"
+                source="form" />
+            <set-property property="dept" blogic-property="dept"
+                source="form" />
+            <set-property property="equipType"
+                blogic-property="equipType" source="form" />
+            <set-property property="equip" blogic-property="equip"
+                source="form" />
+            <set-property property="code" blogic-property="code"
+                source="form" />
+            <set-property property="reason"
+                blogic-property="reason" source="form" />
+            <set-property property="time1" blogic-property="time1"
+                source="form" />
+            <set-property property="yichang"
+                blogic-property="yichang" source="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" source="form" />
+            <set-property property="equipList"
+                blogic-property="equipList" source="form" />
+            <set-property property="mailperson"
+                blogic-property="mailperson" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="time1" blogic-property="time1"
+                dest="form" />
+            <set-property property="equip" blogic-property="equip"
+                dest="form" />
+            <set-property property="equipList"
+                blogic-property="equipList" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+            <set-property property="reason"
+                blogic-property="reason" dest="form" />
+            <set-property property="equipTypeList"
+                blogic-property="equipTypeList" dest="form" />
+                <set-property property="nil" blogic-property="nil"
+                dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIEquipapply02BL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquip02Input">
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="userName"
+                blogic-property="userName" source="session" />
+            <set-property property="id" blogic-property="id"
+                source="form" />
+            <set-property property="name" blogic-property="name"
+                source="form" />
+            <set-property property="dept" blogic-property="dept"
+                source="form" />
+            <set-property property="equipType"
+                blogic-property="equipType" source="form" />
+            <set-property property="equip" blogic-property="equip"
+                source="form" />
+            <set-property property="code" blogic-property="code"
+                source="form" />
+            <set-property property="reason"
+                blogic-property="reason" source="form" />
+            <set-property property="time1" blogic-property="time1"
+                source="form" />
+            <set-property property="yichang"
+                blogic-property="yichang" source="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" source="session" />
+            <set-property property="equipList"
+                blogic-property="equipList" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="time1" blogic-property="time1"
+                dest="form" />
+            <set-property property="equip" blogic-property="equip"
+                dest="form" />
+            <set-property property="equipList"
+                blogic-property="equipList" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+            <set-property property="reason"
+                blogic-property="reason" dest="form" />
+            <set-property property="equipList"
+                blogic-property="equipList" dest="form" />
+            <set-property property="nil" blogic-property="nil"
+                dest="form" />
+        </blogic-result>
+    </action>
+</blogic-io>

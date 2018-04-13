@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+    <!-- ======================================== フォームビーン定義 -->
+    <form-beans>
+
+        <!-- ログオン用アクションフォーム -->
+        <form-bean name="_loginForm"
+            type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCILoginForm" />
+
+    </form-beans>
+
+    <!-- ======================================== アクションマッピング定義 -->
+
+    <!-- ====================================登録============================================== -->
+    <action-mappings
+        type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+        <!-- ログオン画面表示用アクション -->
+        <action path="/loginBL" name="_loginForm" scope="request"
+            validate="true" input="/logoff.do">
+            <forward name="success" path="/JNTCIEquip/menuSCR.do" />
+            <forward name="failure" path="/logoff.do" />
+        </action>
+
+        <action path="/logoff" name="_loginForm" scope="request"
+            parameter="/index.jsp" />
+        <!-- 改正 始め -->
+        <action path="/JNTCIEquip/menuSCR" name="_loginForm"
+            scope="request" parameter="/JNTCIEquipHomePageBL.do" />
+
+        <action path="/JNTCIEquipHomePageBL" name="_loginForm"
+            scope="request">
+            <forward name="success"
+                path="/JNTCIHomePage/JNTCIEquipHomePage01.jsp"></forward>
+        </action>
+        <!-- 終瞭 -->
+        <action path="/loginGetPassWord" name="_loginForm" scope="request"
+            validate="true" input="/logoff.do">
+            <forward name="success" path="/index.jsp" />
+            <forward name="failure" path="/logoff.do" />
+        </action>
+
+        <!-- ====================================パスワードの頁============================================== -->
+        <action path="/resetSCR" name="_loginForm" scope="request"
+            parameter="/JNTCIEquip/reset.jsp" />
+
+        <!-- ====================================パスワードの修正============================================== -->
+        <action path="/resetBL" name="_loginForm" scope="request"
+            validate="true" input="/resetSCR.do">
+            <forward name="success" path="/JNTCIEquip/resetDSP.do" />
+            <forward name="failure" path="/JNTCIEquip/resetDSP.do" />
+        </action>
+
+        <action path="/JNTCIEquip/resetDSP" name="_loginForm"
+            scope="request" parameter="/JNTCIEquip/reset.jsp" />
+
+    </action-mappings>
+
+</struts-config>

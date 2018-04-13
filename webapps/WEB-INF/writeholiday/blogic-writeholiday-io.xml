@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- 定义业务逻辑的输入输出。<blogic-params>定义的是输入的东西，其中的source="form"表示是从form取值，source="session"
+    表示的是从session取值； <blogic-result>定义的是输出的东西，其中dest="form"表示把值放到form里，dest="session"表示把值放到session里 -->
+<blogic-io>
+
+    <action path="/writeholidayBL1">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.Winput">
+            <set-property property="name2" blogic-property="name2"
+                source="form" />
+            <set-property property="startyear"
+                blogic-property="startyear" source="form" />
+            <set-property property="endyear"
+                blogic-property="endyear" source="form" />
+            <set-property property="holidayid"
+                blogic-property="holidayid" source="form" />
+            <set-property property="updatetime"
+                blogic-property="updatetime" source="form" />
+            <set-property property="xDay" blogic-property="xDay"
+                source="form" />
+        </blogic-params>
+        <blogic-result>
+        <set-property property="name2" blogic-property="name2"
+                dest="form" />
+             <set-property property="startyear"
+                blogic-property="startyear" dest="form" />
+            <set-property property="endyear"
+                blogic-property="endyear" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/writeholidayBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.Winput">
+            <set-property property="name2" blogic-property="name2"
+                source="form" />
+            <set-property property="startyear"
+                blogic-property="startyear" source="form" />
+            <set-property property="endyear"
+                blogic-property="endyear" source="form" />
+            <set-property property="name" blogic-property="name"
+                source="form" />
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="name1" blogic-property="name1"
+                source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="holidaylist1"
+                blogic-property="holidaylist1" dest="form" />
+            <set-property property="holidaylist"
+                blogic-property="holidaylist" dest="form" />
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="name1" blogic-property="name1"
+                dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="name2" blogic-property="name2"
+                dest="form" />
+            <set-property property="startyear"
+                blogic-property="startyear" dest="form" />
+            <set-property property="endyear"
+                blogic-property="endyear" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/holiday">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.Winput">
+            <set-property property="holidayid"
+                blogic-property="holidayid" source="form" />
+            <set-property property="flag" blogic-property="flag"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="name1" blogic-property="name1"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="name" blogic-property="name"
+                dest="form" />
+            <set-property property="startholidaydate"
+                blogic-property="startholidaydate" dest="form" />
+            <set-property property="endholidaydate"
+                blogic-property="endholidaydate" dest="form" />
+            <set-property property="holidaytimelist"
+                blogic-property="holidaytimelist" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="name1" blogic-property="name1"
+                dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCISaveHolidayBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.Winput">
+            <set-property property="holidayid"
+                blogic-property="holidayid" source="form" />
+            <set-property property="name" blogic-property="name"
+                source="form" />
+            <set-property property="startholidaydate"
+                blogic-property="startholidaydate" source="form" />
+            <set-property property="endholidaydate"
+                blogic-property="endholidaydate" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="name1" blogic-property="name1"
+                source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="name1" blogic-property="name1"
+                dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/selectwriteholidayBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.Winput">
+            <set-property property="name1" blogic-property="name1"
+                source="form" />
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="holidaylist"
+                blogic-property="holidaylist" dest="form" />
+            <set-property property="holidaylist1"
+                blogic-property="holidaylist1" dest="form" />
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="name1" blogic-property="name1"
+                dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/deleteholidatytime">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.Winput">
+            <set-property property="holidayid"
+                blogic-property="holidayid" source="form" />
+            <set-property property="xDay" blogic-property="xDay"
+                source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="holidayid"
+                blogic-property="holidayid" dest="form" />
+           </blogic-result>
+    </action>
+
+</blogic-io>

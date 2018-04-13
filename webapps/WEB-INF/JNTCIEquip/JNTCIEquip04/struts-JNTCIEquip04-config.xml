@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+<form-beans>
+ 	<form-bean name="_JNTCIEquip04Form" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquip04Form" />
+  </form-beans>
+
+
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+<action path="/JNTCIEquip04SCR"
+            name="_JNTCIEquip04Form" scope="request"
+            validate="false" >
+    	<forward name="success" path="/JNTCIEquip/JNTCIEquip04.jsp" />
+    </action>
+ <action path="/JNTCIEquip04BL" name="_JNTCIEquip04Form"
+			scope="request" validate="true" input="/JNTCIEquip/JNTCIEquip04.jsp">
+			<forward name="success" path="/JNTCIEquip/JNTCIEquip04.jsp" />
+			<forward name="false" path="/JNTCIEquip/JNTCIEquip04.jsp" />
+			</action>
+
+			<action path="/JNTCIEquip04BLdelete" name="_JNTCIEquip04Form"
+			scope="request" validate="false" >
+			<forward name="success" path="/JNTCIEquip04BL.do" />
+			<forward name="false" path="/JNTCIEquip04BL.do" />
+			</action>
+
+  </action-mappings>
+
+
+</struts-config>

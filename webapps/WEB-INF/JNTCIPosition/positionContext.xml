@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- 座席図定義 -->
+	<aop:config>
+		<aop:pointcut id="sampleBeans"  expression="bean(*BLogic2)" />
+		<aop:advisor pointcut-ref="sampleBeans"  advice-ref="transactionInterceptor" />
+	</aop:config>
+
+	<bean name="/EmpPositionNorth" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.ForwardAction">
+	</bean>
+	<bean name="/EmpPositionNorthBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIEmpPositionNorthBlogic" />
+	</bean>
+
+	<bean id="JNTCIEmpPositionNorthBlogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEmpInitBlogic">
+		<property name="queryDAO" ref="queryDAO" />
+	</bean>
+<!-- ============================================================ -->
+
+	<bean name="/EmpPositionSouth" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.ForwardAction">
+	</bean>
+	<bean name="/EmpPositionSouthBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIEmpPositionSouthBlogic" />
+	</bean>
+
+	<bean id="JNTCIEmpPositionSouthBlogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEmpInitSouthBlogic">
+		<property name="queryDAO" ref="queryDAO" />
+	</bean>
+
+<!-- ======================================================================================================= -->
+	<bean name="/JNTCIUpdatePositionBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIPositionUpdateBLogic" />
+	</bean>
+
+	<bean id="JNTCIPositionUpdateBLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIPositionUpdateBLogic">
+		<property name="queryDAO" ref="queryDAO" />
+		<property name="updateDAO" ref="updateDAO" />
+	</bean>
+
+   <bean name="/deletepeople" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="deletepeople" />
+	</bean>
+    <bean id="deletepeople" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIdeletepeople">
+		<property name="queryDAO" ref="queryDAO" />
+		 <property name="updateDAO" ref="updateDAO" />
+	</bean>
+	<!-- <bean name="/JNTCIUpdatePositionBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.ForwardAction">
+	</bean> -->
+<!-- ============================================================================================================= -->
+
+
+<bean name="/EmpPositionNorth/JNTCIEmpPositionDownloadBLogic" class="jp.terasoluna.fw.web.struts.actions.DownloadBLogicAction" scope="singleton">
+          <property name="businessLogic" ref="downloadBLogic" />
+  </bean>
+
+  <bean id="downloadBLogic"
+           class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEmpPositionDownloadBLogic" scope="singleton" >
+           <property name="queryDAO" ref="queryDAO" />
+   </bean>
+   
+   <bean name="/EmpPositionSouth/JNTCIEmpPositionDownloadBLogic" class="jp.terasoluna.fw.web.struts.actions.DownloadBLogicAction" scope="singleton">
+          <property name="businessLogic" ref="downloadBLogic" />
+  </bean>
+
+  
+   
+
+<!-- ======================================================================================= -->
+
+
+
+</beans>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+	<!-- AOPの定義 -->
+	<!-- 下記で指定したパターンのBeanに対してインタセプタを適用する。 applicationContext.xmlで定義されたBeanのみ対象となるので注意すること。 -->
+	<aop:config>
+		<aop:pointcut id="sampleBeans" expression="bean(*BLogic2)" />
+
+		<aop:advisor pointcut-ref="sampleBeans" advice-ref="transactionInterceptor" />
+
+	</aop:config>
+
+	<!-- アクション定義 -->
+
+	<!-- JNTCIHomePage02BL 页面跳转(公告链接部分)=================================== -->
+<!-- 20160902 Start -->
+	<bean name="/JNTCIHomePage02BL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIHomePage02Blogic"/>
+	</bean>
+
+	<bean id="JNTCIHomePage02Blogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipHomePage02BLogic">
+		<property name="queryDAO" ref="queryDAO"/>
+	</bean>
+
+
+	<!-- JNTCIHomePageUpdate02BL(改修页面)=================================== -->
+<!-- 20160907  Start -->
+	<bean name="/JNTCIHomePageUpdate02BL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIHomePageUpdate02Blogic"/>
+	</bean>
+
+
+	<bean id="JNTCIHomePageUpdate02Blogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIHomePageUpdate02BLogic">
+		<property name="queryDAO" ref="queryDAO"/>
+		<property name="updateDAO" ref="updateDAO"/>
+	</bean>
+<!-- 20160907  End -->
+
+
+	<!-- /JNTCIHomePageDelete02BL(删除)=================================== -->
+<!-- 20160908  Start -->
+	<bean name="/JNTCIHomePageDelete02BL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIHomePageDelete02Blogic"/>
+	</bean>
+
+	<bean id="JNTCIHomePageDelete02Blogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIHomePageDelete02Blogic">
+		<property name="queryDAO" ref="queryDAO"/>
+		<property name="updateDAO" ref="updateDAO"/>
+	</bean>
+<!-- 20160908  End -->
+
+		<bean name="/NoticeFileDown" scope="singleton"
+			class="jp.terasoluna.fw.web.struts.actions.DownloadBLogicAction">
+			<property name="businessLogic" ref="NoticeFileDownBlogic" />
+		</bean>
+		<bean id="NoticeFileDownBlogic" scope="singleton"
+			class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIEquipNoticeFileDown02Blogic">
+			<property name="queryDAO" ref="queryDAO" />
+			<property name="updateDAO" ref="updateDAO" />
+		</bean>
+
+
+</beans>
+

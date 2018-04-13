@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+  <!-- AOPの定義 -->
+  <!--
+    下記で指定したパターンのBeanに対してインタセプタを適用する。
+    applicationContext.xmlで定義されたBeanのみ対象となるので注意すること。
+   -->
+   <aop:config>
+    <aop:pointcut id="sampleBeans" expression="bean(*BLogic2)"/>
+    <aop:advisor
+         pointcut-ref="sampleBeans"
+         advice-ref="transactionInterceptor"/>
+  </aop:config>
+ <bean name="/queryPersonalInformation" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+ 		<property name="businessLogic" ref="queryPersonalInformation" />
+  </bean>
+  <bean id="queryPersonalInformation" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendance03Blogic">
+        <property name="queryDAO" ref="queryDAO" />
+  </bean>
+  <bean name="/queryPersonalInformation1" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+ 		<property name="businessLogic" ref="queryPersonalInformation1" />
+  </bean>
+  <bean id="queryPersonalInformation1" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendance03Blogic">
+        <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+  <bean name="/LeaveSelect" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="LeaveSelect" />
+  </bean>
+  <bean id="LeaveSelect" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendanceSelect03Blogic">
+        <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+  <bean name="/LeaveSelect1" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="LeaveSelect1" />
+  </bean>
+  <bean id="LeaveSelect1" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendanceSelect03Blogic1">
+        <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+  <bean name="/updateLeave01" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="updateLeave1" />
+  </bean>
+  <bean id="updateLeave1" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendanceUpdate03Blogic">
+        <property name="updateDAO" ref="updateDAO" />
+        <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+  <bean name="/updateLeave02" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="updateLeave2" />
+  </bean>
+  <bean id="updateLeave2" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendanceUpdate03Blogic1">
+        <property name="updateDAO" ref="updateDAO" />
+        <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+  <bean name="/deleteEventAction" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="deleteLeaveID" />
+  </bean>
+  <bean id="deleteLeaveID" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendanceDelete03Blogic">
+        <property name="updateDAO" ref="updateDAO" />
+        <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+  <bean name="/deleteEventAction1" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="deleteLeaveID1" />
+  </bean>
+  <bean id="deleteLeaveID1" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendanceDelete03Blogic">
+        <property name="updateDAO" ref="updateDAO" />
+        <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+   <bean name="/PagingQuery" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="PagingQuery" />
+  </bean>
+  <bean id="PagingQuery" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendanceSelect03Blogic">
+        <property name="queryDAO" ref="queryDAO" />
+  </bean>
+
+   <bean name="/PagingQuery1" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="PagingQuery1" />
+  </bean>
+  <bean id="PagingQuery1" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendanceSelect03Blogic">
+        <property name="queryDAO" ref="queryDAO" />
+  </bean>
+  <!--  复数删除操作 -->
+  <bean name="/deleteAll" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+        <property name="businessLogic" ref="deleteID" />
+   </bean>
+  <bean id="deleteID" scope="prototype"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAttendance03DeleteBlogic">
+        <property name="updateDAO" ref="updateDAO" />
+     <property name="queryDAO" ref="queryDAO" />
+  </bean>
+</beans>

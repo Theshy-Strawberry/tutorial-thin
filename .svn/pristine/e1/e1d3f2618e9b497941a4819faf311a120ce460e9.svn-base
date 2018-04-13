@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+    <action path="/JNTCIEquipInsertBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipInsertInput">
+            <set-property property="setsubi_no"
+                blogic-property="setsubi_no" source="form" />
+            <set-property property="setsubi_kuben"
+                blogic-property="setsubi_kuben" source="form" />
+            <set-property property="userId"
+                blogic-property="userId" source="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" source="form" />
+            <set-property property="setsubi_kataban"
+                blogic-property="setsubi_kataban" source="form" />
+            <set-property property="setsubi_state"
+                blogic-property="setsubi_state" source="form" />
+            <set-property property="shunyuko"
+                blogic-property="shunyuko" source="form" />
+            <set-property property="shunyuko_date"
+                blogic-property="shunyuko_date" source="form" />
+            <set-property property="shunyuko_no"
+                blogic-property="shunyuko_no" source="form" />
+            <set-property property="setsubi_kanaoroshi_no"
+                blogic-property="setsubi_kanaoroshi_no" source="form" />
+            <set-property property="setsubi_su"
+                blogic-property="setsubi_su" source="form" />
+            <set-property property="kounyu_hiduke"
+                blogic-property="kounyu_hiduke" source="form" />
+            <set-property property="hokanhoushiki"
+                blogic-property="hokanhoushiki" source="form" />
+            <set-property property="hokanbasho"
+                blogic-property="hokanbasho" source="form" />
+            <set-property property="youto" blogic-property="youto"
+                source="form" />
+            <set-property property="tanaoroshi_user"
+                blogic-property="tanaoroshi_user" source="form" />
+            <set-property property="tanaoroshi_hiduke"
+                blogic-property="tanaoroshi_hiduke" source="form" />
+            <set-property property="mac_address"
+                blogic-property="mac_address" source="form" />
+            <set-property property="reutrnman"
+                blogic-property="reutrnman" source="form" />
+        </blogic-params>
+    </action>
+
+    <action path="/JNTCIEquipEditorBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipInsertInput">
+            <set-property property="setsubi_no"
+                blogic-property="setsubi_no" source="form" />
+            <set-property property="userId"
+                blogic-property="userId" source="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" source="form" />
+            <set-property property="setsubi_state"
+                blogic-property="setsubi_state" source="form" />
+            <set-property property="shunyuko"
+                blogic-property="shunyuko" source="form" />
+            <set-property property="shunyuko_date"
+                blogic-property="shunyuko_date" source="form" />
+            <set-property property="shunyuko_no"
+                blogic-property="shunyuko_no" source="form" />
+            <set-property property="setsubi_kanaoroshi_no"
+                blogic-property="setsubi_kanaoroshi_no" source="form" />
+            <set-property property="setsubi_su"
+                blogic-property="setsubi_su" source="form" />
+            <set-property property="hokanhoushiki"
+                blogic-property="hokanhoushiki" source="form" />
+            <set-property property="hokanbasho"
+                blogic-property="hokanbasho" source="form" />
+            <set-property property="youto" blogic-property="youto"
+                source="form" />
+            <set-property property="tanaoroshi_user"
+                blogic-property="tanaoroshi_user" source="form" />
+            <set-property property="tanaoroshi_hiduke"
+                blogic-property="tanaoroshi_hiduke" source="form" />
+            <set-property property="before_no"
+                blogic-property="before_no" source="form" />
+            <set-property property="before_shunyuko_no"
+                blogic-property="before_shunyuko_no" source="form" />
+            <set-property property="hidden_state"
+                blogic-property="hidden_state" source="form" />
+            <set-property property="setsubi_kuben"
+                blogic-property="setsubi_kuben" source="form" />
+            <set-property property="userpg"
+                blogic-property="userpg" source="form" />
+            <set-property property="equipLocation"
+                blogic-property="equipLocation" source="form" />
+                <set-property property="cod"
+                blogic-property="cod" source="form" />
+                <set-property property="setsubiKubun"
+                blogic-property="setsubiKubun" source="form" />
+                <set-property property="code"
+                blogic-property="code" source="form" />
+                <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+                <set-property property="setsubiKubun"
+                blogic-property="setsubiKubun" dest="form" />
+                <set-property property="code"
+                blogic-property="code" dest="form" />
+                <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+                <set-property property="userId"
+                blogic-property="userId" dest="form" />
+               <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+        </blogic-result>
+    </action>
+
+        <action path="/JNTCIEquipfanhui">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipInsertInput">
+            <set-property property="userId"
+                blogic-property="userId" source="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" source="form" />
+                <set-property property="cod"
+                blogic-property="cod" source="form" />
+                <set-property property="setsubiKubun"
+                blogic-property="setsubiKubun" source="form" />
+                <set-property property="code"
+                blogic-property="code" source="form" />
+                <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+                <set-property property="setsubiKubun"
+                blogic-property="setsubiKubun" dest="form" />
+                <set-property property="code"
+                blogic-property="code" dest="form" />
+                <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+                <set-property property="userId"
+                blogic-property="userId" dest="form" />
+               <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+        </blogic-result>
+    </action>
+  <action path="/JNTCIEquipListBL001">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipInsertInput">
+                 <set-property property="userId"  blogic-property="userId" source="form" />
+                 <set-property property="deptId" blogic-property="deptId" source="form" />
+                 <set-property property="setsubiKubun" blogic-property="setsubiKubun" source="form" />
+                <set-property property="code"  blogic-property="code" source="form" />
+                <set-property property="startIndex" blogic-property="startIndex" source="form" />
+            </blogic-params>
+             <blogic-result>
+                <set-property property="setsubiKubun" blogic-property="setsubiKubun" dest="request" />
+                <set-property property="code" blogic-property="code" dest="request" />
+                <set-property property="startIndex"  blogic-property="startIndex" dest="request" />
+                <set-property property="userId" blogic-property="userId" dest="request" />
+               <set-property property="deptId" blogic-property="deptId" dest="request" />
+             </blogic-result>
+</action>
+    <action path="/JNTCIEquipInsertBL01">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipInsertInput">
+            <set-property property="setsubi_kuben"
+                blogic-property="setsubi_kuben" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="setsubi_no"
+                blogic-property="setsubi_no" dest="form" />
+            <set-property property="setsubiKatabanList"
+                blogic-property="setsubiKatabanList" dest="form" />
+            <set-property property="setsubiKonyuhiList"
+                blogic-property="setsubiKonyuhiList" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIEquipInsert02BL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipInsertInput">
+            <set-property property="dousa" blogic-property="dousa"
+                source="form" />
+            <set-property property="setsubi_kuben"
+                blogic-property="setsubi_kuben" source="form" />
+            <set-property property="setsubi_no"
+                blogic-property="setsubi_no" source="form" />
+            <set-property property="setsubi_kataban"
+                blogic-property="setsubi_kataban" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="setsubi_kataban"
+                blogic-property="setsubi_kataban" dest="form" />
+            <set-property property="setsubi_no"
+                blogic-property="setsubi_no" dest="form" />
+            <set-property property="setsubiKatabanList"
+                blogic-property="setsubiKatabanList" dest="form" />
+            <set-property property="setsubiKonyuhiList"
+                blogic-property="setsubiKonyuhiList" dest="form" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

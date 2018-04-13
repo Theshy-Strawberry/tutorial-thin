@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <form-beans>
+
+  	<form-bean name="_JNTCIAttendance04selectForm" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIAttendance04selectForm" />
+
+
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+
+   <action path="/JNTCIAttendance04selectDSP"
+            name="_JNTCIAttendance04selectForm" scope="request">
+          <forward name="search" path="/JNTCIAttendance04selectBL.do"/>
+            <forward name="download" path="/JNTCIAttendance04downloadBL.do"/>
+    </action>
+
+
+    <action path="/JNTCIAttendance04selectBL"
+            name="_JNTCIAttendance04selectForm" scope="request"
+            validate="false" >
+          <forward name="success" path="/JNTCIAttendanceSystem/JNTCIAttendanceLeave03.jsp"/>
+    </action>
+
+    <action path="/JNTCIAttendance04downloadBL"
+            name="_JNTCIAttendance04selectForm" scope="request">
+          <forward name="success"  path="/JNTCIAttendanceSystem/JNTCIAttendanceLeave03.jsp"/>
+    </action>
+
+    <action path="/JNTCIAttendance04disagreeBL"
+            name="_JNTCIAttendance04selectForm" scope="request"
+            validate="false">
+          <forward name="success" path="/JNTCIAttendanceSystem/JNTCIAttendanceLeave03.jsp"/>
+          <forward name="success2" path="/JNTCIAttendance04selectBL.do"/>
+          <forward name="success1" path="/JNTCIAttendance04forwardBL.do"/>
+    </action>
+
+
+    <action path="/JNTCIAttendance04forwardBL"
+            name="_JNTCIAttendance04selectForm" scope="request"
+            validate="false" >
+          <forward name="success" path="/JNTCIAttendanceSystem/JNTCIAttendanceLeave02.jsp"/>
+             <forward name="false" path="/JNTCIAttendance04selectBL.do"/>
+    </action>
+
+    <!-- 复数删除 -->
+    <action path="/deleteAll"
+            name="_JNTCIAttendance04selectForm" scope="request"
+            validate="false" >
+                <forward name="success" path= "/JNTCIAttendance04selectBL.do"/>
+    <!--   <forward name="success" path= "/JNTCIAttendanceSystem/JNTCIAttendanceLeave03.jsp"/> -->
+    </action>
+    <!--一括承认  -->
+    <action path="/admit"
+            name="_JNTCIAttendance04selectForm" scope="request"
+            validate="true"  >
+            <forward name="success" path= "/JNTCIAttendance04selectBL.do"/>
+        <!-- <forward name="success" path= "/JNTCIAttendanceSystem/JNTCIAttendanceLeave03.jsp"/> -->
+    </action>
+    <!--一括不承认  -->
+    <action path="/unadmit"
+            name="_JNTCIAttendance04selectForm" scope="request"
+            validate="true" >
+            <forward name="success" path= "/JNTCIAttendance04selectBL.do"/>
+        <!-- <forward name="success" path= "/JNTCIAttendanceSystem/JNTCIAttendanceLeave03.jsp"/> -->
+
+    </action>
+  </action-mappings>
+
+
+
+</struts-config>

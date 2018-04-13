@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<!-- formbean定義 -->
+	<form-beans>
+
+		<form-bean name="_EmpForm"
+			type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEmpForm" />
+	</form-beans>
+
+	<action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+		<action path="/EmpPositionNorth" name="_EmpForm" scope="request"
+			parameter="/EmpPositionNorthBL.do">
+		</action>
+		<action path="/EmpPositionNorthBL" name="_EmpForm" scope="request">
+			<forward name="success" path="/JNTCIposition/emppositionnorth.jsp" />
+		</action>
+
+
+		<action path="/EmpPositionSouth" name="_EmpForm" scope="request"
+			parameter="/EmpPositionSouthBL.do">
+		</action>
+		<action path="/EmpPositionSouthBL" name="_EmpForm" scope="request">
+			<forward name="success" path="/JNTCIposition/emppositionsouth.jsp" />
+		</action>
+
+		<action path="/JNTCIUpdatePositionBL" name="_EmpForm" scope="request">
+			<forward name="north" path="/EmpPositionNorthBL.do" />
+			<forward name="south" path="/EmpPositionSouthBL.do" />
+		</action>
+
+		<action path="/deletepeople" name="_EmpForm" scope="request">
+			<forward name="north" path="/EmpPositionNorthBL.do" />
+			<forward name="south" path="/EmpPositionSouthBL.do" />
+		</action>
+
+
+
+		<action path="/EmpPositionNorth/JNTCIEmpPositionDownloadBLogic"
+			name="_EmpForm" scope="request" validate="false">
+			<forward name="success" path="/JNTCIposition/emppositionnorth.jsp" />
+		</action>
+
+		<action path="/EmpPositionSouth/JNTCIEmpPositionDownloadBLogic"
+			name="_EmpForm" scope="request" validate="false">
+			<forward name="success" path="/JNTCIposition/emppositionsouth.jsp" />
+		</action>
+	</action-mappings>
+
+
+</struts-config>

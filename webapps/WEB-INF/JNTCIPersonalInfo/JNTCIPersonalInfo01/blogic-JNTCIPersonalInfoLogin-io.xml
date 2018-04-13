@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+    <action path="/JNTCIPersonalInfo01insertBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+            <set-property property="tj_Card"
+                blogic-property="tj_Card" source="form" />
+            <set-property property="jn_Card"
+                blogic-property="jn_Card" source="form" />
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="userName"
+                blogic-property="userName" source="form" />
+            <set-property property="sex" blogic-property="sex"
+                source="form" />
+            <set-property property="birthday"
+                blogic-property="birthday" source="form" />
+            <set-property property="nation"
+                blogic-property="nation" source="form" />
+            <set-property property="id_Card"
+                blogic-property="id_Card" source="form" />
+            <set-property property="born_In"
+                blogic-property="born_In" source="form" />
+            <set-property property="winning_date"
+                blogic-property="winning_date" source="form" />
+            <set-property property="address"
+                blogic-property="address" source="form" />
+            <set-property property="telephone"
+                blogic-property="telephone" source="form" />
+            <set-property property="emerg_Contact"
+                blogic-property="emerg_Contact" source="form" />
+            <set-property property="emerg_Contact_tel"
+                blogic-property="emerg_Contact_tel" source="form" />
+            <set-property property="department"
+                blogic-property="department" source="form" />
+            <set-property property="position"
+                blogic-property="position" source="form" />
+            <set-property property="entry_Time"
+                blogic-property="entry_Time" source="form" />
+
+                 <set-property property="SYAHO_JIKAN"
+                blogic-property="SYAHO_JIKAN" source="form" />
+
+            <set-property property="marital_Status"
+                blogic-property="marital_Status" source="form" />
+            <set-property property="education"
+                blogic-property="education" source="form" />
+            <set-property property="jn_Name"
+                blogic-property="jn_Name" source="form" />
+            <set-property property="nationality"
+                blogic-property="nationality" source="form" />
+            <set-property property="pesonal_Mall"
+                blogic-property="pesonal_Mall" source="form" />
+            <set-property property="offic_Mail"
+                blogic-property="offic_Mail" source="form" />
+            <set-property property="tech_capability"
+                blogic-property="tech_capability" source="form" />
+            <set-property property="passport"
+                blogic-property="passport" source="form" />
+            <set-property property="visa" blogic-property="visa"
+                source="form" />
+            <set-property property="vaca_quali"
+                blogic-property="vaca_quali" source="form" />
+            <set-property property="work_Experience"
+                blogic-property="work_Experience" source="form" />
+            <set-property property="work_time"
+                blogic-property="work_time" source="form" />
+            <set-property property="work_ExperienceStr"
+                blogic-property="work_ExperienceStr" source="form" />
+            <set-property property="uploadFile"
+                blogic-property="uploadFile" source="form" />
+            <set-property property="photo_Path_Old"
+                blogic-property="photo_Path_Old" source="form" />
+            <set-property property="specialty"
+                blogic-property="specialty" source="form" />
+            <set-property property="remarks"
+                blogic-property="remarks" source="form" />
+            <set-property property="wining_certificate"
+                blogic-property="wining_certificate" source="form" />
+            <set-property property="order_no"
+                blogic-property="order_no" source="form" />
+            <set-property property="careers_type"
+                blogic-property="careers_type" source="form" />
+            <set-property property="proj_name"
+                blogic-property="proj_name" source="form" />
+            <set-property property="attend_nm"
+                blogic-property="attend_nm" source="form" />
+            <set-property property="attend_month"
+                blogic-property="attend_month" source="form" />
+            <set-property property="attend_states"
+                blogic-property="attend_states" source="form" />
+            <set-property property="develop_phase"
+                blogic-property="develop_phase" source="form" />
+            <set-property property="firm_content"
+                blogic-property="firm_content" source="form" />
+            <set-property property="lang_tool"
+                blogic-property="lang_tool" source="form" />
+            <set-property property="data_base"
+                blogic-property="data_base" source="form" />
+            <set-property property="technical_sys"
+                blogic-property="technical_sys" source="form" />
+            <set-property property="model_device"
+                blogic-property="model_device" source="form" />
+            <set-property property="develop_period"
+                blogic-property="develop_period" source="form" />
+            <set-property property="total_period"
+                blogic-property="total_period" source="form" />
+            <set-property property="judge_flg"
+                blogic-property="judge_flg" source="form" />
+            <set-property property="list" blogic-property="list"
+                source="form" />
+            <set-property property="qualificationStr"
+                blogic-property="qualificationStr" source="form" />
+            <set-property property="type" blogic-property="type"
+                source="form" />
+            <set-property property="countryCode"
+                blogic-property="countryCode" source="form" />
+            <set-property property="passportNo"
+                blogic-property="passportNo" source="form" />
+            <set-property property="issueDate"
+                blogic-property="issueDate" source="form" />
+            <set-property property="expiryDate"
+                blogic-property="expiryDate" source="form" />
+            <set-property property="authority"
+                blogic-property="authority" source="form" />
+            <set-property property="issuePlace"
+                blogic-property="issuePlace" source="form" />
+            <set-property property="password"
+                blogic-property="password" source="form" />
+            <!-- 个人登录追加 -->
+            <set-property property="language2"
+                blogic-property="language2" source="form" />
+            <set-property property="level" blogic-property="level"
+                source="form" />
+            <set-property property="javalanguage"
+                blogic-property="javalanguage" source="form" />
+            <set-property property="javaenvironment"
+                blogic-property="javaenvironment" source="form" />
+            <set-property property="tool" blogic-property="tool"
+                source="form" />
+            <set-property property="db" blogic-property="db"
+                source="form" />
+            <set-property property="os" blogic-property="os"
+                source="form" />
+            <set-property property="japaneselevel"
+                blogic-property="japaneselevel" source="form" />
+            <set-property property="englishlevel"
+                blogic-property="englishlevel" source="form" />
+            <set-property property="yanyu" blogic-property="yanyu"
+                source="form" />
+            <set-property property="javahuanjing"
+                blogic-property="javahuanjing" source="form" />
+            <set-property property="yuyan" blogic-property="yuyan"
+                source="form" />
+            <set-property property="personinfoid"
+                blogic-property="personinfoid" source="form" />
+            <set-property property="id" blogic-property="id"
+                source="form" />
+            <set-property property="javayuyan"
+                blogic-property="javayuyan" source="form" />
+            <set-property property="languageStr"
+                blogic-property="languageStr" source="form" />
+            <set-property property="javaenvironmentStr"
+                blogic-property="javaenvironmentStr" source="form" />
+            <set-property property="javalanguageStr"
+                blogic-property="javalanguageStr" source="form" />
+            <set-property property="toolStr"
+                blogic-property="toolStr" source="form" />
+            <set-property property="toolid"
+                blogic-property="toolid" source="form" />
+            <set-property property="dbStr" blogic-property="dbStr"
+                source="form" />
+            <set-property property="dbid" blogic-property="dbid"
+                source="form" />
+            <set-property property="osStr" blogic-property="osStr"
+                source="form" />
+            <set-property property="osid" blogic-property="osid"
+                source="form" />
+            <set-property property="japanl"
+                blogic-property="japanl" source="form" />
+            <set-property property="japanStr"
+                blogic-property="japanStr" source="form" />
+            <set-property property="japan" blogic-property="japan"
+                source="form" />
+            <set-property property="englishl"
+                blogic-property="englishl" source="form" />
+            <set-property property="englishStr"
+                blogic-property="englishStr" source="form" />
+            <set-property property="english"
+                blogic-property="english" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="tj_Card"
+                blogic-property="tj_Card" dest="form" />
+            <set-property property="jn_Card"
+                blogic-property="jn_Card" dest="form" />
+            <set-property property="userName"
+                blogic-property="userName" dest="form" />
+            <set-property property="sex" blogic-property="sex"
+                dest="form" />
+            <set-property property="birthday"
+                blogic-property="birthday" dest="form" />
+            <set-property property="nation"
+                blogic-property="nation" dest="form" />
+            <set-property property="id_Card"
+                blogic-property="id_Card" dest="form" />
+            <set-property property="born_In"
+                blogic-property="born_In" dest="form" />
+            <set-property property="address"
+                blogic-property="address" dest="form" />
+            <set-property property="telephone"
+                blogic-property="telephone" dest="form" />
+            <set-property property="emerg_Contact"
+                blogic-property="emerg_Contact" dest="form" />
+            <set-property property="emerg_Contact_tel"
+                blogic-property="emerg_Contact_tel" dest="form" />
+            <set-property property="department"
+                blogic-property="department" dest="form" />
+            <set-property property="position"
+                blogic-property="position" dest="form" />
+            <set-property property="entry_Time"
+                blogic-property="entry_Time" dest="form" />
+
+
+                 <set-property property="SYAHO_JIKAN"
+                blogic-property="SYAHO_JIKAN" dest="form" />
+            <set-property property="marital_Status"
+                blogic-property="marital_Status" dest="form" />
+            <set-property property="education"
+                blogic-property="education" dest="form" />
+            <set-property property="jn_Name"
+                blogic-property="jn_Name" dest="form" />
+            <set-property property="nationality"
+                blogic-property="nationality" dest="form" />
+            <set-property property="pesonal_Mall"
+                blogic-property="pesonal_Mall" dest="form" />
+            <set-property property="offic_Mail"
+                blogic-property="offic_Mail" dest="form" />
+            <set-property property="tech_capability"
+                blogic-property="tech_capability" dest="form" />
+            <set-property property="passport"
+                blogic-property="passport" dest="form" />
+            <set-property property="visa" blogic-property="visa"
+                dest="form" />
+            <set-property property="vaca_quali"
+                blogic-property="vaca_quali" dest="form" />
+            <set-property property="work_Experience"
+                blogic-property="work_Experience" dest="form" />
+            <set-property property="work_ExperienceStr"
+                blogic-property="work_ExperienceStr" dest="form" />
+            <set-property property="uploadFile"
+                blogic-property="uploadFile" dest="form" />
+            <set-property property="photo_Path"
+                blogic-property="photo_Path" dest="form" />
+            <set-property property="specialty"
+                blogic-property="specialty" dest="form" />
+            <set-property property="remarks"
+                blogic-property="remarks" dest="form" />
+            <set-property property="order_no"
+                blogic-property="order_no" dest="form" />
+            <set-property property="careers_type"
+                blogic-property="careers_type" dest="form" />
+            <set-property property="proj_name"
+                blogic-property="proj_name" dest="form" />
+            <set-property property="attend_nm"
+                blogic-property="attend_nm" dest="form" />
+            <set-property property="attend_month"
+                blogic-property="attend_month" dest="form" />
+            <set-property property="attend_states"
+                blogic-property="attend_states" dest="form" />
+            <set-property property="develop_phase"
+                blogic-property="develop_phase" dest="form" />
+            <set-property property="firm_content"
+                blogic-property="firm_content" dest="form" />
+            <set-property property="lang_tool"
+                blogic-property="lang_tool" dest="form" />
+            <set-property property="data_base"
+                blogic-property="data_base" dest="form" />
+            <set-property property="technical_sys"
+                blogic-property="technical_sys" dest="form" />
+            <set-property property="model_device"
+                blogic-property="model_device" dest="form" />
+            <set-property property="develop_period"
+                blogic-property="develop_period" dest="form" />
+            <set-property property="total_period"
+                blogic-property="total_period" dest="form" />
+            <set-property property="disable"
+                blogic-property="disable" dest="form" />
+            <set-property property="button_name"
+                blogic-property="button_name" dest="form" />
+            <set-property property="judge_flg"
+                blogic-property="judge_flg" dest="form" />
+            <set-property property="occupation"
+                blogic-property="occupation" dest="form" />
+            <set-property property="workList"
+                blogic-property="workList" dest="form" />
+            <set-property property="workStr"
+                blogic-property="workStr" dest="form" />
+            <set-property property="language"
+                blogic-property="language" dest="form" />
+            <set-property property="operatSys"
+                blogic-property="operatSys" dest="form" />
+            <set-property property="dataBase"
+                blogic-property="dataBase" dest="form" />
+            <set-property property="editTool"
+                blogic-property="editTool" dest="form" />
+            <set-property property="jEnvirnment"
+                blogic-property="jEnvirnment" dest="form" />
+            <set-property property="jLanguage"
+                blogic-property="jLanguage" dest="form" />
+            <set-property property="jap_skill"
+                blogic-property="jap_skill" dest="form" />
+            <set-property property="jap_level"
+                blogic-property="jap_level" dest="form" />
+            <set-property property="eng_skill"
+                blogic-property="eng_skill" dest="form" />
+            <set-property property="eng_level"
+                blogic-property="eng_level" dest="form" />
+            <set-property property="checkResult"
+                blogic-property="checkResult" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIAdminInfo01insertBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+            <set-property property="tj_Card"
+                blogic-property="tj_Card" source="form" />
+            <set-property property="jn_Card"
+                blogic-property="jn_Card" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="form" />
+            <set-property property="sex" blogic-property="sex"
+                source="form" />
+            <set-property property="birthday"
+                blogic-property="birthday" source="form" />
+            <set-property property="nation"
+                blogic-property="nation" source="form" />
+            <set-property property="id_Card"
+                blogic-property="id_Card" source="form" />
+            <set-property property="born_In"
+                blogic-property="born_In" source="form" />
+            <set-property property="winning_date"
+                blogic-property="winning_date" source="form" />
+            <set-property property="address"
+                blogic-property="address" source="form" />
+            <set-property property="telephone"
+                blogic-property="telephone" source="form" />
+            <set-property property="emerg_Contact"
+                blogic-property="emerg_Contact" source="form" />
+            <set-property property="emerg_Contact_tel"
+                blogic-property="emerg_Contact_tel" source="form" />
+            <set-property property="department"
+                blogic-property="department" source="form" />
+            <set-property property="position"
+                blogic-property="position" source="form" />
+            <set-property property="entry_Time"
+                blogic-property="entry_Time" source="form" />
+            <set-property property="marital_Status"
+                blogic-property="marital_Status" source="form" />
+            <set-property property="education"
+                blogic-property="education" source="form" />
+            <set-property property="jn_Name"
+                blogic-property="jn_Name" source="form" />
+            <set-property property="nationality"
+                blogic-property="nationality" source="form" />
+            <set-property property="pesonal_Mall"
+                blogic-property="pesonal_Mall" source="form" />
+            <set-property property="offic_Mail"
+                blogic-property="offic_Mail" source="form" />
+            <set-property property="tech_capability"
+                blogic-property="tech_capability" source="form" />
+            <set-property property="passport"
+                blogic-property="passport" source="form" />
+            <set-property property="visa" blogic-property="visa"
+                source="form" />
+            <set-property property="vaca_quali"
+                blogic-property="vaca_quali" source="form" />
+            <set-property property="work_Experience"
+                blogic-property="work_Experience" source="form" />
+            <set-property property="work_time"
+                blogic-property="work_time" source="form" />
+            <set-property property="work_ExperienceStr"
+                blogic-property="work_ExperienceStr" source="form" />
+            <set-property property="uploadFile"
+                blogic-property="uploadFile" source="form" />
+            <set-property property="photo_Path_Old"
+                blogic-property="photo_Path_Old" source="form" />
+            <set-property property="specialty"
+                blogic-property="specialty" source="form" />
+            <set-property property="remarks"
+                blogic-property="remarks" source="form" />
+            <set-property property="socialSecurity"
+                blogic-property="socialSecurity" source="form" />
+            <set-property property="wining_certificate"
+                blogic-property="wining_certificate" source="form" />
+            <set-property property="order_no"
+                blogic-property="order_no" source="form" />
+            <set-property property="careers_type"
+                blogic-property="careers_type" source="form" />
+            <set-property property="proj_name"
+                blogic-property="proj_name" source="form" />
+            <set-property property="attend_nm"
+                blogic-property="attend_nm" source="form" />
+            <set-property property="attend_month"
+                blogic-property="attend_month" source="form" />
+            <set-property property="attend_states"
+                blogic-property="attend_states" source="form" />
+            <set-property property="develop_phase"
+                blogic-property="develop_phase" source="form" />
+            <set-property property="firm_content"
+                blogic-property="firm_content" source="form" />
+            <set-property property="lang_tool"
+                blogic-property="lang_tool" source="form" />
+            <set-property property="data_base"
+                blogic-property="data_base" source="form" />
+            <set-property property="technical_sys"
+                blogic-property="technical_sys" source="form" />
+            <set-property property="model_device"
+                blogic-property="model_device" source="form" />
+            <set-property property="develop_period"
+                blogic-property="develop_period" source="form" />
+            <set-property property="total_period"
+                blogic-property="total_period" source="form" />
+            <set-property property="judge_flg"
+                blogic-property="judge_flg" source="form" />
+            <set-property property="list" blogic-property="list"
+                source="form" />
+            <set-property property="qualificationStr"
+                blogic-property="qualificationStr" source="form" />
+            <set-property property="type" blogic-property="type"
+                source="form" />
+            <set-property property="countryCode"
+                blogic-property="countryCode" source="form" />
+            <set-property property="passportNo"
+                blogic-property="passportNo" source="form" />
+            <set-property property="issueDate"
+                blogic-property="issueDate" source="form" />
+            <set-property property="expiryDate"
+                blogic-property="expiryDate" source="form" />
+            <set-property property="authority"
+                blogic-property="authority" source="form" />
+            <set-property property="issuePlace"
+                blogic-property="issuePlace" source="form" />
+            <set-property property="password"
+                blogic-property="password" source="form" />
+            <set-property property="leader"
+                blogic-property="leader" source="form" />
+            <set-property property="deptPerson"
+                blogic-property="deptPerson" source="form" />
+            <set-property property="out_Time"
+                blogic-property="out_Time" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="photo_Path"
+                blogic-property="photo_Path" dest="form" />
+            <set-property property="status"
+                blogic-property="status" dest="form" />
+        </blogic-result>
+    </action>
+
+    <!-- Add -->
+    <action path="/JNTCIPersonalInfo01insertBLAdd">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoLoginInput">
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="tj_Card"
+                blogic-property="tj_Card" source="form" />
+            <set-property property="jn_Card"
+                blogic-property="jn_Card" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="form" />
+            <set-property property="sex" blogic-property="sex"
+                source="form" />
+            <set-property property="birthday"
+                blogic-property="birthday" source="form" />
+            <set-property property="nation"
+                blogic-property="nation" source="form" />
+            <set-property property="id_Card"
+                blogic-property="id_Card" source="form" />
+            <set-property property="born_In"
+                blogic-property="born_In" source="form" />
+            <set-property property="winning_date"
+                blogic-property="winning_date" source="form" />
+            <set-property property="address"
+                blogic-property="address" source="form" />
+            <set-property property="telephone"
+                blogic-property="telephone" source="form" />
+            <set-property property="emerg_Contact"
+                blogic-property="emerg_Contact" source="form" />
+            <set-property property="emerg_Contact_tel"
+                blogic-property="emerg_Contact_tel" source="form" />
+            <set-property property="department"
+                blogic-property="department" source="form" />
+            <set-property property="position"
+                blogic-property="position" source="form" />
+            <set-property property="entry_Time"
+                blogic-property="entry_Time" source="form" />
+            <set-property property="marital_Status"
+                blogic-property="marital_Status" source="form" />
+            <set-property property="education"
+                blogic-property="education" source="form" />
+            <set-property property="jn_Name"
+                blogic-property="jn_Name" source="form" />
+            <set-property property="nationality"
+                blogic-property="nationality" source="form" />
+            <set-property property="pesonal_Mall"
+                blogic-property="pesonal_Mall" source="form" />
+            <set-property property="offic_Mail"
+                blogic-property="offic_Mail" source="form" />
+            <set-property property="tech_capability"
+                blogic-property="tech_capability" source="form" />
+            <set-property property="passport"
+                blogic-property="passport" source="form" />
+            <set-property property="visa" blogic-property="visa"
+                source="form" />
+            <set-property property="vaca_quali"
+                blogic-property="vaca_quali" source="form" />
+            <set-property property="work_Experience"
+                blogic-property="work_Experience" source="form" />
+            <set-property property="work_time"
+                blogic-property="work_time" source="form" />
+            <set-property property="work_ExperienceStr"
+                blogic-property="work_ExperienceStr" source="form" />
+            <set-property property="uploadFile"
+                blogic-property="uploadFile" source="form" />
+            <set-property property="photo_Path_Old"
+                blogic-property="photo_Path_Old" source="form" />
+            <set-property property="specialty"
+                blogic-property="specialty" source="form" />
+            <set-property property="remarks"
+                blogic-property="remarks" source="form" />
+            <set-property property="wining_certificate"
+                blogic-property="wining_certificate" source="form" />
+            <set-property property="order_no"
+                blogic-property="order_no" source="form" />
+            <set-property property="careers_type"
+                blogic-property="careers_type" source="form" />
+            <set-property property="proj_name"
+                blogic-property="proj_name" source="form" />
+            <set-property property="attend_nm"
+                blogic-property="attend_nm" source="form" />
+            <set-property property="attend_month"
+                blogic-property="attend_month" source="form" />
+            <set-property property="attend_states"
+                blogic-property="attend_states" source="form" />
+            <set-property property="develop_phase"
+                blogic-property="develop_phase" source="form" />
+            <set-property property="firm_content"
+                blogic-property="firm_content" source="form" />
+            <set-property property="lang_tool"
+                blogic-property="lang_tool" source="form" />
+            <set-property property="data_base"
+                blogic-property="data_base" source="form" />
+            <set-property property="technical_sys"
+                blogic-property="technical_sys" source="form" />
+            <set-property property="model_device"
+                blogic-property="model_device" source="form" />
+            <set-property property="develop_period"
+                blogic-property="develop_period" source="form" />
+            <set-property property="total_period"
+                blogic-property="total_period" source="form" />
+            <set-property property="judge_flg"
+                blogic-property="judge_flg" source="form" />
+            <set-property property="list" blogic-property="list"
+                source="form" />
+            <set-property property="qualificationStr"
+                blogic-property="qualificationStr" source="form" />
+            <set-property property="type" blogic-property="type"
+                source="form" />
+            <set-property property="countryCode"
+                blogic-property="countryCode" source="form" />
+            <set-property property="passportNo"
+                blogic-property="passportNo" source="form" />
+            <set-property property="issueDate"
+                blogic-property="issueDate" source="form" />
+            <set-property property="expiryDate"
+                blogic-property="expiryDate" source="form" />
+            <set-property property="authority"
+                blogic-property="authority" source="form" />
+            <set-property property="issuePlace"
+                blogic-property="issuePlace" source="form" />
+            <set-property property="password"
+                blogic-property="password" source="form" />
+            <set-property property="socialSecurity"
+                blogic-property="socialSecurity" source="form" />
+            <set-property property="leader"
+                blogic-property="leader" source="form" />
+            <set-property property="deptPerson"
+                blogic-property="deptPerson" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="count" blogic-property="count"
+                dest="form" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

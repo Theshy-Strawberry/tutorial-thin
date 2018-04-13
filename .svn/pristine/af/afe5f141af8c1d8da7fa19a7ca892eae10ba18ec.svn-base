@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/JNTCIPersonalInfoInquireBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoInquireInput">
+            <set-property property="id_card"
+                blogic-property="id_card" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="form" />
+            <set-property property="department"
+                blogic-property="department" source="form" />
+            <set-property property="entryTime_Begin"
+                blogic-property="entryTime_Begin" source="form" />
+            <set-property property="entryTime_End"
+                blogic-property="entryTime_End" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="cod" blogic-property="cod"
+                source="form" />
+                <set-property property="deleteId_card"
+                blogic-property="deleteId_card" source="form" />
+                <set-property property="zhuangtai"
+                blogic-property="zhuangtai" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="personalInfos"
+                blogic-property="personalInfos" dest="form" />
+            <set-property property="userName"
+                blogic-property="userName" dest="form" />
+                <set-property property="deleteId_card"
+                blogic-property="deleteId_card" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/JNTCIPersonalInfo/JNTCIPersonalInfoDeleteBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIPersonalInfoInquireInput">
+            <set-property property="deleteId_card"
+                blogic-property="deleteId_card" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="deleteId_card"
+                blogic-property="deleteId_card" dest="form" />
+
+        </blogic-result>
+    </action>
+
+</blogic-io>

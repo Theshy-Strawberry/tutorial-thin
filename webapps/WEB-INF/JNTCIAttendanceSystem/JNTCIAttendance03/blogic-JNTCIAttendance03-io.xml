@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+
+<blogic-io>
+    <action path="/queryPersonalInformation">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance03Dto">
+            <set-property property="userId"
+                blogic-property="jnCard" source="session" />
+        </blogic-params>
+        <blogic-result>
+            <!-- dto中的属性 form中的属性 -->
+            <set-property property="jnCard"
+                blogic-property="jnCard" dest="form" />
+            <set-property property="name" blogic-property="name"
+                dest="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+            <set-property property="projectPm"
+                blogic-property="projectPm" dest="form" />
+            <set-property property="pmEmail"
+                blogic-property="pmEmail" dest="form" />
+            <set-property property="myEmail"
+                blogic-property="myEmail" dest="form" />
+            <set-property property="preserVation"
+                blogic-property="preserVation" dest="form" />
+            <set-property property="leaveTypeList"
+                blogic-property="leaveTypeList" dest="form" />
+            <set-property property="detailDate"
+                blogic-property="detailDate" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/queryPersonalInformation1">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance03Dto">
+            <set-property property="userId"
+                blogic-property="jnCard" source="session" />
+        </blogic-params>
+        <blogic-result>
+            <!-- dto中的属性 form中的属性 -->
+            <set-property property="jnCard"
+                blogic-property="jnCard" dest="form" />
+            <set-property property="name" blogic-property="name"
+                dest="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+            <set-property property="projectPm"
+                blogic-property="projectPm" dest="form" />
+            <set-property property="pmEmail"
+                blogic-property="pmEmail" dest="form" />
+            <set-property property="myEmail"
+                blogic-property="myEmail" dest="form" />
+            <set-property property="preserVation"
+                blogic-property="preserVation" dest="form" />
+            <set-property property="leaveTypeList"
+                blogic-property="leaveTypeList" dest="form" />
+            <set-property property="detailDate"
+                blogic-property="detailDate" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/LeaveSelect">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendanceSelect03Dto">
+            <set-property property="jnCard"
+                blogic-property="jnCard" source="form" />
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <!-- dto中的属性 form中的属性 -->
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="jntciAttendanceSelect03Dto"
+                blogic-property="jntciAttendanceSelect03Dto" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/LeaveSelect1">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendanceSelect03Dto">
+            <set-property property="jnCard"
+                blogic-property="jnCard" source="form" />
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <!-- dto中的属性 form中的属性 -->
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="jntciAttendanceSelect03Dto"
+                blogic-property="jntciAttendanceSelect03Dto" dest="form" />
+        </blogic-result>
+    </action>
+
+
+    <action path="/updateLeave01">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance03Dto">
+            <set-property property="leaveId"
+                blogic-property="leaveId" source="form" />
+            <set-property property="jnCard"
+                blogic-property="jnCard" source="form" />
+            <set-property property="name" blogic-property="name"
+                source="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" source="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" source="form" />
+            <set-property property="projectPm"
+                blogic-property="projectPm" source="form" />
+            <set-property property="leaveType"
+                blogic-property="leaveType" source="form" />
+            <set-property property="leaveStartTime"
+                blogic-property="leaveStartTime" source="form" />
+            <set-property property="leaveEndTime"
+                blogic-property="leaveEndTime" source="form" />
+            <set-property property="leaveTotalTime"
+                blogic-property="leaveTotalTime" source="form" />
+            <set-property property="leaveReason"
+                blogic-property="leaveReason" source="form" />
+            <set-property property="leaveSubtime"
+                blogic-property="leaveSubtime" source="form" />
+            <set-property property="leaveCode"
+                blogic-property="leaveCode" source="form" />
+            <set-property property="examineStatus"
+                blogic-property="examineStatus" source="form" />
+            <set-property property="pmEmail"
+                blogic-property="pmEmail" source="form" />
+            <set-property property="myEmail"
+                blogic-property="myEmail" source="form" />
+            <!-- 根据保存按钮判断触发的是提交还是不保存 -->
+            <set-property property="preserVation"
+                blogic-property="preserVation" source="form" />
+            <set-property property="leaveTypeTime"
+                blogic-property="leaveTypeTime" source="form" />
+            <set-property property="countNum"
+                blogic-property="countNum" source="form" />
+            <set-property property="detailDate"
+                blogic-property="detailDate" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="jnCard"
+                blogic-property="jnCard" dest="form" />
+            <set-property property="name" blogic-property="name"
+                dest="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+            <set-property property="projectPm"
+                blogic-property="projectPm" dest="form" />
+            <!-- 休暇タイプ集合 -->
+            <set-property property="leaveTypeList"
+                blogic-property="leaveTypeList" dest="form" />
+            <set-property property="detailDate"
+                blogic-property="detailDate" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/updateLeave02">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendance03Dto">
+            <set-property property="leaveId"
+                blogic-property="leaveId" source="form" />
+            <set-property property="jnCard"
+                blogic-property="jnCard" source="form" />
+            <set-property property="name" blogic-property="name"
+                source="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" source="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" source="form" />
+            <set-property property="projectPm"
+                blogic-property="projectPm" source="form" />
+            <set-property property="leaveType"
+                blogic-property="leaveType" source="form" />
+            <set-property property="leaveStartTime"
+                blogic-property="leaveStartTime" source="form" />
+            <set-property property="leaveEndTime"
+                blogic-property="leaveEndTime" source="form" />
+            <set-property property="leaveTotalTime"
+                blogic-property="leaveTotalTime" source="form" />
+            <set-property property="leaveReason"
+                blogic-property="leaveReason" source="form" />
+            <set-property property="leaveSubtime"
+                blogic-property="leaveSubtime" source="form" />
+            <set-property property="leaveCode"
+                blogic-property="leaveCode" source="form" />
+            <set-property property="examineStatus"
+                blogic-property="examineStatus" source="form" />
+            <set-property property="pmEmail"
+                blogic-property="pmEmail" source="form" />
+            <set-property property="myEmail"
+                blogic-property="myEmail" source="form" />
+            <!-- 根据保存按钮判断触发的是提交还是不保存 -->
+            <set-property property="preserVation"
+                blogic-property="preserVation" source="form" />
+            <set-property property="leaveTypeTime"
+                blogic-property="leaveTypeTime" source="form" />
+            <set-property property="countNum"
+                blogic-property="countNum" source="form" />
+            <set-property property="detailDate"
+                blogic-property="detailDate" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="jnCard"
+                blogic-property="jnCard" dest="form" />
+            <set-property property="name" blogic-property="name"
+                dest="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+            <set-property property="projectPm"
+                blogic-property="projectPm" dest="form" />
+            <!-- 休暇タイプ集合 -->
+            <set-property property="leaveTypeList"
+                blogic-property="leaveTypeList" dest="form" />
+            <set-property property="detailDate"
+                blogic-property="detailDate" dest="form" />
+        </blogic-result>
+    </action>
+
+
+    <action path="/deleteEventAction">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendanceSelect03Dto">
+            <set-property property="leaveId"
+                blogic-property="leaveId" source="form" />
+            <set-property property="jnCard"
+                blogic-property="jnCard" source="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" source="form" />
+            <set-property property="detailDate"
+                blogic-property="detailDate" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <!-- dto中的属性 form中的属性 -->
+            <set-property property="jnCard"
+                blogic-property="jnCard" dest="form" />
+            <set-property property="name" blogic-property="name"
+                dest="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+            <set-property property="projectPm"
+                blogic-property="projectPm" dest="form" />
+            <!-- 休暇タイプ集合 -->
+            <set-property property="leaveTypeList"
+                blogic-property="leaveTypeList" dest="form" />
+            <set-property property="leaveId"
+                blogic-property="leaveId" dest="form" />
+            <set-property property="leaveType"
+                blogic-property="leaveType" dest="form" />
+            <set-property property="leaveCode"
+                blogic-property="leaveCode" dest="form" />
+            <set-property property="leaveStartTime"
+                blogic-property="leaveStartTime" dest="form" />
+            <set-property property="leaveEndTime"
+                blogic-property="leaveEndTime" dest="form" />
+            <set-property property="leaveTotalTime"
+                blogic-property="leaveTotalTime" dest="form" />
+            <set-property property="leaveReason"
+                blogic-property="leaveReason" dest="form" />
+            <set-property property="preserVation"
+                blogic-property="preserVation" dest="form" />
+            <set-property property="examineStatus"
+                blogic-property="examineStatus" dest="form" />
+            <set-property property="detailDate"
+                blogic-property="detailDate" dest="form" />
+        <!--     <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" /> -->
+        </blogic-result>
+    </action>
+
+    <action path="/deleteEventAction1">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendanceSelect03Dto">
+            <set-property property="leaveId"
+                blogic-property="leaveId" source="form" />
+            <set-property property="jnCard"
+                blogic-property="jnCard" source="form" />
+            <set-property property="updateQuFen"
+                blogic-property="updateQuFen" source="form" />
+            <set-property property="detailDate"
+                blogic-property="detailDate" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <!-- dto中的属性 form中的属性 -->
+            <set-property property="jnCard"
+                blogic-property="jnCard" dest="form" />
+            <set-property property="name" blogic-property="name"
+                dest="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+            <set-property property="deptName"
+                blogic-property="deptName" dest="form" />
+            <set-property property="projectPm"
+                blogic-property="projectPm" dest="form" />
+            <!-- 休暇タイプ集合 -->
+            <set-property property="leaveTypeList"
+                blogic-property="leaveTypeList" dest="form" />
+            <set-property property="leaveId"
+                blogic-property="leaveId" dest="form" />
+            <set-property property="leaveType"
+                blogic-property="leaveType" dest="form" />
+            <set-property property="leaveCode"
+                blogic-property="leaveCode" dest="form" />
+            <set-property property="leaveStartTime"
+                blogic-property="leaveStartTime" dest="form" />
+            <set-property property="leaveEndTime"
+                blogic-property="leaveEndTime" dest="form" />
+            <set-property property="leaveTotalTime"
+                blogic-property="leaveTotalTime" dest="form" />
+            <set-property property="leaveReason"
+                blogic-property="leaveReason" dest="form" />
+            <set-property property="preserVation"
+                blogic-property="preserVation" dest="form" />
+            <set-property property="examineStatus"
+                blogic-property="examineStatus" dest="form" />
+            <set-property property="detailDate"
+                blogic-property="detailDate" dest="form" />
+         <!--    <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" /> -->
+        </blogic-result>
+    </action>
+
+
+    <action path="/PagingQuery">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendanceSelect03Dto">
+            <set-property property="jnCard"
+                blogic-property="jnCard" source="form" />
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <!-- dto中的属性 form中的属性 -->
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="jntciAttendanceSelect03Dto"
+                blogic-property="jntciAttendanceSelect03Dto" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/PagingQuery1">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendanceSelect03Dto">
+            <set-property property="jnCard"
+                blogic-property="jnCard" source="form" />
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <!-- dto中的属性 form中的属性 -->
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="jntciAttendanceSelect03Dto"
+                blogic-property="jntciAttendanceSelect03Dto" dest="form" />
+        </blogic-result>
+    </action>
+
+    <!-- 复数删除 -->
+    <action path="/deleteAll">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIAttendanceSelect03Dto">
+            <set-property property="deleteAllId"
+                blogic-property="deleteAllId" source="form" />
+        </blogic-params>
+    </action>
+
+</blogic-io>

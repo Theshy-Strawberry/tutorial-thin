@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+<!-- 登录业务的Bean定義 -->
+
+   <aop:config>
+    <aop:pointcut id="sampleBeans" expression="bean(*BLogic2)"/>
+    <aop:advisor
+         pointcut-ref="sampleBeans"
+         advice-ref="transactionInterceptor"/>
+  </aop:config>
+  <!-- <bean name="/writeholidayBL" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.ForwardAction" >
+    </bean> -->
+    <bean name="/writeholidayBL1" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+          <property name="businessLogic" ref="writeholidayBLogic" />
+    </bean>
+	<bean id="writeholidayBLogic" scope="singleton"
+	      class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.WriteholidayBlogic" >
+	      <property name="queryDAO" ref="queryDAO" />
+	      <property name="updateDAO" ref="updateDAO"></property>
+	      </bean>
+<bean name="/writeholidayBL" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+          <property name="businessLogic" ref="writeholidayBLogic1" />
+    </bean>
+	<bean id="writeholidayBLogic1" scope="singleton"
+	      class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.WriteholidayBlogicSelect" >
+	      <property name="queryDAO" ref="queryDAO" />
+	</bean>
+     <bean name="/holiday" scope="singleton"
+                  class="jp.terasoluna.fw.web.struts.actions.BLogicAction" >
+          <property name="businessLogic" ref="JNTCIHolidayBLogic" />
+     </bean>
+     <bean id="JNTCIHolidayBLogic" scope="singleton"
+	      class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.DeleteholidayBlogic" >
+	      <property name="queryDAO" ref="queryDAO" />
+	       <property name="updateDAO" ref="updateDAO" />
+	 </bean>
+
+    <bean name="/JNTCIholidayByIdUpdate" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.DispatchAction">
+
+	</bean>
+
+
+	<bean name="/JNTCISaveHolidayBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="HolidayUpdateById" />
+	</bean>
+	<bean id="HolidayUpdateById" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIHolidayUpdateExteaByidBLogic">
+		<property name="updateDAO" ref="updateDAO" />
+		<property name="queryDAO" ref="queryDAO" />
+	</bean>
+
+
+<bean name="/selectwriteholidayBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="HolidaySelect" />
+	</bean>
+	<bean id="HolidaySelect" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIHolidaySelectBLogic">
+		<property name="queryDAO" ref="queryDAO" />
+	</bean>
+
+	<bean name="/deleteholidatytime" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="HolidayTimeDelete" />
+	</bean>
+	<bean id="HolidayTimeDelete" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIHolidayTimeDeleteBLogic">
+		<property name="updateDAO" ref="updateDAO" />
+		<property name="queryDAO" ref="queryDAO" />
+
+	</bean>
+
+</beans>

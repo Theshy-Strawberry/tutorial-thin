@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+ <form-beans>
+
+  <form-bean name="_JNTCIaddsignInfo" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIAddsignInfoForm" />
+
+  </form-beans>
+	 <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+		 <action path="/JNTCIAuditstatusSRC"
+              name="_JNTCIaddsignInfo"	scope="request"
+              parameter="/JNTCIAuditstatUpdateBL.do">
+   	   </action>
+
+   	   	<action path="/JNTCIAddsignInfoBL" name="_JNTCIaddsignInfo" scope="request" validate="true" input="/JNTCIAddsignInfo/JNTCIAddsignInfoQuery.jsp"
+   	   			>
+			<forward name="success" path="/JNTCIAddsignInfo/JNTCIAddsignInfoQuery.jsp"/>
+		</action>
+
+		<action path="/JNTCIAuditstatUpdateBL" name="_JNTCIaddsignInfo" scope="request">
+			<forward name="success" path="/JNTCIAddsignInfo/JNTCIAuditstatusUpdate.jsp"/>
+			<forward name="false" path="/JNTCIAddsignInfoBL.do"/>
+		</action>
+
+		<action path="/JNTCIAuditstatBL" name="_JNTCIaddsignInfo" scope="request">
+			<forward name="success" path="/JNTCIAddsignInfoBL.do"/>
+		</action>
+
+   <action path="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryDeleteBL"
+            name="_JNTCIaddsignInfo" scope="request"
+            validate="false" >
+            <forward name="success" path="/JNTCIAddsignInfoBL.do"/>
+    </action>
+      <action path="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryRefuseBL"
+            name="_JNTCIaddsignInfo" scope="request"
+            validate="false" >
+            <forward name="success" path="/JNTCIAddsignInfoBL.do"/>
+    </action>
+    <action path="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryAdmitBL"
+            name="_JNTCIaddsignInfo" scope="request"
+            validate="false" >
+            <forward name="success" path="/JNTCIAddsignInfoBL.do"/>
+    </action>
+
+<!-- 20160909 Download  Start -->
+	<action path="/DownloadFile" name="_JNTCIaddsignInfo"
+			scope="request">
+			<forward name="null" path="/JNTCIAuditstatUpdateBL.do"></forward>
+ 			<forward name="fail" path="/JNTCIAddsignInfoBL.do"></forward>
+	</action>
+	<action path="/JNTCIAuditstatDis" name="_JNTCIaddsignInfo" scope="request">
+		<forward name="admit" path="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryAdmitBL.do"></forward>
+		<forward name="refuse" path="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryRefuseBL.do"></forward>
+		<forward name="delete" path="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryDeleteBL.do"></forward>
+	</action>
+			
+  </action-mappings>
+</struts-config>

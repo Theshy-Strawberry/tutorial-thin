@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="_JNTCISuperButtonForm"
+            type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCISuperButtonForm" />
+    </form-beans>
+
+    <!-- ======================================== アクションマッピング定義 -->
+    <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+        <!-- <action path="/JNTCISuperButtonSRC" scope="request" name="_JNTCISuperButtonForm" parameter="/JNTCISuperButton/JNTCISuperButton01.jsp">
+        </action> -->
+        <action path="/JNTCISuperButtonModify" name="_JNTCISuperButtonForm" scope="request">
+             <forward name="sure" path="/JNTCISuperButtonPowerModify1.do" />
+             <forward name="reset" path="/JNTCISuperButtonPowerSelect.do" />
+        </action>
+
+  <action path="/JNTCISuperButtonProjectdelete" name="_JNTCISuperButtonForm" scope="request"
+  validate="false">
+             <forward name="success" path="/JNTCISuperButtonSRC.do" />
+
+</action>
+
+       <action path="/JNTCISuperButtonProjectModify" name="_JNTCISuperButtonForm" scope="request">
+             <forward name="sure" path="/JNTCISuperButtonPowerModify.do" />
+             <forward name="reset" path="/JNTCISuperButtonPowerSelect.do" />
+        </action>
+
+        <action path="/JNTCISuperButtonSRC" scope="request" name="_JNTCISuperButtonForm" validate="false">
+            <forward name="success" path="/JNTCISuperButton/JNTCISuperButton01.jsp" />
+        </action>
+        <action path="/JNTCISuperButtonPowerModify" scope="request" name="_JNTCISuperButtonForm" validate="true" input="/JNTCISuperButtonPowerSelect.do">
+            <forward name="success" path="/JNTCISuperButtonPowerSelect.do" />
+        </action>
+        <action path="/JNTCISuperButtonPowerModify1" scope="request" name="_JNTCISuperButtonForm" validate="true" input="/JNTCISuperButtonPowerSelect.do">
+            <forward name="success" path="/JNTCISuperButtonPowerSelect.do" />
+        </action>
+
+        <action path="/JNTCISuperButtonPowerAdd" scope="request" name="_JNTCISuperButtonForm"
+                     validate="true" input="/JNTCISuperButtonPowerSelect.do">
+            <forward name="success" path="/JNTCISuperButtonSRC.do" />
+            <forward name="success1" path="/JNTCISuperButtonSRC.do" />
+        </action>
+
+         <action path="/JNTCISuperButtonPowerSelect" scope="request" name="_JNTCISuperButtonForm" validate="true" input="/JNTCISuperButtonSRC.do">
+            <forward name="success" path="/JNTCISuperButtonSRC.do" />
+            <forward name="success1" path="/JNTCISuperButtonSRC.do" />
+        </action>
+
+         <action path="/ProjectPersonSelect" scope="request" name="_JNTCISuperButtonForm" validate="true" input="/JNTCISuperButtonSRC.do">
+            <forward name="success" path="/JNTCISuperButtonSRC.do" />
+            <forward name="success1" path="/JNTCISuperButtonSRC.do" />
+        </action>
+
+    </action-mappings>
+</struts-config>

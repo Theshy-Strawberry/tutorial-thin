@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <!-- ====================================登録============================================== -->
+    <action path="/loginBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.LoginInput">
+            <set-property property="userId"
+                blogic-property="userId" source="form" />
+            <set-property property="password"
+                blogic-property="password" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="userId"
+                blogic-property="userId" dest="session" />
+            <set-property property="userName"
+                blogic-property="userName" dest="session" />
+            <set-property property="flag" blogic-property="flag"
+                dest="session" />
+            <set-property property="flagName"
+                blogic-property="flagName" dest="session" />
+        </blogic-result>
+    </action>
+    <!-- ====================================パスワードの頁============================================== -->
+
+    <action path="/resetBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIResetInput">
+            <set-property property="userId"
+                blogic-property="userId" source="session" />
+            <set-property property="password1"
+                blogic-property="password1" source="form" />
+            <set-property property="password2"
+                blogic-property="password2" source="form" />
+            <set-property property="password3"
+                blogic-property="password3" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="password"
+                blogic-property="password" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/loginGetPassWord">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.LoginInput">
+            <set-property property="userId"
+                blogic-property="userId" source="form" />
+        </blogic-params>
+    </action>
+
+</blogic-io>

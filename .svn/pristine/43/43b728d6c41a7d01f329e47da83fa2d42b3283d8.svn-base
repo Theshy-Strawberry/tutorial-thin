@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- 登录业务的Bean定義 -->
+
+	<aop:config>
+		<aop:pointcut id="sampleBeans" expression="bean(*BLogic2)" />
+		<aop:advisor pointcut-ref="sampleBeans" advice-ref="transactionInterceptor" />
+	</aop:config>
+	<!-- <bean name="/seek" scope="singleton" class="jp.terasoluna.fw.web.struts.actions.ForwardAction">
+		</bean> -->
+	<bean name="/seeklist" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.DispatchAction" />
+	<bean name="/seek" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="seekBLogic" />
+	</bean>
+	<bean id="seekBLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCISeekBlogic">
+		<property name="queryDAO" ref="queryDAO" />
+	</bean>
+	<bean name="/month" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="monthBLogic" />
+	</bean>
+	<bean id="monthBLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCISeekBlogic">
+		<property name="queryDAO" ref="queryDAO" />
+	</bean>
+
+    <bean name="/month2" scope="singleton"
+        class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+        <property name="businessLogic" ref="month2BLogic" />
+    </bean>
+    <bean id="month2BLogic" scope="singleton"
+        class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCImonth2BLogic">
+    </bean>
+    <bean name="/into1" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="into_datail" />
+	</bean>
+	<bean id="into_datail" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCISeek_QueryBlogic">
+	</bean>
+	<!-- <bean name="/day" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="dayBLogic" />
+	</bean>
+	<bean id="dayBLogic" scope="singleton"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIDayBlogic">
+		<property name="queryDAO" ref="queryDAO" />
+	</bean> -->
+</beans>

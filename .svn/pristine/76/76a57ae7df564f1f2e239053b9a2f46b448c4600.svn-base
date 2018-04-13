@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- 定义业务逻辑的输入输出 -->
+<blogic-io>
+
+    <action path="/seek">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCISeekInput">
+            <set-property property="userId"
+                blogic-property="jn_card" source="session" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="jn_card"
+                blogic-property="card" dest="form" />
+            <set-property property="name" blogic-property="name"
+                dest="form" />
+            <set-property property="yymm" blogic-property="yymm"
+                dest="form" />
+            <set-property property="weekList"
+                blogic-property="weekList" dest="form" />
+            <set-property property="leaveList"
+                blogic-property="leaveList" dest="form" />
+            <set-property property="extra_list"
+                blogic-property="extra_list" dest="form" />
+            <set-property property="evectionlist"
+                blogic-property="evectionlist" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/month">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCISeekInput">
+            <set-property property="jn_card"
+                blogic-property="jn_card" source="form" />
+            <set-property property="yymm" blogic-property="yymm"
+                source="form" />
+                    <set-property property="scrollPosit"
+                blogic-property="scrollPosit" source="request" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="jn_card"
+                blogic-property="card" dest="form" />
+            <set-property property="name" blogic-property="name"
+                dest="form" />
+            <set-property property="yymm" blogic-property="yymm"
+                dest="form" />
+            <set-property property="weekList"
+                blogic-property="weekList" dest="form" />
+            <set-property property="leaveList"
+                blogic-property="leaveList" dest="form" />
+            <set-property property="extra_list"
+                blogic-property="extra_list" dest="form" />
+            <set-property property="evectionlist"
+                blogic-property="evectionlist" dest="form" />
+                 <set-property property="scrollPosit"
+                blogic-property="scrollPosit" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/month2">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCISeekInput">
+            <set-property property="jn_card"
+                blogic-property="jn_card" source="request" />
+            <set-property property="ym" blogic-property="yymm"
+                source="request" />
+            <set-property property="user_id"
+                blogic-property="user_id" source="request" />
+            <set-property property="user_name"
+                blogic-property="user_name" source="request" />
+                  <set-property property="scrollPosit"
+                blogic-property="scrollPosit" source="request" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="jn_card"
+                blogic-property="jn_card" dest="form" />
+            <set-property property="user_id"
+                blogic-property="user_id" dest="form" />
+            <set-property property="seek_query"
+                blogic-property="seek_query" dest="form" />
+            <set-property property="yymm" blogic-property="yymm"
+                dest="form" />
+            <set-property property="user_name"
+                blogic-property="user_name" dest="form" />
+                 <set-property property="scrollPosit"
+                blogic-property="scrollPosit" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/into1">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCISeekInput">
+            <set-property property="yymm" blogic-property="yymm"
+                source="form" />
+            <set-property property="user_id"
+                blogic-property="user_id" source="form" />
+                <set-property property="scrollPosit"
+                blogic-property="scrollPosit" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="user_id"
+                blogic-property="user_id" dest="request" />
+            <set-property property="ym" blogic-property="yymm"
+                dest="request" />
+                  <set-property property="scrollPosit"
+                blogic-property="scrollPosit" dest="request" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

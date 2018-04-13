@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/JNTCIEquipkatabanBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipKatabanInput">
+            <set-property property="setsubi_kuben"
+                blogic-property="setsubi_kuben" source="form" />
+            <set-property property="setsubi_kataban"
+                blogic-property="setsubi_kataban" source="form" />
+            <set-property property="setsubi_tanka"
+                blogic-property="setsubi_tanka" source="form" />
+            <set-property property="setsubi_kikaku"
+                blogic-property="setsubi_kikaku" source="form" />
+            <set-property property="host_CPU"
+                blogic-property="host_CPU" source="form" />
+            <set-property property="cpu_haichi"
+                blogic-property="cpu_haichi" source="form" />
+            <set-property property="memori"
+                blogic-property="memori" source="form" />
+            <set-property property="harddisk"
+                blogic-property="harddisk" source="form" />
+            <set-property property="harddisk_total"
+                blogic-property="harddisk_total" source="form" />
+            <set-property property="kounyu_hiduke"
+                blogic-property="kounyu_hiduke" source="form" />
+            <set-property property="kounyu_user"
+                blogic-property="kounyu_user" source="form" />
+            <set-property property="setsubi_maker"
+                blogic-property="setsubi_maker" source="form" />
+        </blogic-params>
+    </action>
+
+</blogic-io>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+
+<blogic-io>
+
+    <!-- ビジネスロジック入出力定義 -->
+    <action path="/revocation">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIVocationInput">
+            <set-property property="userId"
+                blogic-property="userId" source="form" />
+            <set-property property="updeflag"
+                blogic-property="updeflag" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="userSelectId"
+                blogic-property="userSelectId" source="form" />
+            <set-property property="usernameSelect"
+                blogic-property="usernameSelect" source="form" />
+            <set-property property="deptId1"
+                blogic-property="deptId1" source="form" />
+            <set-property property="flag" blogic-property="flag"
+                source="session" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="userId"
+                blogic-property="userId" dest="form" />
+                <set-property property="totalnianjia"
+                blogic-property="totalnianjia" dest="form" />
+            <set-property property="userName"
+                blogic-property="userName" dest="form" />
+            <set-property property="userSex"
+                blogic-property="userSex" dest="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+            <set-property property="entryDate"
+                blogic-property="entryDate" dest="form" />
+            <set-property property="userType"
+                blogic-property="userType" dest="form" />
+            <set-property property="totalDays"
+                blogic-property="totalDays" dest="form" />
+            <set-property property="remainDays"
+                blogic-property="remainDays" dest="form" />
+            <set-property property="exDays"
+                blogic-property="exDays" dest="form" />
+            <set-property property="february"
+                blogic-property="february" dest="form" />
+            <set-property property="january"
+                blogic-property="january" dest="form" />
+            <set-property property="march" blogic-property="march"
+                dest="form" />
+            <set-property property="april" blogic-property="april"
+                dest="form" />
+            <set-property property="may" blogic-property="may"
+                dest="form" />
+            <set-property property="june" blogic-property="june"
+                dest="form" />
+            <set-property property="july" blogic-property="july"
+                dest="form" />
+            <set-property property="august"
+                blogic-property="august" dest="form" />
+            <set-property property="september"
+                blogic-property="september" dest="form" />
+            <set-property property="octorber"
+                blogic-property="octorber" dest="form" />
+            <set-property property="november"
+                blogic-property="november" dest="form" />
+            <set-property property="december"
+                blogic-property="december" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="userSelectId"
+                blogic-property="userSelectId" dest="form" />
+            <set-property property="usernameSelect"
+                blogic-property="usernameSelect" dest="form" />
+            <set-property property="deptId1"
+                blogic-property="deptId1" dest="form" />
+        </blogic-result>
+    </action>
+
+     <!-- 下载" -->
+<action path="/vocationdownload">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIVocationInput">
+
+           <set-property property="flag" blogic-property="flag"
+                source="session" />   </blogic-params>
+    </action>
+
+
+
+
+    <!-- ビジネスロジック入出力定義 -->
+    <action path="/revocationUpdate">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIVocationInput">
+            <set-property property="userId"
+                blogic-property="userId" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="form" />
+            <set-property property="userSex"
+                blogic-property="userSex" source="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" source="form" />
+            <set-property property="entryDate"
+                blogic-property="entryDate" source="form" />
+            <set-property property="userType"
+                blogic-property="userType" source="form" />
+            <set-property property="totalDays"
+                blogic-property="totalDays" source="form" />
+            <set-property property="remainDays"
+                blogic-property="remainDays" source="form" />
+            <set-property property="exDays"
+                blogic-property="exDays" source="form" />
+            <set-property property="february"
+                blogic-property="february" source="form" />
+            <set-property property="january"
+                blogic-property="january" source="form" />
+            <set-property property="march" blogic-property="march"
+                source="form" />
+            <set-property property="april" blogic-property="april"
+                source="form" />
+            <set-property property="may" blogic-property="may"
+                source="form" />
+            <set-property property="june" blogic-property="june"
+                source="form" />
+            <set-property property="july" blogic-property="july"
+                source="form" />
+            <set-property property="august"
+                blogic-property="august" source="form" />
+            <set-property property="september"
+                blogic-property="september" source="form" />
+            <set-property property="octorber"
+                blogic-property="octorber" source="form" />
+            <set-property property="november"
+                blogic-property="november" source="form" />
+            <set-property property="december"
+                blogic-property="december" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="userSelectId"
+                blogic-property="userSelectId" source="form" />
+            <set-property property="usernameSelect"
+                blogic-property="usernameSelect" source="form" />
+            <set-property property="deptId1"
+                blogic-property="deptId1" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="userSelectId"
+                blogic-property="userSelectId" dest="form" />
+            <set-property property="usernameSelect"
+                blogic-property="usernameSelect" dest="form" />
+            <set-property property="deptId1"
+                blogic-property="deptId1" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/VocationlistBL">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIVocationInput">
+            <set-property property="row" blogic-property="row"
+                source="form" />
+                <set-property property="mark" blogic-property="mark"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="userSelectId"
+                blogic-property="userSelectId" source="form" />
+            <set-property property="usernameSelect"
+                blogic-property="usernameSelect" source="form" />
+            <set-property property="deptId1"
+                blogic-property="deptId1" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="users" blogic-property="users"
+                dest="form" />
+            <set-property property="deptList"
+                blogic-property="deptList" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="userSelectId"
+                blogic-property="userSelectId" dest="form" />
+            <set-property property="usernameSelect"
+                blogic-property="usernameSelect" dest="form" />
+            <set-property property="deptId1"
+                blogic-property="deptId1" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/revocationSelect">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIVocationInput">
+            <set-property property="userSelectId"
+                blogic-property="userSelectId" source="form" />
+            <set-property property="usernameSelect"
+                blogic-property="usernameSelect" source="form" />
+            <set-property property="deptId1"
+                blogic-property="deptId1" source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="cod" blogic-property="cod"
+                source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="users" blogic-property="users"
+                dest="form" />
+            <set-property property="deptList"
+                blogic-property="deptList" dest="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" dest="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" dest="form" />
+            <set-property property="userSelectId"
+                blogic-property="userSelectId" dest="form" />
+            <set-property property="usernameSelect"
+                blogic-property="usernameSelect" dest="form" />
+            <set-property property="deptId1"
+                blogic-property="deptId1" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/vocationAddInit">
+        <blogic-result>
+            <set-property property="deptTypeIdOutput"
+                blogic-property="deptTypeIdOutput" dest="form" />
+            <set-property property="userTypeIdOutput"
+                blogic-property="userTypeIdOutput" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/insertBLforVocation">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIVocationInput">
+            <set-property property="userId"
+                blogic-property="userId" source="form" />
+            <set-property property="userName"
+                blogic-property="userName" source="form" />
+            <set-property property="userSex"
+                blogic-property="userSex" source="form" />
+            <set-property property="deptId"
+                blogic-property="deptId" source="form" />
+            <set-property property="userType"
+                blogic-property="userType" source="form" />
+            <set-property property="remainDays"
+                blogic-property="remainDays" source="form" />
+            <set-property property="entyrTime"
+                blogic-property="entyrTime" source="form" />
+        </blogic-params>
+    </action>
+<action path="/JNTCIVocationBack">
+<blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIVocationInput">
+            <set-property property="mark"
+                blogic-property="mark" source="form" />
+      </blogic-params>
+   </action>
+</blogic-io>

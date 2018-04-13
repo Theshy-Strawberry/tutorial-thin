@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+<!-- ======================================== フォームビーン定義 -->
+  <form-beans>
+<!--
+    ユーザ管理用アクションフォーム
+    <form-bean name="_userManagerForm"
+               type="jp.terasoluna.thin.tutorial.web.usermanager.form.UserManagerForm" /> -->
+  <form-bean name="_JNTCIVocationForm" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIVocationForm" />
+
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+      <!-- 一覧データ取得処理用アクション -->
+      <action path="/VocationlistBL"
+            name="_JNTCIVocationForm" scope="request">
+            <forward name="success" path="/JNTCIVocation/view.jsp"/>
+   </action>
+
+         <action path="/revocationUpdate"
+            name="_JNTCIVocationForm" scope="request">
+            <forward name="success" path="/revocationSelect.do"/>
+            <forward name="success1" path="/revocationSelect.do"/>
+   </action>
+
+      <!-- 一覧データ取得処理用アクション -->
+      <action path="/revocationSelect"
+            name="_JNTCIVocationForm" scope="request"
+             validate="false" input="/JNTCIVocation/view.jsp">
+            <forward name="success" path="/JNTCIVocation/view.jsp"/>
+      </action>
+
+	 <!-- 追加 -->
+	<action path="/vocationAddInit"
+			name="_JNTCIVocationForm" scope="request"
+			parameter="/JNTCIVocation/JNTCIVocationAdd.jsp" >
+			<forward name="success" path="/JNTCIVocation/JNTCIVocationAdd.jsp"/>
+	</action>
+
+
+	 <!-- 下载" -->
+	<action path="/vocationdownload"
+			name="_JNTCIVocationForm" scope="request"
+			parameter="/JNTCIVocation/JNTCIVocationAdd.jsp" >
+			<forward name="success" path="/JNTCIVocation/JNTCIVocationAdd.jsp"/>
+				<forward name="fail" path="/JNTCIVocation/JNTCIVocationAdd.jsp"/>
+	</action>
+
+
+
+	<action path="/insertBLforVocation"
+            name="_JNTCIVocationForm" scope="request"
+             validate="true" input="/JNTCIVocation/JNTCIVocationAdd.jsp">
+            <forward name="success" path="/VocationlistBL.do"/>
+            <forward name="failure" path="/vocationAddInit.do"/>
+      </action>
+      <action path="/JNTCIVocationBack"
+              name="_JNTCIVocationForm"  scope="request"
+              validate="false">
+              <forward name="success1"  path="/VocationlistBL.do"/>
+       </action>
+
+   <!-- 一覧画面表示用アクション -->
+	<action path="/listSCR"
+			name="_JNTCIVocationForm" scope="request"
+			parameter="/JNTCIVocation/view.jsp" />
+
+      <action path="/revocation"
+            name="_JNTCIVocationForm" scope="request">
+            <forward name="success" path="/JNTCIVocation/JNTCIVocationR.jsp"/>
+            <forward name="delete" path="/VocationlistBL.do"/>
+            <forward name="fail" path="/VocationlistBL.do"/>
+      </action>
+	<!-- reset -->
+	  <action path="/vocationReset"
+            name="_JNTCIVocationForm" scope="request">
+            <forward name="success" path="/VocationlistBL.do"/>
+      </action>
+  </action-mappings>
+
+</struts-config>

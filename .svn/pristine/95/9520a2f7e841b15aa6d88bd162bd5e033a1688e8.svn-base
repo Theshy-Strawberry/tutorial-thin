@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+<!--  /JNTCIEquipHomePageBL -->
+	<action path="/JNTCIEquipHomePageBL">
+		<blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessageInput">
+				<set-property property="row" blogic-property="row" source="form" />
+				<set-property property="startIndex" blogic-property="startIndex" source="form" />
+		</blogic-params>
+
+		<blogic-result>
+			<set-property property="classList" blogic-property="classList" dest="form" />
+			<set-property property="postmessage" blogic-property="postmessage" dest="form" />
+			<set-property property="noticeMg" blogic-property="noticeMg" dest="form" />
+			<set-property property="noticeMg02" blogic-property="noticeMg02" dest="form" />
+			<set-property property="totalCount" blogic-property="totalCount" dest="form" />
+			<set-property property="startIndex" blogic-property="startIndex" dest="form" /><!-- =========== -->
+		</blogic-result>
+	</action>
+<!-- /JNTCIEquipPostMessageBL -->
+	<action path="/JNTCIEquipPostMessageBL">
+		<blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCLOvertimePostMessageInput">
+			<set-property property="info_id" blogic-property="info_id" source="form" />
+			<set-property property="info_title" blogic-property="info_title" source="form" />
+			<set-property property="view_id" blogic-property="view_id" source="form" />
+			<set-property property="info_details" blogic-property="info_details" source="form" />
+			<set-property property="info_date" blogic-property="info_date" source="form" />
+			<set-property property="userId" blogic-property="userId" source="session" />
+			<set-property property="uploadFile" blogic-property="uploadFile" source="form" />
+		</blogic-params>
+	</action>
+	<!-- /JNTCIEquipPostMessage02BL -->
+	<action path="/JNTCIEquipPostMessage02BL">
+		<blogic-params bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIEquipNoticeMgVoInput">
+			<set-property property="info_id" blogic-property="info_id" source="form" />
+			<set-property property="info_caption" blogic-property="info_caption" source="form" />
+			<set-property property="info_content" blogic-property="info_content" source="form" />
+			<set-property property="info_date" blogic-property="info_date" source="form" />
+			<set-property property="userId" blogic-property="userId" source="session" />
+			<set-property property="uploadFile" blogic-property="uploadFile" source="form" />
+			<set-property property="flag" blogic-property="flag" source="session" />
+		</blogic-params>
+	</action>
+
+</blogic-io>

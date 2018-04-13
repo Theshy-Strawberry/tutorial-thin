@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+<!-- ======================================== フォームビーン定義 -->
+  <form-beans>
+	<!-- ログオン用アクションフォーム -->
+  	<form-bean name="_JNTCIMeetingInquireForm" type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIMeetingInquireForm" />
+
+
+  </form-beans>
+
+<!-- ======================================== アクションマッピング定義 -->
+  <action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+	<!-- 會議室查詢 測試 -->
+	<action path="/searchMTR"
+		    name="_JNTCIMeetingInquireForm" scope="request">
+
+		    <forward name="success" path="/JNTCIMeeting/JNTCIMeetingInquire.jsp" />
+			<forward name="failure" path="/userManager/insertSCR.do" />
+	</action>
+
+	<action path="/deleteMTRremark"
+		    name="_JNTCIMeetingInquireForm" scope="request">
+	</action>
+
+  </action-mappings>
+</struts-config>

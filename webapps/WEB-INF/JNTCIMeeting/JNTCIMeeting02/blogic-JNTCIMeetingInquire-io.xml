@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE blogic-io PUBLIC "-//NTTDATA//DTD TERASOLUNA for Spring blogic-io 1.0//JA"
+                           "dtd/blogic-io.dtd">
+
+<!-- ビジネスロジック入出力定義 -->
+<blogic-io>
+
+    <action path="/searchMTR">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIMeetingInquireInput">
+            <set-property property="jn_card_serch"
+                blogic-property="jn_card_serch" source="form" />
+            <set-property property="room_no_serch"
+                blogic-property="room_no_serch" source="form" />
+            <set-property property="start_time_serch"
+                blogic-property="start_time_serch" source="form" />
+            <set-property property="end_time_serch"
+                blogic-property="end_time_serch" source="form" />
+            <set-property property="room_no"
+                blogic-property="room_no" source="form" />
+            <set-property property="room_name"
+                blogic-property="room_name" source="form" />
+            <set-property property="jn_card"
+                blogic-property="jn_card" source="form" />
+            <set-property property="start_time"
+                blogic-property="start_time" source="form" />
+            <set-property property="end_time"
+                blogic-property="end_time" source="form" />
+            <set-property property="row" blogic-property="row"
+                source="form" />
+            <set-property property="startIndex"
+                blogic-property="startIndex" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="jn_card_serch"
+                blogic-property="jn_card_serch" dest="form" />
+            <set-property property="room_no_serch"
+                blogic-property="room_no_serch" dest="form" />
+            <set-property property="start_time_serch"
+                blogic-property="start_time_serch" dest="form" />
+            <set-property property="end_time_serch"
+                blogic-property="end_time_serch" dest="form" />
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="mtrRemarks"
+                blogic-property="mtrRemarks" dest="form" />
+        </blogic-result>
+    </action>
+
+    <action path="/deleteMTRremark">
+        <blogic-params
+            bean-name="jp.terasoluna.thin.tutorial.web.transcosmos.dto.JNTCIMeetingInquireInput">
+            <set-property property="room_no"
+                blogic-property="room_no" source="form" />
+            <set-property property="start_time"
+                blogic-property="start_time" source="form" />
+        </blogic-params>
+        <blogic-result>
+            <set-property property="totalCount"
+                blogic-property="totalCount" dest="form" />
+            <set-property property="mtrRemarks"
+                blogic-property="mtrRemarks" dest="form" />
+        </blogic-result>
+    </action>
+
+</blogic-io>

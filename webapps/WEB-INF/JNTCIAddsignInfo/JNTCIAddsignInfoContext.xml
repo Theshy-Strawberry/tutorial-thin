@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ユーザ管理業務のBean定義 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+<!-- ログオン業務のBean定義 -->
+   <aop:config>
+    <aop:pointcut id="sampleBeans" expression="bean(*BLogic2)"/>
+    <aop:advisor
+         pointcut-ref="sampleBeans"
+         advice-ref="transactionInterceptor"/>
+
+  </aop:config>
+
+  	 <bean name="/JNTCIAuditstatusSRC" scope="singleton"
+          class="jp.terasoluna.fw.web.struts.actions.ForwardAction" />
+
+	 <bean name="/JNTCIAddsignInfoBL" scope="singleton"
+			class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+			<property name="businessLogic" ref="JNTCIAddsignInfoBLogic" />
+	</bean>
+	 <bean id="JNTCIAddsignInfoBLogic" scope="singleton"
+			class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAddsignInfoBLogic">
+			<property name="queryDAO" ref ="queryDAO" />
+	</bean>
+	<bean name="/JNTCIAuditstatUpdateBL" scope="singleton" class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIAuditatasUpdateBLogic" />
+	</bean>
+	<bean id="JNTCIAuditatasUpdateBLogic" scope="singleton"
+			class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAuditstatusUpdateBLogic">
+			<property name="queryDAO" ref ="queryDAO" />
+	</bean>
+
+	<bean name="/JNTCIAuditstatBL" scope="singleton" class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIAuditatasBLogic" />
+	</bean>
+	<bean id="JNTCIAuditatasBLogic" scope="singleton"
+			class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAuditstatusBLogic">
+			<property name="updateDAO" ref="updateDAO"/>
+			<property name="queryDAO" ref="queryDAO"/>
+	</bean>
+	  <bean name="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryDeleteBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIAddsignInfoDelete" />
+	</bean>
+
+
+	<bean id="JNTCIAddsignInfoDelete" scope="prototype"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAddsignInfoQueryDeleteBLogic">
+		<property name="updateDAO" ref="updateDAO" />
+		<property name="queryDAO" ref="queryDAO"/>
+	</bean>
+	
+	<bean name="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryAdmitBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIAddsignInfoAdmit" />
+	</bean>
+
+
+	<bean id="JNTCIAddsignInfoAdmit" scope="prototype"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAddsignInfoQueryAdmitBLogic">
+		<property name="updateDAO" ref="updateDAO" />
+		<property name="queryDAO" ref="queryDAO"/>
+	</bean>
+	
+	<bean name="/JNTCIAddsignInfo/JNTCIAddsignInfoQueryRefuseBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIAddsignInfoRefuse" />
+	</bean>
+
+	<bean name="/DownloadFile" scope="singleton"
+			class="jp.terasoluna.fw.web.struts.actions.DownloadBLogicAction">
+			<property name="businessLogic" ref="FileDownBlogic" />
+		</bean>
+		<bean id="FileDownBlogic" scope="singleton"
+			class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAddsignDownloadFileBlogic">
+			<property name="queryDAO" ref="queryDAO" />
+			<property name="updateDAO" ref="updateDAO" />
+		</bean>
+
+	<bean id="JNTCIAddsignInfoRefuse" scope="prototype"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIAddsignInfoQueryRefuseBLogic">
+		<property name="updateDAO" ref="updateDAO" />
+		<property name="queryDAO" ref="queryDAO"/>
+	</bean>
+	<bean name="/JNTCIAuditstatDis" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.DispatchAction" />
+
+  </beans>

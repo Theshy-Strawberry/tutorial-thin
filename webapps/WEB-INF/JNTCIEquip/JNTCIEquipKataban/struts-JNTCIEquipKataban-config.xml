@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="_JNTCIEquipKatabanForm"
+			type="jp.terasoluna.thin.tutorial.web.transcosmos.form.JNTCIEquipKatabanForm" />
+	</form-beans>
+	<!-- ======================================== アクションマッピング定義 -->
+	<action-mappings type="jp.terasoluna.fw.web.struts.action.ActionMappingEx">
+
+		 <action path="/JNTCIEquipKatabanSCR"
+		 name="_JNTCIEquipKatabanForm" scope="request"
+		 parameter="/JNTCIEquip/JNTCIEquipKataban.jsp"/>
+
+         <action path="/JNTCIEquipkatabanBL" name="_JNTCIEquipKatabanForm"
+			scope="request" validate="true" input = "/JNTCIEquipKatabanSCR.do">
+			<forward name="success" path="/JNTCIEquipInsertBL01.do" />
+			<forward name="failure" path="/JNTCIEquipKatabanSCR.do" />
+		</action>
+	</action-mappings>
+</struts-config>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- logon Bean define -->
+	<aop:config>
+		<aop:pointcut id="sampleBeans" expression="bean(*BLogic2)" />
+		<aop:advisor pointcut-ref="sampleBeans" advice-ref="transactionInterceptor" />
+	</aop:config>
+
+	<bean name="/JNTCIPersonalInfo/JNTCIPersonalInfoInquireSRC" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.ForwardAction" />
+
+	<bean name="/JNTCIPersonalInfoInquireBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIPersonalInfoInquire" />
+	</bean>
+
+	<bean id="JNTCIPersonalInfoInquire" scope="prototype"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIPersonalInfoInquireBLogic">
+		<property name="queryDAO" ref="queryDAO" />
+	</bean>
+
+
+	<bean name="/JNTCIPersonalInfo/JNTCIPersonalInfoDeleteBL" scope="singleton"
+		class="jp.terasoluna.fw.web.struts.actions.BLogicAction">
+		<property name="businessLogic" ref="JNTCIPersonalInfoDelete" />
+	</bean>
+
+	<bean id="JNTCIPersonalInfoDelete" scope="prototype"
+		class="jp.terasoluna.thin.tutorial.web.transcosmos.blogic.JNTCIPersonalInfoDeleteBLogic">
+		<property name="updateDAO" ref="updateDAO" />
+	</bean>
+
+</beans>
